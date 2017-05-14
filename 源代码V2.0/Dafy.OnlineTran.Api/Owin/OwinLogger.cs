@@ -1,4 +1,4 @@
-﻿using GiveU.Infrastructure.Logging;
+﻿
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -15,7 +15,6 @@ namespace Dafy.OnlineTran.Api.Owin
     /// </summary>
     public class OwinLogger : Microsoft.Owin.Logging.ILogger
     {
-        static ILogger _logger = null;
         string _name = null;
         /// <summary>
         /// 
@@ -30,45 +29,6 @@ namespace Dafy.OnlineTran.Api.Owin
         /// </summary>
         public bool WriteCore(TraceEventType eventType, int eventId, object state, Exception exception, Func<object, Exception, string> formatter)
         {
-            if (_logger == null)
-            {
-                LazyInitializer.EnsureInitialized(ref _logger, () =>
-                {
-                    return ContainerManager.Container.Resolve<ILoggerFactory>().CreateLogger(_name);
-                });
-            }
-
-            var message = state.ToString();
-            if(formatter != null)
-            {
-                message = formatter(state, exception);
-            }
-
-            switch (eventType)
-            {
-                case TraceEventType.Critical:
-                    _logger.LogCritical(exception);
-                    break;
-                case TraceEventType.Error:
-                    _logger.LogError(exception);
-                    break;
-                case TraceEventType.Warning:
-                    _logger.LogWarning(eventId, message, exception);
-                    break;
-                case TraceEventType.Information:
-                    _logger.LogInformation(eventId, message, exception);
-                    break;
-                case TraceEventType.Verbose:
-                case TraceEventType.Start:
-                case TraceEventType.Stop:
-                case TraceEventType.Suspend:
-                case TraceEventType.Resume:
-                case TraceEventType.Transfer:
-                    _logger.LogDebug(eventId, message, exception);
-                    break;
-                default:
-                    break;
-            }
             return true;
         }
     }

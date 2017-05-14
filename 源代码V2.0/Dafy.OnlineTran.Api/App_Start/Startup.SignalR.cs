@@ -1,6 +1,6 @@
 ﻿using Autofac;
 using Dafy.OnlineTran.Container;
-using GiveU.Infrastructure.Logging;
+
 using Microsoft.AspNet.SignalR;
 using Microsoft.AspNet.SignalR.Hubs;
 using Owin;
@@ -48,7 +48,6 @@ namespace Dafy.OnlineTran.Api
 
         private class ErrorHandlingPipelineModule : HubPipelineModule
         {
-            ILogger _logger = null;
             //public ErrorHandlingPipelineModule()
             //{
             //    _logger = ContainerManager.Container.Resolve<ILoggerFactory>().CreateLogger<ErrorHandlingPipelineModule>();
@@ -56,12 +55,6 @@ namespace Dafy.OnlineTran.Api
             protected override void OnIncomingError(ExceptionContext exceptionContext, IHubIncomingInvokerContext invokerContext)
             {
                 Debug.WriteLine("=> Exception " + exceptionContext.Error.Message);
-                _logger.LogError(exceptionContext.Error);
-                if (exceptionContext.Error.InnerException != null)
-                {
-                    Debug.WriteLine("=> Inner Exception " + exceptionContext.Error.InnerException.Message);
-                    _logger.LogError(exceptionContext.Error.InnerException);
-                }
                 base.OnIncomingError(exceptionContext, invokerContext);
             }
         }

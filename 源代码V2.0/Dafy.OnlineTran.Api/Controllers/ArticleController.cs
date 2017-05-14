@@ -6,13 +6,11 @@ using System.Net.Http;
 using System.Net.Http.Headers;
 using System.Text;
 using System.Web.Http;
-using GiveU.Authorization.OAuthApp;
-using GiveU.Infrastructure.Logging;
 using Dafy.OnlineTran.Common.Response;
 using Dafy.OnlineTran.IService.Pc;
 using Dafy.OnlineTran.Common.Request;
 
-namespace GiveU.CollectionVisit.Web.Controllers
+namespace Dafy.OnlineTran.Api.Controllers
 {
     /// <summary>
     /// 资讯管理
@@ -20,7 +18,7 @@ namespace GiveU.CollectionVisit.Web.Controllers
     /// 创建时间：2017-05-01
     /// </summary>
     [AllowAnonymous]
-    public class ArticleController : AuthApiController
+    public class ArticleController : AuthController
     {
         private readonly IArticleService _service;
         /// <summary>

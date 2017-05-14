@@ -98,5 +98,12 @@ namespace Dafy.OnlineTran.IService.Pc
         /// <param name="rq"></param>
         /// <returns></returns>
         WeixinUserItemRS DetailMember(DetailUserRQ rq);
+
+        /// <summary>
+        /// 公司详情
+        /// </summary>
+        /// <param name="rq"></param>
+        /// <returns></returns>
+        CompanyRs DetailCompany(CompanyRQ rq);
     }
 }

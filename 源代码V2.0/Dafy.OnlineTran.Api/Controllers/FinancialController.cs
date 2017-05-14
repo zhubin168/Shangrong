@@ -6,13 +6,11 @@ using System.Net.Http;
 using System.Net.Http.Headers;
 using System.Text;
 using System.Web.Http;
-using GiveU.Authorization.OAuthApp;
-using GiveU.Infrastructure.Logging;
 using Dafy.OnlineTran.Common.Response;
 using Dafy.OnlineTran.IService.Pc;
 using Dafy.OnlineTran.Common.Request;
 
-namespace GiveU.CollectionVisit.Web.Controllers
+namespace Dafy.OnlineTran.Api.Controllers
 {
     /// <summary>
     /// 理财师管理
@@ -20,7 +18,7 @@ namespace GiveU.CollectionVisit.Web.Controllers
     /// 创建时间：2017-04-30
     /// </summary>
     [AllowAnonymous]
-    public class FinancialController : AuthApiController
+    public class FinancialController : AuthController
     {
         private readonly IUserService _service;
         /// <summary>
@@ -148,6 +146,15 @@ namespace GiveU.CollectionVisit.Web.Controllers
         public WeixinUserItemRS DetailMember(DetailUserRQ rq)
         {
             return _service.DetailMember(rq);
+        }
+
+        /// <summary>
+        /// 公司详情
+        /// </summary>
+        [HttpPost]
+        public CompanyRs DetailCompany(CompanyRQ rq)
+        {
+            return _service.DetailCompany(rq);
         }
     }
 }

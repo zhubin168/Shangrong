@@ -1,5 +1,4 @@
 ﻿using System;
-using GiveU.Authorization.OAuthApp;
 using Dafy.OnlineTran.Common;
 using Dafy.OnlineTran.IService;
 using System.Collections.Generic;
@@ -8,7 +7,6 @@ using System.Web.Http;
 using System.Net.Http;
 using Dafy.OnlineTran.Common.Helpers;
 using Microsoft.Owin.Security.OAuth;
-using GiveU.Authentication.OAuthApp;
 using Microsoft.Owin.Security;
 using Dafy.OnlineTran.Entity.Models;
 using Dafy.OnlineTran.Common.Request;
