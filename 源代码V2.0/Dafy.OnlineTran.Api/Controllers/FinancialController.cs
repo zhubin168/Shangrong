@@ -6,13 +6,11 @@ using System.Net.Http;
 using System.Net.Http.Headers;
 using System.Text;
 using System.Web.Http;
-using GiveU.Authorization.OAuthApp;
-using GiveU.Infrastructure.Logging;
 using Dafy.OnlineTran.Common.Response;
 using Dafy.OnlineTran.IService.Pc;
 using Dafy.OnlineTran.Common.Request;
 
-namespace GiveU.CollectionVisit.Web.Controllers
+namespace Dafy.OnlineTran.Api.Controllers
 {
     /// <summary>
     /// 理财师管理
@@ -20,7 +18,7 @@ namespace GiveU.CollectionVisit.Web.Controllers
     /// 创建时间：2017-04-30
     /// </summary>
     [AllowAnonymous]
-    public class FinancialController : AuthApiController
+    public class FinancialController : AuthController
     {
         private readonly IUserService _service;
         /// <summary>
@@ -145,9 +143,73 @@ namespace GiveU.CollectionVisit.Web.Controllers
         /// 团队详情
         /// </summary>
         [HttpPost]
-        public WeixinUserItemRS DetailMember(DetailUserRQ rq)
+        public DetailMemberRS DetailMember(DetailMemberRQ rq)
         {
             return _service.DetailMember(rq);
+        }
+
+        /// <summary>
+        /// 公司详情
+        /// </summary>
+        [HttpPost]
+        public CompanyRs DetailCompany(CompanyRQ rq)
+        {
+            return _service.DetailCompany(rq);
+        }
+
+        /// <summary>
+        /// 理财师业绩
+        /// </summary>
+        [HttpPost]
+        public AllowanceRs GetAllowances(AllowanceRQ rq)
+        {
+            return _service.GetAllowances(rq);
+        }
+
+        /// <summary>
+        /// 业绩详情
+        /// </summary>
+        [HttpPost]
+        public AllowanceDetailRs GetDetailAllowances(AllowanceDetailRQ rq)
+        {
+            return _service.GetDetailAllowances(rq);
+        }
+
+        /// <summary>
+        /// 理财师收益
+        /// </summary>
+        [HttpPost]
+        public AllowanceRs GetIncomes(AllowanceRQ rq)
+        {
+            return _service.GetIncomes(rq);
+        }
+
+        /// <summary>
+        /// 收益详情
+        /// </summary>
+        [HttpPost]
+        public AllowanceDetailRs GetDetailIncomes(AllowanceDetailRQ rq)
+        {
+            return _service.GetDetailIncomes(rq);
+        }
+
+        /// <summary>
+        /// 认证审核
+        /// </summary>
+        [HttpPost]
+        public CheckUsersRS GetCheckUsers(CheckUsersRQ rq)
+        {
+            return _service.GetCheckUsers(rq);
+        }
+
+        /// <summary>
+        /// 审核理财师
+        /// </summary>
+        [HttpPost]
+        public ResultModel<string> CheckUser(CheckUserRQ rq)
+        {
+            rq.auditUid = 100321;//Convert.ToInt32(this.User.Identity.Name);
+            return _service.CheckUser(rq);
         }
     }
 }

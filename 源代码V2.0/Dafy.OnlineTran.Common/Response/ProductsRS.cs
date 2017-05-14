@@ -4,18 +4,14 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Dafy.OnlineTran.Common.Request
+namespace Dafy.OnlineTran.Common.Response
 {
-    public class ProductListRQ
+    public class ProductsRS
     {
-        public int pageIndex { get; set; }
-        public int pageSize { get; set; }
-        /// <summary>
-        /// 参数名
-        /// </summary>
-        public string paraName { get; set; }
+        public List<ProductsItemRS> list { get; set; }
+        public int total { get; set; }
     }
-    public class SaveProductRQ
+    public class ProductsItemRS
     {
         /// <summary>产品ID</summary>
         public long pid { get; set; }
@@ -73,7 +69,5 @@ namespace Dafy.OnlineTran.Common.Request
 
         /// <summary>状态</summary>
         public int status { get; set; }
-
-        public string CreatedByName { get; set; }
     }
 }

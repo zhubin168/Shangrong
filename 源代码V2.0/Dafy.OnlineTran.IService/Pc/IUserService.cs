@@ -97,6 +97,55 @@ namespace Dafy.OnlineTran.IService.Pc
         /// </summary>
         /// <param name="rq"></param>
         /// <returns></returns>
-        WeixinUserItemRS DetailMember(DetailUserRQ rq);
+        DetailMemberRS DetailMember(DetailMemberRQ rq);
+
+        /// <summary>
+        /// 公司详情
+        /// </summary>
+        /// <param name="rq"></param>
+        /// <returns></returns>
+        CompanyRs DetailCompany(CompanyRQ rq);
+
+        /// <summary>
+        /// 理财师业绩
+        /// </summary>
+        /// <param name="rq"></param>
+        /// <returns></returns>
+        AllowanceRs GetAllowances(AllowanceRQ rq);
+
+        /// <summary>
+        /// 理财师业绩详情
+        /// </summary>
+        /// <param name="rq"></param>
+        /// <returns></returns>
+        AllowanceDetailRs GetDetailAllowances(AllowanceDetailRQ rq);
+
+        /// <summary>
+        /// 理财师收益
+        /// </summary>
+        /// <param name="rq"></param>
+        /// <returns></returns>
+        AllowanceRs GetIncomes(AllowanceRQ rq);
+
+        /// <summary>
+        /// 理财师收益详情
+        /// </summary>
+        /// <param name="rq"></param>
+        /// <returns></returns>
+        AllowanceDetailRs GetDetailIncomes(AllowanceDetailRQ rq);
+
+        /// <summary>
+        /// 认证审核
+        /// </summary>
+        /// <param name="rq"></param>
+        /// <returns></returns>
+        CheckUsersRS GetCheckUsers(CheckUsersRQ rq);
+
+        /// <summary>
+        /// 审核理财师
+        /// </summary>
+        /// <param name="rq"></param>
+        /// <returns></returns>
+        ResultModel<string> CheckUser(CheckUserRQ rq);
     }
 }

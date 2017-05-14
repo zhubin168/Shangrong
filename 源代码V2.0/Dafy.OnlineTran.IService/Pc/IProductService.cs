@@ -20,9 +20,7 @@ namespace Dafy.OnlineTran.IService.Pc
         /// </summary>
         /// <param name="rq"></param>
         /// <returns></returns>
-        ProductListRS GetProducts(ProductListRQ rq);
-
-        ResultModel<string> DelProducts(SaveProductRQ rq);
+        ProductsRS GetProducts(ProductsRQ rq);
 
         /// <summary>
         /// 保存产品信息
@@ -30,5 +28,12 @@ namespace Dafy.OnlineTran.IService.Pc
         /// <param name="rq"></param>
         /// <returns></returns>
         ResultModel<string> SaveProducts(SaveProductRQ rq);
+
+        /// <summary>
+        /// 产品详情
+        /// </summary>
+        /// <param name="rq"></param>
+        /// <returns></returns>
+        ProductsItemRS GetDetailProduct(SaveProductRQ rq);
     }
 }

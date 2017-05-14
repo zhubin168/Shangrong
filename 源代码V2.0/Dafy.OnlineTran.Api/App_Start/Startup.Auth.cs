@@ -3,7 +3,6 @@ using Microsoft.Owin.Security.Cookies;
 using Microsoft.Owin.Security.OAuth;
 using System;
 using Microsoft.Owin.Security;
-using GiveU.Authentication.OAuthApp;
 using System.Configuration;
 
 namespace Dafy.OnlineTran.Api
@@ -24,23 +23,6 @@ namespace Dafy.OnlineTran.Api
             };
             app.UseCookieAuthentication(cookieOptionOfUser);
 
-            //use OAuthBearer for authentication
-            var bearerOptionOfUser = new OAuthBearerAuthenticationOptions
-            {
-                AuthenticationMode = AuthenticationMode.Active,
-                Provider = new OAuthAppBearerAuthenticationProvider("DafyBearer", false)
-            };
-            app.UseOAuthBearerAuthentication(bearerOptionOfUser);
-
-            //use oauthapp authentication
-            var oauthAppOption = new OAuthAppAuthenticationOptions
-            {
-                SystemName = ConfigurationManager.AppSettings["SystemName"],
-                OAuthAppUrl = ConfigurationManager.AppSettings["OAuthAppUrl"],
-                ClientId = ConfigurationManager.AppSettings["ClientId"],
-                ClientSecret = ConfigurationManager.AppSettings["ClientSecret"]
-            };
-            app.UseOAuthAppAuthentication(oauthAppOption);
             #endregion
         }
     }

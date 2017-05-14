@@ -105,12 +105,22 @@ namespace Dafy.OnlineTran.ServiceImpl.Pc
         {
             try
             {
-                var record = new AuditRecord()
+                var record = AuditRecord.Find(" auditTime is null and requestUid=" + rq.Id);
+                if (null == record)
                 {
-                    requestUid = rq.Id,
-                    createTime = DateTime.Now,
-                    applyContent = "申请理财师",
-                };
+                    record = new AuditRecord()
+                    {
+                        requestUid = rq.Id,
+                        createTime = DateTime.Now,
+                        applyContent = "申请理财师",
+                    };
+                }
+                else
+                {
+                     record.requestUid = rq.Id;
+                     record.createTime = DateTime.Now;
+                     record.applyContent = "申请理财师";
+                }
                 int nCount =record.Save();
                 return new ResultModel<string>
                 {
@@ -570,9 +580,438 @@ namespace Dafy.OnlineTran.ServiceImpl.Pc
         /// </summary>
         /// <param name="rq"></param>
         /// <returns></returns>
-        public WeixinUserItemRS DetailMember(DetailUserRQ rq)
+        public DetailMemberRS DetailMember(DetailMemberRQ rq)
         {
-            throw new NotImplementedException();
+            var result = new DetailMemberRS { total = 0, list = null };
+            try
+            {
+                var sql = " roleId= " + rq.roleId;
+                if (!string.IsNullOrWhiteSpace(rq.paraName))
+                {
+                    sql += string.Format(" and (uname like '%{0}%' or nickName like '%{0}%' or phone like '%{0}%') ", rq.paraName);
+                }
+                var user = Users.FindAll(sql, "uid desc", null, (rq.pageIndex - 1) * rq.pageSize, rq.pageSize);
+                var query = (from a in user.ToList()
+                             select new
+                             {
+                                 a.auditStatus,
+                                 a.bankName,
+                                 a.bankNumber,
+                                 a.companyId,
+                                 a.headerUrl,
+                                 a.idNumber,
+                                 a.isHasAllowance,
+                                 a.loginPC,
+                                 a.loginTime,
+                                 a.nickName,
+                                 a.password,
+                                 a.phone,
+                                 a.rank,
+                                 a.regTime,
+                                 a.roleId,
+                                 a.status,
+                                 a.uid,
+                                 a.uname,
+                                 a.updateTime,
+                                 a.upgradeTime,
+                                 a.weixinId,
+                                 a.Company,
+                                 a.PUsers,
+                                 //a.ChildUsers
+                             });
+                result.total = Users.FindAll(sql, null, null, 0, 0).Count;
+                if (result.total == 0) return result;
+                result.list = query.Select(a => new DetailMemberItemRS
+                {
+                    telePhone = a.phone,
+                    username = a.uname,
+                    bindDate = UserRelation.Find(" uid=" + a.uid).bingTime,
+                    relation="",
+                    nums1 = 0,
+                    nums2 = 0,
+                    nums3 = 0,
+                }).ToList();
+            }
+            catch (Exception ex)
+            {
+
+                throw;
+            }
+            return result;
+        }
+
+        /// <summary>
+        /// 公司详情
+        /// </summary>
+        /// <param name="rq"></param>
+        /// <returns></returns>
+        public CompanyRs DetailCompany(CompanyRQ rq)
+        {
+            var obj = Company.FindById(rq.Id);
+            var city= BaseCity.FindByCityID(Convert.ToInt32(obj.CityId));
+            return new CompanyRs() {
+                Id=obj.Id,
+                CompanyName=obj.CompanyName,
+                DepartmentName=obj.DepartmentName,
+                CityId=obj.CityId,
+                Postion=obj.Postion,
+                CityName = city==null?string.Empty:city.CityName
+            };
+        }
+
+        /// <summary>
+        /// 理财师业绩
+        /// </summary>
+        /// <param name="rq"></param>
+        /// <returns></returns>
+        public AllowanceRs GetAllowances(AllowanceRQ rq)
+        {
+            var result = new AllowanceRs { total = 0, list = null };
+            try
+            {
+                var sql = " roleId= " + rq.roleId;
+                if (!string.IsNullOrWhiteSpace(rq.paraName))
+                {
+                    sql += string.Format(" and (uname like '%{0}%' or nickName like '%{0}%' or phone like '%{0}%') ", rq.paraName);
+                }
+                var user = Users.FindAll(sql, "uid desc", null, (rq.pageIndex - 1) * rq.pageSize, rq.pageSize);
+                var query = (from a in user.ToList()
+                             select new
+                             {
+                                 a.auditStatus,
+                                 a.bankName,
+                                 a.bankNumber,
+                                 a.companyId,
+                                 a.headerUrl,
+                                 a.idNumber,
+                                 a.isHasAllowance,
+                                 a.loginPC,
+                                 a.loginTime,
+                                 a.nickName,
+                                 a.password,
+                                 a.phone,
+                                 a.rank,
+                                 a.regTime,
+                                 a.roleId,
+                                 a.status,
+                                 a.uid,
+                                 a.uname,
+                                 a.updateTime,
+                                 a.upgradeTime,
+                                 a.weixinId,
+                                 a.Company,
+                                 a.PUsers,
+                                 //a.ChildUsers
+                             });
+                result.total = Users.FindAll(sql, null, null, 0, 0).Count;
+                if (result.total == 0) return result;
+                result.list = query.Select(a => new AllowanceItemRs
+                {
+                    id=a.uid,
+                    userName=a.uname,
+                    telphone=a.phone,
+                    salesNums=0,
+                    monthNums=0
+                }).ToList();
+            }
+            catch (Exception ex)
+            {
+
+                throw;
+            }
+            return result;
+        }
+
+        /// <summary>
+        /// 理财师业绩详情
+        /// </summary>
+        /// <param name="rq"></param>
+        /// <returns></returns>
+        public AllowanceDetailRs GetDetailAllowances(AllowanceDetailRQ rq)
+        {
+            var result = new AllowanceDetailRs { total = 0, list = null };
+            try
+            {
+                var sql = " uid in(select uid from UserRelation where puid=" + rq.id + ")";
+                if (!string.IsNullOrWhiteSpace(rq.paraName))
+                {
+                    sql += string.Format(" and (uname like '%{0}%' or nickName like '%{0}%' or phone like '%{0}%') ", rq.paraName);
+                }
+                var user = Users.FindAll(sql, "uid desc", null, (rq.pageIndex - 1) * rq.pageSize, rq.pageSize);
+                var query = (from a in user.ToList()
+                             select new
+                             {
+                                 a.auditStatus,
+                                 a.bankName,
+                                 a.bankNumber,
+                                 a.companyId,
+                                 a.headerUrl,
+                                 a.idNumber,
+                                 a.isHasAllowance,
+                                 a.loginPC,
+                                 a.loginTime,
+                                 a.nickName,
+                                 a.password,
+                                 a.phone,
+                                 a.rank,
+                                 a.regTime,
+                                 a.roleId,
+                                 a.status,
+                                 a.uid,
+                                 a.uname,
+                                 a.updateTime,
+                                 a.upgradeTime,
+                                 a.weixinId,
+                                 a.Company,
+                                 a.PUsers,
+                                 //a.ChildUsers
+                             });
+                result.total = Users.FindAll(sql, null, null, 0, 0).Count;
+                if (result.total == 0) return result;
+                result.list = query.Select(a => new AllowanceDetailItemRs
+                {
+                    userName = a.uname,
+                    telphone = a.phone,
+                    salesNums = 0,
+                    productName="",
+                    productType="",
+                    buyTime=DateTime.Now
+                }).ToList();
+            }
+            catch (Exception ex)
+            {
+
+                throw;
+            }
+            return result;
+        }
+
+        /// <summary>
+        /// 理财师收益
+        /// </summary>
+        /// <param name="rq"></param>
+        /// <returns></returns>
+        public AllowanceRs GetIncomes(AllowanceRQ rq)
+        {
+            var result = new AllowanceRs { total = 0, list = null };
+            try
+            {
+                var sql = " roleId= " + rq.roleId;
+                if (!string.IsNullOrWhiteSpace(rq.paraName))
+                {
+                    sql += string.Format(" and (uname like '%{0}%' or nickName like '%{0}%' or phone like '%{0}%') ", rq.paraName);
+                }
+                var user = Users.FindAll(sql, "uid desc", null, (rq.pageIndex - 1) * rq.pageSize, rq.pageSize);
+                var query = (from a in user.ToList()
+                             select new
+                             {
+                                 a.auditStatus,
+                                 a.bankName,
+                                 a.bankNumber,
+                                 a.companyId,
+                                 a.headerUrl,
+                                 a.idNumber,
+                                 a.isHasAllowance,
+                                 a.loginPC,
+                                 a.loginTime,
+                                 a.nickName,
+                                 a.password,
+                                 a.phone,
+                                 a.rank,
+                                 a.regTime,
+                                 a.roleId,
+                                 a.status,
+                                 a.uid,
+                                 a.uname,
+                                 a.updateTime,
+                                 a.upgradeTime,
+                                 a.weixinId,
+                                 a.Company,
+                                 a.PUsers,
+                                 //a.ChildUsers
+                             });
+                result.total = Users.FindAll(sql, null, null, 0, 0).Count;
+                if (result.total == 0) return result;
+                result.list = query.Select(a => new AllowanceItemRs
+                {
+                    id = a.uid,
+                    userName = a.uname,
+                    telphone = a.phone,
+                    salesNums = 0,
+                    monthNums = 0
+                }).ToList();
+            }
+            catch (Exception ex)
+            {
+
+                throw;
+            }
+            return result;
+        }
+
+        /// <summary>
+        /// 理财师收益详情
+        /// </summary>
+        /// <param name="rq"></param>
+        /// <returns></returns>
+        public AllowanceDetailRs GetDetailIncomes(AllowanceDetailRQ rq)
+        {
+            var result = new AllowanceDetailRs { total = 0, list = null };
+            try
+            {
+                var sql = " uid in(select uid from UserRelation where puid=" + rq.id + ")";
+                if (!string.IsNullOrWhiteSpace(rq.paraName))
+                {
+                    sql += string.Format(" and (uname like '%{0}%' or nickName like '%{0}%' or phone like '%{0}%') ", rq.paraName);
+                }
+                var user = Users.FindAll(sql, "uid desc", null, (rq.pageIndex - 1) * rq.pageSize, rq.pageSize);
+                var query = (from a in user.ToList()
+                             select new
+                             {
+                                 a.auditStatus,
+                                 a.bankName,
+                                 a.bankNumber,
+                                 a.companyId,
+                                 a.headerUrl,
+                                 a.idNumber,
+                                 a.isHasAllowance,
+                                 a.loginPC,
+                                 a.loginTime,
+                                 a.nickName,
+                                 a.password,
+                                 a.phone,
+                                 a.rank,
+                                 a.regTime,
+                                 a.roleId,
+                                 a.status,
+                                 a.uid,
+                                 a.uname,
+                                 a.updateTime,
+                                 a.upgradeTime,
+                                 a.weixinId,
+                                 a.Company,
+                                 a.PUsers,
+                                 //a.ChildUsers
+                             });
+                result.total = Users.FindAll(sql, null, null, 0, 0).Count;
+                if (result.total == 0) return result;
+                result.list = query.Select(a => new AllowanceDetailItemRs
+                {
+                    userName = a.uname,
+                    telphone = a.phone,
+                    salesNums = 0,
+                    productName = "",
+                    productType = "",
+                    buyTime = DateTime.Now
+                }).ToList();
+            }
+            catch (Exception ex)
+            {
+
+                throw;
+            }
+            return result;
+        }
+
+        /// <summary>
+        /// 认证审核
+        /// </summary>
+        /// <param name="rq"></param>
+        /// <returns></returns>
+        public CheckUsersRS GetCheckUsers(CheckUsersRQ rq)
+        {
+            var result = new CheckUsersRS { total = 0, list = null };
+            try
+            {
+                var sql = " roleId= " + rq.roleId;
+                if (!string.IsNullOrWhiteSpace(rq.paraName))
+                {
+                    sql += string.Format(" and (uname like '%{0}%' or nickName like '%{0}%' or phone like '%{0}%') ", rq.paraName);
+                }
+                var user = Users.FindAll(sql, "uid desc", null, (rq.pageIndex - 1) * rq.pageSize, rq.pageSize);
+                var query = (from a in user.ToList()
+                             select new
+                             {
+                                 a.auditStatus,
+                                 a.bankName,
+                                 a.bankNumber,
+                                 a.companyId,
+                                 a.headerUrl,
+                                 a.idNumber,
+                                 a.isHasAllowance,
+                                 a.loginPC,
+                                 a.loginTime,
+                                 a.nickName,
+                                 a.password,
+                                 a.phone,
+                                 a.rank,
+                                 a.regTime,
+                                 a.roleId,
+                                 a.status,
+                                 a.uid,
+                                 a.uname,
+                                 a.updateTime,
+                                 a.upgradeTime,
+                                 a.weixinId,
+                                 a.Company,
+                                 a.PUsers,
+                                 //a.ChildUsers
+                             });
+                result.total = Users.FindAll(sql, null, null, 0, 0).Count;
+                if (result.total == 0) return result;
+                result.list = query.Select(a => new CheckUsersItemRS
+                {
+                    userName = a.uname,
+                    telphone = a.phone,
+                    applyTime=a.regTime,
+                    status=a.auditStatus,
+                    reason=string.Empty,
+                    checkTime=a.updateTime
+                }).ToList();
+            }
+            catch (Exception ex)
+            {
+
+                throw;
+            }
+            return result;
+        }
+
+        /// <summary>
+        /// 审核理财师
+        /// </summary>
+        /// <param name="rq"></param>
+        /// <returns></returns>
+        public ResultModel<string> CheckUser(CheckUserRQ rq)
+        {
+            try
+            {
+                var user = Users.FindByuid(rq.id);
+                user.auditStatus = rq.status;
+                user.updateTime = DateTime.Now;
+                user.Save();
+
+                var record = AuditRecord.Find(" auditTime is null and requestUid=" + rq.id);
+                record.auditUid = rq.auditUid;
+                record.auditTime = DateTime.Now;
+                record.applyContent = rq.reason;
+                int nCount = record.Save();
+                return new ResultModel<string>
+                {
+                    state = nCount,
+                    message = nCount > 0 ? "设置成功！" : "设置失败！",
+                    data = nCount.ToString()
+                };
+            }
+            catch (Exception ex)
+            {
+                return new ResultModel<string>
+                {
+                    state = 0,
+                    message = "设置异常：" + ex.ToString(),
+                    data = "-1"
+                };
+            }
         }
     }
 }

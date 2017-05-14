@@ -134,4 +134,22 @@ namespace Dafy.OnlineTran.Common.Response
         /// </summary>
         public int Nums5 { get; set; }
     }
+
+    public class CompanyRs
+    {
+        public long Id { get; set; }
+
+        public string CompanyName { get; set; }
+
+        public string DepartmentName { get; set; }
+
+        public string Postion { get; set; }
+
+        public string CityId { get; set; }
+        public string CityName { get; set; }
+    }
+    public class CompanyRQ
+    {
+        public int Id { get; set; }
+    }
 }

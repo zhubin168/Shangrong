@@ -63,44 +63,6 @@
       <HintPath>..\packages\EFandOracle.1.0.0\lib\EntityFramework.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="GiveU.Authentication.OAuthApp">
-      <HintPath>..\..\..\..\GiveU.Bins\GiveU.Authentication.OAuthApp.dll</HintPath>
-    </Reference>
-    <Reference Include="GiveU.Authorization.OAuthApp">
-      <HintPath>..\..\..\..\GiveU.Bins\GiveU.Authorization.OAuthApp.dll</HintPath>
-    </Reference>
-    <Reference Include="GiveU.Infrastructure.Configuration">
-      <HintPath>..\..\..\..\GiveU.Bins\GiveU.Infrastructure.Configuration.dll</HintPath>
-    </Reference>
-    <Reference Include="GiveU.Infrastructure.Configuration.OAuthApp">
-      <HintPath>..\..\..\..\GiveU.Bins\GiveU.Infrastructure.Configuration.OAuthApp.dll</HintPath>
-    </Reference>
-    <Reference Include="GiveU.Infrastructure.Logging, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\..\GiveU.Bins\GiveU.Infrastructure.Logging.dll</HintPath>
-    </Reference>
-    <Reference Include="GiveU.Infrastructure.Logging.Log4Net, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\..\GiveU.Bins\GiveU.Infrastructure.Logging.Log4Net.dll</HintPath>
-    </Reference>
-    <Reference Include="GiveU.Infrastructure.Logging.MongoDB, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\..\GiveU.Bins\GiveU.Infrastructure.Logging.MongoDB.dll</HintPath>
-    </Reference>
-    <Reference Include="GiveU.Infrastructure.MongoDB, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\..\GiveU.Bins\GiveU.Infrastructure.MongoDB.dll</HintPath>
-    </Reference>
-    <Reference Include="GiveU.Infrastructure.Redis">
-      <HintPath>..\..\..\..\GiveU.Bins\GiveU.Infrastructure.Redis.dll</HintPath>
-    </Reference>
-    <Reference Include="GiveU.Infrastructure.Utility, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\..\GiveU.Bins\GiveU.Infrastructure.Utility.dll</HintPath>
-    </Reference>
-    <Reference Include="GiveU.Infrastructure.WebApi">
-      <HintPath>..\..\..\..\GiveU.Bins\GiveU.Infrastructure.WebApi.dll</HintPath>
-    </Reference>
     <Reference Include="Microsoft.AspNet.SignalR.Core, Version=2.2.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.AspNet.SignalR.Core.2.2.1\lib\net45\Microsoft.AspNet.SignalR.Core.dll</HintPath>
       <Private>True</Private>

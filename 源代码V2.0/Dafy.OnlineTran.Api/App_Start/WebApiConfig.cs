@@ -21,7 +21,6 @@ namespace Dafy.OnlineTran.Api
             config.SuppressDefaultHostAuthentication();
             //config.Filters.Add(new HostAuthenticationFilter(OAuthDefaults.AuthenticationType));
             config.Filters.Add(new MyHostAuthenticationFilter());
-            config.Filters.Add(new WebApiExceptionHandleFilter());
 
             // 去掉XML序列化器,只保留JSON序列化器
             config.Formatters.Remove(config.Formatters.XmlFormatter);
