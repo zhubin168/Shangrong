@@ -1,0 +1,32 @@
+<ion-view view-title="面签管理" hide-tabs="false">
+	<ion-nav-buttons side="right">
+		<button class="button-icon ion-android-search light" ng-click="search()">
+      </button>
+	</ion-nav-buttons>
+	<ion-nav-buttons side="left" ng-if="module=='home'">
+	    <button class="button bg-default" ng-click="goBack()"><i class="icon ion-chevron-left light"></i></button>
+	</ion-nav-buttons>
+	<ion-content scroll="true" lazy-scroll><!-- refreshing-text="加载中..." -->
+		<ion-refresher on-refresh="doRefresh()" pulling-text="下拉刷新" refreshing-text="加载中..." spinner="dots"></ion-refresher>
+		<div class="list">
+		    <div class="item card" bindonce ng-repeat="item in interviewList">
+		    	<div class="ub ub-pj padding-vertical border-bottom sub-ft fs14">
+		    		<div bo-text="item.createTime | date:'yyyy-MM-dd'"></div>
+		    		<div class="vm" ng-show="isCheckCache(item.id)"><img src="./img/yunhuancun.png" alt="" /><span>已缓存</span></div>
+		    	</div>
+		    	<div class="ub row-no-padding padding-vertical border-bottom">
+		    		<div class="col col-40 bold no-ellipsis" bo-text="item.name"></div>
+		    		<div class="col col-60 bold text-right no-ellipsis" bo-text="item.factoryName"></div>
+		    	</div>
+		    	<div class="row row-no-padding row-center padding-vertical">
+		    		<div class="col assertive vm"><i class="ion-ios-telephone-outline fs21 tel-icon"></i>
+		    		  <a class="yellow" href="tel:{{item.mobile}}"> <span class="fs18" bo-text="item.mobile"></span></a>
+		    		</div>
+		    		<a ng-click="openUrl(item.id,item.idPerson,item.name,item.mobile,item.ident,item.factoryName,item.isCancel)" class="button radius-button">面签</a>
+		    	</div>
+		    </div>
+		</div>
+		<no-data ng-show="interviewList.length==0?true:false"></no-data>
+		<ion-infinite-scroll ng-if="more" on-infinite="loadMore()" immediate-check="false" distance="1%" spinner="dots"></ion-infinite-scroll>
+	</ion-content>
+</ion-view>

@@ -1,0 +1,73 @@
+<ion-view view-title="工作信息" hide-tabs="true">
+	<ion-content scroll="true">
+		<ion-refresher on-refresh="doRefresh()" pulling-text="下拉刷新工作单位" refreshing-text="加载中..."></ion-refresher>
+		<div class="ub stepBox">
+			<div class="ub ub-ver ub-pc ub-ac">
+				<img src="./img/agent/step-1-active.png"/>
+				<div class="ft fs12">身份信息</div>
+			</div>
+			<div class="ub-f1 dash-line active"></div>
+			<div class="ub ub-ver ub-pc ub-ac">
+				<img src="./img/agent/step-2-active.png"/>
+				<div class="ft fs12">地址信息</div>
+			</div>
+			<div class="ub-f1 dash-line active"></div>
+			<div class="ub ub-ver ub-pc ub-ac">
+				<img src="./img/agent/step-3-active.png"/>
+				<div class="ft fs12">工作信息</div>
+			</div>
+			<div class="ub-f1 dash-line marginRight4"></div>
+			<div class="ub ub-ver ub-pc ub-ac">
+				<img src="./img/agent/step-4.png"/>
+				<div class="sub-ft fs12">联系人</div>
+			</div>
+			<div class="ub-f1 dash-line marginLeft4"></div>
+			<div class="ub ub-ver ub-pc ub-ac">
+				<img src="./img/agent/step-5.png"/>
+				<div class="sub-ft fs12">附件上传</div>
+			</div>
+		</div>			
+		<div class="list">
+			<div class="item card border-bottom">
+				<label class="item item-select mySelect">
+			        <div class="input-label">工作单位</div>
+					   <select ng-model="agentModel.factroyId" ng-options="item.factoryId as item.factoryName for item in factroyList">
+					   	<option value="">请选择</option>
+					</select>
+			    </label>
+				<div class="ub ub-ac padding-vertical border-bottom row-no-padding">
+					<div class="col col-30 bold fs14">任职岗位</div>
+					<div class="col col-70 bold fs14 sub-ft">
+                        <input type="text" ng-model="agentModel.jobs" placeholder="请输入任职岗位">
+					</div>
+				</div>
+				<div class="ub ub-ac padding-vertical border-bottom row-no-padding">
+					<div class="col col-30 bold fs14">工龄(月)</div>
+					<div class="col col-70 bold fs14 sub-ft">
+                        <input type="number" ng-model="agentModel.workMonths" placeholder="请输入工龄">
+					</div>
+				</div>
+				<div class="ub ub-ac padding-vertical border-bottom row-no-padding">
+					<div class="col col-30 bold fs14">单位电话</div>
+					<div class="col col-70 bold fs14 sub-ft">
+                        <input type="text" ng-model="agentModel.workTel" placeholder="(如:075588888888)">
+					</div>
+				</div>
+				<div class="ub ub-ac padding-vertical border-bottom row-no-padding">
+					<div class="col col-30 bold fs14">证明人</div>
+					<div class="col col-70 bold fs14 sub-ft">
+                        <input type="text" ng-model="agentModel.provePerson" placeholder="请输入证明人姓名">
+					</div>
+				</div>
+				<div class="ub ub-ac padding-vertical border-bottom row-no-padding">
+					<div class="col col-30 bold fs14">手机号</div>
+					<div class="col col-70 bold fs14 sub-ft">
+                        <input type="tel" ng-model="agentModel.provePhone" placeholder="请输入证明人手机号">
+					</div>
+				</div>
+			</div>
+			<div class="padding">
+			    <a ng-click="next(agentModel)" class="button button-block button-assertive">下一步</a>
+			</div>
+	</ion-content>
+</ion-view>

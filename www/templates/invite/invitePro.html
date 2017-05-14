@@ -1,0 +1,60 @@
+<ion-view view-title="邀请进度" hide-tabs="true" hide-back-button="false">
+	<!--<ion-nav-buttons side="left">
+	    <button class="button bg-default" ng-click="goBack()"><i class="icon ion-chevron-left light"></i></button>
+	</ion-nav-buttons>-->
+	<div class="tabs-striped tabs-top tabs-default">
+		<div class="tabs">
+			<a class="tab-item {{audit}}" ng-click="seachByStatus('audit')"  >
+				待审核
+			</a>
+			<a class="tab-item {{adopt}}" ng-click="seachByStatus('adopt')" >
+				已通过
+			</a>
+			<a class="tab-item {{refuse}}"  ng-click="seachByStatus('refuse')" >
+				已拒绝
+			</a>
+			<a class="tab-item {{cancel}}"  ng-click="seachByStatus('cancel')" >
+				待完善
+			</a>
+			<a class="tab-item {{toSumbit}}"  ng-click="seachByStatus('toSumbit')" >
+				待提交
+			</a>
+		</div>
+	</div>
+	<ion-content class="has-tabs-top" scroll="true" lazy-scroll>
+	    <ion-refresher on-refresh="doRefresh()" pulling-text="下拉刷新" spinner="dots"></ion-refresher>
+		<!--<div class="list" bindonce ng-repeat="item in signList">
+			<div class="item card myItem">
+				<div class="sub-ft fs14 padding-vertical border-bottom" bo-text="item.handleTime | date:'yyyy-MM-dd'"></div>
+				<div class="ub row-no-padding padding-vertical border-bottom">
+					<div class="col col-40 bold no-ellipsis" bo-text="item.name"></div>
+					<div class="col col-60 bold text-right no-ellipsis" bo-text="item.factoryName"></div>
+				</div>
+				<div class="ub row-no-padding padding-vertical border-bottom" ng-if="item.status == -4 ||item.status == -5">
+				    <div class="col no-ellipsis fs13 sub-ft" bo-text="item.giveUpReason"><span class="bold">放弃原因：</span></div>
+				</div>
+				<div class="row row-no-padding row-center padding-vertical">
+					<div class="col assertive vm"><i class="ion-ios-telephone-outline fs24"></i><a href="tel:{{item.phone}}" class="fs18 yellow" bo-text="item.phone"></a>
+					</div>
+					<a ng-if="item.status == -4 && item.isAllowUpdate == 1" ng-click="upPerson(item.id, item.idPerson,item.name,item.phone,item.ident,item.factoryName)" class="button radius-button">修改资料</a>
+				</div>
+			</div>
+		</div>-->
+		<div class="list" bindonce ng-repeat="item in invitesList">
+			<div class="item card myItem">
+				<div class="sub-ft fs14 padding-vertical border-bottom" bo-text="item.handleTime | date:'yyyy-MM-dd HH:mm'"></div>
+				<div class="ub row-no-padding padding-vertical border-bottom">
+					<div class="col col-40 bold no-ellipsis" bo-text="item.name"></div>
+					<div class="col col-60 bold text-right no-ellipsis" bo-text="item.factoryName">宝安钢铁厂</div>
+				</div>
+				<div class="row row-no-padding row-center padding-vertical">
+					<div class="col assertive vm"><i class="ion-ios-telephone-outline fs20"><a href="tel:{{item.phone}}" class="fs18 yellow" bo-text="item.phone"></a></i>
+					</div>
+				</div>
+			</div>
+		</div>
+		
+		<no-data ng-show="invitesList.length==0?true:false"></no-data>
+		<ion-infinite-scroll ng-if="more" on-infinite="loadMore()" distance="1%" spinner="dots"></ion-infinite-scroll>	
+	</ion-content>
+</ion-view>

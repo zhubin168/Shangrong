@@ -1,0 +1,59 @@
+<ion-view view-title="客户代表&代理人" hide-tabs="true">
+	<div class="tabs-striped tabs-top tabs-default">
+		<div class="tabs">
+			<a class="tab-item {{wsa}}" ng-click="seachByType('wsa')"  >
+				客户代表
+			</a>
+			<a class="tab-item {{wagt}}" ng-click="seachByType('wagt')" >
+				代理人
+			</a>
+		</div>
+	</div>		
+	<ion-content class="has-tabs-top" scroll="true" lazy-scroll>
+	    <ion-refresher on-refresh="doRefresh()" pulling-text="下拉刷新" spinner="dots"></ion-refresher>
+		<!--客户代表-->
+		<div class="list" ng-show=" wsa == 'active' " bindonce ng-repeat="item in factroyBySales">
+			<div class="item card myItem block">
+				<div class="ub padding-vertical border-bottom">
+					<div class="ub-f1 bold marginTop3" ng-bind="item.userName"></div>
+					<div class="assertive vm"><i class="ion-ios-telephone-outline fs21"></i><a href="tel:{{item.phone}}" class="fs18 yellow" ng-bind="item.phone"></a></div>
+				</div>
+				<div class="ub padding-vertical col-center">
+					<div class="ub ub-ver ub-ac ub-pc ub-f1">
+						<div class="yellow fs30 padding-vertical" ng-bind="item.recommends">0</div>
+						<div class="fs12 sub-ft padding5-bottom">代理人数</div>
+					</div>
+					<div class="ub ub-ver ub-ac ub-pc ub-f1">
+						<div class="yellow fs30 padding-vertical" ng-bind="item.stayInterviews">0</div>
+						<div class="fs12 sub-ft padding5-bottom">待面签</div>
+					</div>
+					<div class="ub ub-ver ub-ac ub-pc ub-f1">
+						<div class="yellow fs30 padding-vertical" ng-bind="item.hasInterviews">0</div>
+						<div class="fs12 sub-ft padding5-bottom">已面签</div>
+					</div>
+				</div>
+			</div>
+		</div>	
+		<!--代理人-->
+		<div class="list" ng-show=" wagt == 'active' " ng-repeat="item in factroyByAgents">
+			<div class="item card myItem block">
+				<div class="ub padding-vertical border-bottom">
+					<div class="ub-f1 bold marginTop3" ng-bind="item.wagtName"></div>
+					<div class="assertive vm"><i class="ion-ios-telephone-outline fs21"></i><a href="tel:{{item.phone}}" class="fs18 yellow" ng-bind="item.phone"></a></div>
+				</div>
+				<div class="ub padding-vertical col-center">
+					<div class="ub ub-ver ub-ac ub-pc ub-f1">
+						<div class="yellow fs30 padding-vertical" ng-bind="item.recommends">0</div>
+						<div class="fs12 sub-ft padding5-bottom">推荐人数</div>
+					</div>
+					<div class="ub ub-ver ub-ac ub-pc ub-f1">
+						<div class="yellow fs30 padding-vertical" ng-bind="item.referrals">0</div>
+						<div class="fs12 sub-ft padding5-bottom">转介绍客户</div>
+					</div>
+				</div>
+			</div>
+		</div>		
+		<no-data ng-show="factroyBySales.length==0?true:false"></no-data>
+		<ion-infinite-scroll ng-if="more" on-infinite="loadMore()" immediate-check="false" distance="1%" spinner="dots"></ion-infinite-scroll>	
+	</ion-content>
+</ion-view>

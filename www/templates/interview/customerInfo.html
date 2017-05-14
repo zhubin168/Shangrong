@@ -1,0 +1,77 @@
+<ion-view view-title="客户基本信息" hide-tabs="true" >
+	<ion-content scroll="true">
+		<div class="list bottom0" ng-Model="cusInfoModel">
+			<div class="item card padding-vertical">
+				<div class="ub padding-vertical border-bottom">
+					<div class="ub-f1 bold" ng-bind="cusInfoModel.name"></div>
+					<div class="bold assertive" ng-bind="cusInfoModel.mobile"></div>
+				</div>
+				<div class="padding5-vertical fs14">
+					<span class="sub-ft">工作单位：</span><span class="bold" ng-bind="cusInfoModel.factoryName"></span>
+				</div>
+				<div class="padding5-bottom fs14 sub-ft">
+					身份证：<span ng-bind="cusInfoModel.ident"></span>
+				</div>
+			</div>
+		</div>
+		<div class="bold padding-horizontal fs14">基本信息</div>
+		<div class="list">
+			<div class="item card border-bottom">
+				<div class="ub ub-ac padding-vertical border-bottom row-no-padding">
+					<div class="col col-30 bold fs14">所在部门</div>
+					<div class="col col-70 bold fs14 sub-ft">
+                        <input type="text" ng-model="customerModel.department" placeholder="请输入所在部门">
+					</div>
+				</div>
+				<div class="ub ub-ac padding-vertical border-bottom row-no-padding" ng-click="selectDatePicker()">
+					<div class="col col-30 bold fs14">入职时间</div>
+					<div class="col bold fs14 sub-ft">
+						<div ng-bind="customerModel.entryTime"></div>
+						<!--<input type="text" ng-model="customerModel.entryTime" placeholder="请输入入职时间" > -->
+					</div>
+					<i class="sub-ft ion-ios-arrow-right"></i>
+				</div>
+				<label class="item item-select mySelect">
+				    <div class="input-label">教育程度</div>
+				    	<select ng-model="customerModel.education" ng-options="item.regCode as item.regValue for item in eduList">
+				    		<option value="">请选择</option>
+				    	</select>
+				 </label>
+				 <label class="item item-select mySelect">
+				    <div class="input-label">开户行</div>
+						<select ng-model="customerModel.bankName" ng-options="item.bankCode as item.bankName for item in bankList">
+							<option value="">请选择</option>
+						</select>
+				 </label>
+				<div class="ub ub-ac padding5-vertical border-bottom row-no-padding">
+					<div class="col col-30 bold fs14">银行卡号</div>
+					<div class="col col-70 bold fs14 sub-ft">
+                        <input type="text" class="full-image" ng-model="customerModel.bankNo" ng-keyup="initBankNo()" placeholder="请输入银行卡号">
+					</div>
+				</div>
+				<div class="ub ub-ac padding5-vertical border-bottom row-no-padding">
+					<div class="col col-30 bold fs14">个人月收入</div>
+					<div class="col col-70 bold fs14 sub-ft">
+                        <input type="text" ng-model="customerModel.wkIncome" placeholder="请输入个人月收入">
+					</div>
+				</div>
+				<div class="ub ub-ac padding5-vertical row-no-padding">
+					<div class="col col-30 bold fs14">QQ号码</div>
+					<div class="col col-70 bold fs14 sub-ft">
+                        <input type="number" ng-model="customerModel.qq" placeholder="请输入QQ号码">
+					</div>
+				</div>
+				<div class="ub ub-ac padding5-vertical row-no-padding">
+					<div class="col col-40 bold fs14">芝麻信用授权</div>
+					<div class="col col-60 bold fs14 sub-ft">
+						<ion-checkbox ng-model="zmVal" ng-click="checkZM(zmVal)"></ion-checkbox>
+					</div>
+				</div>
+			</div>
+			<div class="padding">
+				<!--href="#/app/address"-->
+			    <a ng-click="next(customerModel)" class="button button-block button-assertive">下一步</a>
+			</div>
+	</ion-content>
+	
+</ion-view>

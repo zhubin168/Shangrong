@@ -1,0 +1,33 @@
+<ion-view view-title="银行卡管理" hide-tabs="false">
+	<ion-nav-buttons side="right">
+		<a class="button button-clear button-light fs14" ng-click="addBank('app.addAgentBank')">
+            添加银行卡            
+        </a>
+	</ion-nav-buttons>
+	<ion-content scroll="true">
+		<ion-refresher on-refresh="doRefresh()" pulling-text="下拉刷新" refreshing-text="加载中..."></ion-refresher>
+		<div class="list">
+		    <div class="item card bankBg padding-vertical ub" bindonce ng-repeat="item in banksList">
+		    	<div class="padding-right padding15-top" ng-click="setDefalutBank(item.id,item.isDefault)">
+				    <div class="radio_box">
+		                   <input type="radio" id="radio_2" ng-checked="item.isDefault">
+		                   <label for="radio_2"></label>
+				    </div>		    		
+		    	</div>
+		    	<div class="ub-f1">
+			    	<div class="ub padding-vertical">
+			    		<div class="ub-f1 white" bo-text="item.bankName"></div>
+			    		<div class="white fs12" ng-if="item.isDefault==1">默认卡号</div>
+			    		<div class="red text-right fs20">
+			    			<div class="icon ion-close-circled" ng-click="delBank(item.id)"></div>
+			    		</div>
+			    	</div>
+			    	<div class="row row-no-padding row-center padding-vertical">
+			    		<div class="white fs20" bo-text="item.bankNo|hidBankNo:4"></div>
+			    	</div>
+		    	</div>
+		    </div>
+		</div>
+		<no-data ng-show="banksList.length==0?true:false"></no-data>
+	</ion-content>
+</ion-view>

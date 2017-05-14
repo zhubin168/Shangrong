@@ -1,0 +1,32 @@
+<ion-view view-title="奖励详情" hide-tabs="true">
+	<div class="tabs-striped tabs-top tabs-default">
+		<div class="tabs">
+			<a class="tab-item {{recommend}}" ng-click="seachByStatus('recommend')">
+				推荐客户
+			</a>
+			<a class="tab-item {{referral}}" ng-click="seachByStatus('referral')">
+				转介绍客户
+			</a>
+		</div>
+	</div>
+	<ion-content class="has-tabs-top" scroll="true" lazy-scroll>
+		<ion-refresher on-refresh="doRefresh()" pulling-text="下拉刷新" spinner="dots"></ion-refresher>
+		<div class="list" ng-repeat="item in agentRewards">
+			<div class="item card myItem block">
+				<div class="ub">
+					<div class="ub-f1">
+						<div class="ub padding-vertical">
+							<div class="ub-f1 bold marginTop3" ng-bind="item.customerName"></div>
+						</div>
+						<div class="ub ub-pj padding-bottom sub-ft fs14" ng-bind="item.rewardTime | date:'yyyy-MM-dd HH:mm' ">
+							
+						</div>
+					</div>
+					<div class="yellow ub ub-ac"><span class="fs36" ng-bind="item.amount">0</span>元</div>					
+				</div>
+			</div>
+		</div>
+		<no-data ng-show="agentRewards.length==0?true:false"></no-data>
+		<ion-infinite-scroll ng-if="more" immediate-check="false" on-infinite="loadMore()" distance="1%" spinner="dots"></ion-infinite-scroll>
+	</ion-content>
+</ion-view>

@@ -1,0 +1,62 @@
+<ion-view view-title="申请进度" hide-tabs="true">
+	<ion-content scroll="true" class="bg-white">
+			<div class="list applyForm">
+			  <label class="item-input applyInput">
+			    <input class="text-center fs15" type="text" ng-model="applyProgress.name" placeholder="请输入姓名">
+			  </label>
+			  <label class="item-input applyInput">
+			    <input class="text-center fs15" type="text" ng-model="applyProgress.ident" placeholder="请输入身份证号码">
+			  </label>
+			    <a class="button button-block button-default applyBtn" ng-click="viewApplyProgress(applyProgress)">查询</a>
+			    <a class="button button-block button-default applyBtn" ng-if="applyProgress.reviewStatus==-2 "  ng-click="updateAgentInfo(applyProgress.name,applyProgress.agentId)">重新申请</a>
+			</div>	
+			<div class="padding-vertical" ng-if="isShow">
+				<div class="row {{(applyProgress.reviewStatus!=-100)?'ft':'sub-ft'}} row-no-padding">
+					<div class="col col-40 ub ub-ac ub-pc" ng-bind="applyProgress.createTime | date:'MM-dd HH:mm'"></div>
+					<div class="col col-20 text-center">
+						<div class="applyImgRaduis1 {{(applyProgress.reviewStatus!=-100)?'reject':''}}">
+					     	<img src="./img/agent/step1.png"/>
+						</div>
+					</div>
+					<div class="col col-40 ub ub-ac ub-pc">提交申请</div>
+				</div>
+			    <div class="vertical-line text-center {{(applyProgress.reviewStatus!=-100)?'active':''}}"></div>
+				<div class="row {{(applyProgress.reviewStatus!=-100)?'ft':'sub-ft'}} row-no-padding">
+					<div class="col col-40 ub ub-ac ub-pc" ng-bind="applyProgress.createTime | date:'MM-dd HH:mm'"></div>
+					<div class="col col-20 text-center">
+						<div class="applyImgRaduis2 {{(applyProgress.reviewStatus!=-100)?'reject':''}}">
+					     	<img src="./img/agent/step2.png"/>
+						</div>						
+					</div>
+					<div class="col col-40 ub ub-ac ub-pc">审核中</div>
+				</div>
+				<div class="vertical-line text-center {{applyProgress.reviewStatus==-1 || applyProgress.reviewStatus==-2 || applyProgress.reviewStatus==1?'active':''}}"></div>
+				<div class="row {{(applyProgress.reviewStatus!=-100 && applyProgress.reviewStatus==-1 || applyProgress.reviewStatus==-2 || applyProgress.reviewStatus==1)?'ft':'sub-ft'}} row-no-padding">
+					<div class="col col-40 ub ub-ac ub-pc" ng-bind="applyProgress.reviewStatus==-1 || applyProgress.reviewStatus==-2 || applyProgress.reviewStatus==1?(applyProgress.updateTime | date:'MM-dd HH:mm'):''"></div>
+					<div class="col col-20 text-center">
+						<div class="applyImgRaduis3 {{(applyProgress.reviewStatus==4 || applyProgress.reviewStatus==1 || applyProgress.reviewStatus==-1)?'reject':''}}">
+					     	<img src="./img/agent/step3.png"/>
+						</div>			
+					</div>
+					<div class="col col-40 ub ub-ac ub-pc" ng-if="applyProgress.reviewStatus==-1">
+						拒绝申请
+					</div>
+					<div class="col col-40 ub ub-ac ub-pc" ng-if="applyProgress.reviewStatus==-2">
+						重新填写
+					</div>
+					<div class="col col-40 ub ub-ac ub-pc" ng-if="applyProgress.reviewStatus==1">
+						申请成功
+					</div>
+				</div>
+			</div>
+			<div style="text-align: center;" ng-if="applyProgress.reviewStatus==1">
+				(恭喜您申请成功,帐号为:{{applyProgress.agentId}})
+			</div>
+			<div style="text-align: center;" ng-if="applyProgress.reviewStatus!==1 && applyProgress.remark!=''">
+				(说明:{{applyProgress.remark}})
+			</div>
+			<div style="margin:  1rem 1.5rem 0;" ng-if="applyProgress.isActivate==0">
+				<a class="button button-block button-default" ng-click="goActivate()">激活账号</a>
+			</div>
+	</ion-content>
+</ion-view>

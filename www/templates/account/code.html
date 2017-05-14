@@ -1,0 +1,18 @@
+<ion-view view-title="推荐码" hide-tabs="false">
+	<ion-nav-buttons side="right">
+		<a class="button button-clear button-light fs14" ng-click="onRefreshers()">
+			刷新
+		</a>
+	</ion-nav-buttons>
+	<ion-content overflow-scroll="false" class="bg-grey">
+		<ion-refresher on-refresh="onRefreshers()" pulling-text="下拉刷新" refreshing-text="加载中..." spinner="dots"></ion-refresher>
+		<div class="padding15-vertical">
+			<div class="padding-horizontal padding5-vertical relative" ng-repeat="item in codeList">
+			   <img class="full-image" src="./img/account/codeBox.png" />
+			   <div class="tuijianma">推荐码</div>
+			   <div class="codeTime"  ng-bind="item.createTime | date:'yyyy-MM-dd' ">2016-09-09</div>
+			   <div class="code ft" ng-bind="item.code">0</div>
+		    </div>
+         </div>
+	</ion-content>
+</ion-view>

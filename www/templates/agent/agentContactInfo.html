@@ -1,0 +1,115 @@
+<ion-view view-title="紧急联系人" hide-tabs="true">
+	<ion-content scroll="true">
+		<div class="ub stepBox">
+			<div class="ub ub-ver ub-pc ub-ac">
+				<img src="./img/agent/step-1-active.png"/>
+				<div class="ft fs12">身份信息</div>
+			</div>
+			<div class="ub-f1 dash-line active"></div>
+			<div class="ub ub-ver ub-pc ub-ac">
+				<img src="./img/agent/step-2-active.png"/>
+				<div class="ft fs12">地址信息</div>
+			</div>
+			<div class="ub-f1 dash-line active"></div>
+			<div class="ub ub-ver ub-pc ub-ac">
+				<img src="./img/agent/step-3-active.png"/>
+				<div class="ft fs12">工作信息</div>
+			</div>
+			<div class="ub-f1 dash-line active marginRight4"></div>
+			<div class="ub ub-ver ub-pc ub-ac">
+				<img src="./img/agent/step-4-active.png"/>
+				<div class="ft fs12">联系人</div>
+			</div>
+			<div class="ub-f1 dash-line marginLeft4"></div>
+			<div class="ub ub-ver ub-pc ub-ac">
+				<img src="./img/agent/step-5.png"/>
+				<div class="sub-ft fs12">附件上传</div>
+			</div>
+		</div>		
+		<div class="list">
+			<div class="bold padding-horizontal padding-top fs14">父母联系方式&nbsp;
+			<i tooltips tooltip-side="bottom" tooltip-size="large" tooltip-close-button="true" tooltip-show-trigger="touchstart" tooltip-template="如果双亲不在,可填别的亲属信息。"  class="icon ion-information-circled  fs18 " style="color:#00ADB2;"></i></div>
+			<div class="item card border-bottom">
+				<div class="ub ub-ac padding-vertical border-bottom row-no-padding">
+					<div class="col col-30 bold fs14">姓名</div>
+					<div class="col col-70 bold fs14 sub-ft">
+                        <input type="text" ng-model="agentModel.parentContact.name" placeholder="请输入父亲/母亲姓名">
+					</div>
+				</div>
+				<div class="ub ub-ac padding-vertical border-bottom row-no-padding">
+					<div class="col col-30 bold fs14">手机号码</div>
+					<div class="col col-70 bold fs14 sub-ft">
+                        <input type="tel" ng-model="agentModel.parentContact.phone" placeholder="请输入手机号码">
+					</div>
+				</div>
+				<label class="item item-select mySelect">
+				    <div class="input-label">关系</div>
+						<select ng-model="agentModel.parentContact.relationShip" ng-options="item.regCode as item.regValue for item in hRelationship">
+							<option value="">请选择</option>
+						</select>
+				</label>
+				<label class="item item-select mySelect">
+			        <div class="input-label">现住省份</div>
+					   <select ng-model="agentModel.parentContact.province" ng-change="provinceChange()" ng-options="item.text as item.text for item in provinceList">
+					   	<option value="">请选择</option>
+					</select>
+			    </label>
+				<label class="item item-select mySelect">
+			        <div class="input-label">现住城市</div>
+					   <select ng-model="agentModel.parentContact.city" ng-options="item.text as item.text for item in cityList">
+					   	<option value="">请选择</option>
+					</select>
+			    </label>
+				<div class="ub ub-ac padding-vertical border-bottom row-no-padding">
+					<div class="col col-30 bold fs14">详细地址</div>
+					<div class="col col-70 bold fs14 sub-ft">
+                        <input type="text" ng-model="agentModel.parentContact.address" placeholder="请输入现住地址详情">
+					</div>
+				</div>
+				<label class="item item-select mySelect">
+			        <div class="input-label">户籍省份</div>
+					   <select ng-model="agentModel.parentContact.hjProvince" ng-change="hjProvinceChange()" ng-options="item.text as item.text for item in hjProvinceList">
+					   	<option value="">请选择</option>
+					</select>
+			    </label>
+				<label class="item item-select mySelect">
+			        <div class="input-label">户籍城市</div>
+					   <select ng-model="agentModel.parentContact.hjCity" ng-options="item.text as item.text for item in hjCityList">
+					   	<option value="">请选择</option>
+					</select>
+			    </label>
+			    <div class="ub ub-ac padding-vertical border-bottom row-no-padding">
+					<div class="col col-30 bold fs14">户籍地址</div>
+					<div class="col col-70 bold fs14 sub-ft">
+                        <input type="text" ng-model="agentModel.parentContact.hjAddress" placeholder="请输入户籍地址详情">
+					</div>
+				</div>
+			</div>
+		<div class="bold padding-horizontal padding-top fs14">紧急联系人</div>
+		<div class="list bottom0">
+			<div class="item card border-bottom">
+				<div class="ub ub-ac padding5-vertical border-bottom row-no-padding">
+					<div class="col col-30 bold fs14">姓名</div>
+					<div class="col col-70 bold fs14 sub-ft">
+						<input class="full-image" type="text" placeholder="请输入紧急联系人姓名" ng-model="agentModel.urgentContact.name">
+					</div>
+				</div>			
+				<div class="ub ub-ac padding5-vertical row-no-padding">
+					<div class="col col-30 bold fs14">手机号码</div>
+					<div class="col col-70 bold fs14 sub-ft">
+                        <input type="tel" placeholder="请输入手机号码" ng-model="agentModel.urgentContact.phone">
+					</div>
+				</div>
+				<label class="item item-select mySelect">
+				    <div class="input-label">关系</div>
+						<select ng-model="agentModel.urgentContact.relationShip" ng-options="item.regCode as item.regValue for item in oRelationship">
+							<option value="">请选择</option>
+						</select>
+				</label>			
+			</div>
+		</div>
+		<div class="padding">
+		    <a ng-click="next(agentModel)" class="button button-block button-assertive">下一步</a>
+		</div>
+	</ion-content>
+</ion-view>

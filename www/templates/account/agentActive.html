@@ -1,0 +1,29 @@
+<ion-view view-title="代理人激活" hide-tabs="true">
+	<ion-nav-buttons side="right">
+      <a class="button button-clear button-light fs14 white" ng-click="doRefresh()">
+        刷新
+      </a>
+	</ion-nav-buttons>
+	<ion-content scroll="true" lazy-scroll><!-- refreshing-text="加载中..." -->
+		<ion-refresher on-refresh="doRefresh()" pulling-text="下拉刷新" refreshing-text="加载中..." spinner="dots"></ion-refresher>
+		<div class="list">
+		    <div class="item card" ng-repeat="item in noActives">
+		    	<div class="ub ub-pj padding-vertical border-bottom sub-ft fs14">
+		    		<div ng-bind="item.applyTime"></div>
+		    	</div>
+		    	<div class="ub row-no-padding padding-vertical border-bottom">
+		    		<div class="col col-40 bold" ng-bind="item.name"></div>
+		    		<div class="col col-60 bold no-ellipsis text-right" ng-bind="item.factoryName"></div>
+		    	</div>
+		    	<div class="row row-no-padding row-center padding-vertical">
+		    		<div class="col assertive vm"><i class="ion-ios-telephone-outline fs21 tel-icon"></i>
+		    		  <a class="yellow" href="tel:{{item.phone}}"> <span class="fs18">{{item.phone}}</span></a>
+		    		</div>
+		    		<a href="#/app/activeCode/{{item.activationCode}}/{{item.name}}" class="button radius-button fs14">生成激活码</a>
+		    	</div>
+		    </div>
+		</div>
+		<no-data ng-show="noActives.length==0?true:false"></no-data>
+		<ion-infinite-scroll ng-if="more" on-infinite="loadMore()" immediate-check="false" distance="1%" spinner="dots"></ion-infinite-scroll>
+	</ion-content>
+</ion-view>

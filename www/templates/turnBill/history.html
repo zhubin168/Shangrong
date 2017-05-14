@@ -1,0 +1,21 @@
+<ion-view view-title="历史记录" hide-tabs="false">
+	<ion-content has-bouncing="true" scroll="true" lazy-scroll>
+		<ion-refresher on-refresh="doRefresh()" pulling-text="下拉刷新" refreshing-text="加载中..." spinner="dots"></ion-refresher>
+		<div class="list bottom0" bindonce ng-repeat="item in historySingleList">
+			<div class="item card padding-vertical">
+				<div class="ub padding-vertical border-bottom">
+					<div class="ub-f1 bold fs14" bo-text="item.singleTime | date:'yyyy-MM-dd HH:mm'"></div>
+					<div class="energized fs14">转单成功</div>
+				</div>
+				<div class="padding-vertical">
+					<span class="fs14 bold yellow">转给&nbsp;</span><span class="bold fs16" bo-text="item.toUser"></span>
+				</div>
+				<div class="padding5-vertical fs14 sub-ft">
+					{{item.name}}<a class="yellow" href="tel:{{item.phone}}"><span class="padding-horizontal" bo-text="item.phone"></span></a>
+				</div>
+			</div>
+		</div>
+		<no-data ng-show="historySingleList.length==0?true:false"></no-data>
+		<ion-infinite-scroll ng-if="more" on-infinite="loadMore()" immediate-check="false" distance="1%" spinner="dots"></ion-infinite-scroll>      
+	</ion-content>
+</ion-view>

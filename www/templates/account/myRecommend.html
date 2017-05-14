@@ -1,0 +1,38 @@
+<ion-view view-title="我的推荐" hide-tabs="true" hide-back-button="true">
+	<ion-nav-buttons side="left">
+	    <button class="button bg-default" ng-click="goBack()"><i class="icon ion-chevron-left light"></i></button>
+	</ion-nav-buttons>
+	<div class="tabs-striped tabs-top tabs-default">
+		<div class="tabs">
+			<a class="tab-item {{audit}}" ng-click="seachByStatus('audit')"  >
+				待审核
+			</a>
+			<a class="tab-item {{adopt}}" ng-click="seachByStatus('adopt')" >
+				通过
+			</a>
+			<a class="tab-item {{refuse}}"  ng-click="seachByStatus('refuse')" >
+				拒绝
+			</a>
+			<a class="tab-item {{cancel}}"  ng-click="seachByStatus('cancel')" >
+				取消
+			</a>
+		</div>
+	</div>
+	<ion-content class="has-tabs-top" scroll="true" lazy-scroll>
+	 <ion-refresher on-refresh="doRefresh()" pulling-text="下拉刷新" spinner="dots"></ion-refresher>
+		<div class="list" bindonce ng-repeat="item in recommendList">
+			<div class="item card">
+				<div class="sub-ft fs14 padding-vertical border-bottom" ng-bind="item.handleTime"></div>
+				<div class="ub row-no-padding padding-vertical border-bottom">
+					<div class="col col-40 bold no-ellipsis" ng-bind="item.name"></div>
+					<div class="col col-60 bold text-right no-ellipsis" ng-bind="item.factoryName"></div>
+				</div>
+				<div class="row row-no-padding row-center padding-vertical">
+					<div class="col assertive vm"><i class="ion-ios-telephone-outline fs24"></i><a href="tel:{{item.phone}}" class="fs18 yellow" ng-bind="item.phone"></a></div>
+				</div>
+			</div>
+		</div>		
+		<no-data ng-show="recommendList.length==0?true:false"></no-data>
+		<ion-infinite-scroll ng-if="more" on-infinite="loadMore()" distance="1%" spinner="dots"></ion-infinite-scroll>
+	</ion-content>
+</ion-view>

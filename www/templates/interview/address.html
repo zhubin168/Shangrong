@@ -1,0 +1,121 @@
+<ion-view view-title="地址和联系方式" hide-tabs="true" >
+	<ion-content scroll="true">
+		<div class="bold padding-horizontal padding-top fs14">居住地址</div>
+		<div class="list bottom0">
+			<div class="item card border-bottom">
+				<div class="ub ub-ac padding5-bottom row-no-padding">
+					<div class="col col-30 bold fs14">所在地区</div>
+					<div class="col col-70 bold fs14 sub-ft">
+						<hms-pct-select defaultdata="selectedAddress"></hms-pct-select>	
+					</div>
+				</div>
+			    <!--<label class="item item-select mySelect">
+			        <div class="input-label">省份</div>
+					   <select ng-model="customerModel.currentAddress.province" ng-change="provinceChange()" ng-options="item.text as item.text for item in provinceList">
+					   	<option value="">请选择</option>
+					</select>
+			    </label>
+			    <label class="item item-select mySelect">
+			        <div class="input-label">城市</div>
+					   <select ng-model="customerModel.currentAddress.city" ng-change="cityChange()" ng-options="item.text as item.text for item in cityList">
+					   	<option value="">请选择</option>
+					</select>
+			    </label>
+			    <label class="item item-select mySelect">
+			        <div class="input-label">区域（县）</div>
+					   <select ng-model="customerModel.currentAddress.region" ng-options="item.text as item.text for item in regionList">
+					   	<option value="">请选择</option>
+					</select>
+			    </label>					-->
+				<div class="ub ub-ac padding5-bottom row-no-padding">
+					<div class="col col-30 bold fs14">详细地址</div>
+					<div class="col col-70 bold fs14 sub-ft">
+						<input class="full-image" type="text" ng-model="customerModel.currentAddress.address" placeholder="请输入详细地址">
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="bold padding-horizontal padding-top fs14">配偶（家庭）联系人</div>
+		<div class="list bottom0">
+			<div class="item card border-bottom">
+				<div class="ub ub-ac padding5-vertical border-bottom row-no-padding">
+					<div class="col col-30 bold fs14">姓名</div>
+					<div class="col col-70 bold fs14 sub-ft">
+						<input class="full-image" type="text" placeholder="" ng-model="customerModel.homeContact.name">
+					</div>
+				</div>
+				  <label class="item item-select mySelect">
+				    <div class="input-label">关系</div>
+						<select ng-model="customerModel.homeContact.relationship" ng-options="item.regCode as item.regValue for item in hRelationship">
+							<option value="">请选择</option>
+						</select>
+				  </label>
+				<div class="ub ub-ac padding5-vertical row-no-padding">
+					<div class="col col-30 bold fs14">手机</div>
+					<div class="col col-70 bold fs14 sub-ft">
+                        <input type="tel" placeholder="" ng-model="customerModel.homeContact.phone">
+					</div>
+				</div>				
+			</div>
+		</div>
+		<div class="bold padding-horizontal padding-top fs14">紧急联系人</div>
+		<div class="list bottom0">
+			<div class="item card border-bottom">
+				<div class="ub ub-ac padding5-vertical border-bottom row-no-padding">
+					<div class="col col-30 bold fs14">姓名</div>
+					<div class="col col-70 bold fs14 sub-ft">
+						<input class="full-image" type="text" placeholder="" ng-model="customerModel.urgentContact.name">
+					</div>
+				</div>
+				  <label class="item item-select mySelect">
+				    <div class="input-label">关系</div>
+						<select ng-model="customerModel.urgentContact.relationship" ng-options="item.regCode as item.regValue for item in uRelationship">
+							<option value="">请选择</option>
+						</select>
+				  </label>				
+				<div class="ub ub-ac padding5-vertical row-no-padding">
+					<div class="col col-30 bold fs14">手机</div>
+					<div class="col col-70 bold fs14 sub-ft">
+                        <input type="tel" placeholder="" ng-model="customerModel.urgentContact.phone">
+					</div>
+				</div>				
+			</div>
+		</div>
+		<div class="bold padding-horizontal padding-top fs14">其他联系人</div>
+		<div class="list bottom0">
+			<div class="item card border-bottom">
+				<div class="ub ub-ac padding5-vertical border-bottom row-no-padding">
+					<div class="col col-30 bold fs14">姓名</div>
+					<div class="col col-70 bold fs14 sub-ft">
+						<input class="full-image" type="text" placeholder="" ng-model="customerModel.otherContact.name">
+					</div>
+				</div>
+				  <label class="item item-select mySelect">
+				    <div class="input-label">关系</div>
+						<select ng-model="customerModel.otherContact.relationship" ng-options="item.regCode as item.regValue for item in oRelationship">
+							<option value="">请选择</option>
+						</select>
+				  </label>				
+				<div class="ub ub-ac padding5-vertical row-no-padding">
+					<div class="col col-30 bold fs14">手机</div>
+					<div class="col col-70 bold fs14 sub-ft">
+                        <input type="tel" placeholder="" ng-model="customerModel.otherContact.phone">
+					</div>
+				</div>				
+			</div>
+		</div>
+		<div class="list bottom0">
+			<div class="item card border-bottom">
+				    <label class="item item-select mySelect">
+				        <div class="input-label">内部代码</div>
+						<select ng-model="customerModel.interCode" ng-options="item.value as item.text for item in selInterCode">
+						</select>
+				    </label>		
+			</div>
+		</div>
+		<div class="padding">
+			<!--href="#/app/upload"-->
+			<a ng-click="next(customerModel)" class="button button-block button-assertive">下一步</a>
+		</div>		
+	</ion-content>
+</ion-view>

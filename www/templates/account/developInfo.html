@@ -1,0 +1,16 @@
+<ion-view view-title="每月开发统计" hide-tabs="false" hide-back-button="false">
+	<ion-content scroll="true" lazy-scroll>
+		<ion-refresher on-refresh="doRefresh()" pulling-text="下拉刷新" spinner="dots"></ion-refresher>
+			<div class="list" bindonce ng-repeat="item in agentsByMonths">
+				<div class="item card myItem">
+					<div class="sub-ft fs14 padding-vertical border-bottom" bo-text="item.month"></div>
+					<div class="ub padding-vertical">
+						<div class="ub-f1 fs36 yellow"><span class="fs12 sub-ft">开发客户:</span><span bo-text="item.recommends">0</span></div>
+						<div class="fs36 yellow"><span class="fs12 sub-ft" >转介绍客户:</span><span bo-text="item.referrals">0</span></div>
+					</div>
+				</div>
+			</div>	
+		<no-data ng-show="agentsByMonths.length==0?true:false"></no-data>
+		<ion-infinite-scroll ng-if="more" on-infinite="loadMore()" immediate-check="false" distance="1%" spinner="dots"></ion-infinite-scroll>
+	</ion-content>
+</ion-view>
