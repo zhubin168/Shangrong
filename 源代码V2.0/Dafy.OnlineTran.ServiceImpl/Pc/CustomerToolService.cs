@@ -19,89 +19,74 @@ namespace Dafy.OnlineTran.ServiceImpl.Pc
     public class CustomerToolService : ICustomerToolService
     {
         /// <summary>
-        /// 获客助手管理列表
+        /// 获客助手：图片管理
         /// </summary>
         /// <param name="rq"></param>
         /// <returns></returns>
         public CustomerToolsRS GetTools(CustomerToolsRQ rq)
         {
             var result = new CustomerToolsRS { total = 0, list = null };
-            var sql = string.Empty;//"select * from CustomerTools where 1=1 ";
+            var sql = string.Empty;
             if (!string.IsNullOrWhiteSpace(rq.paraName))
             {
-                sql += string.Format(" Title like '%{0}%'", rq.paraName);
+                sql += string.Format(" title like '%{0}%'", rq.paraName);
             }
-            var user = CustomerTools.FindAll(sql, "Id desc", null, (rq.pageIndex - 1) * rq.pageSize, rq.pageSize);
+            var user = Picture.FindAll(sql, "id desc", null, (rq.pageIndex - 1) * rq.pageSize, rq.pageSize);
             var query = (from a in user.ToList()
                          select new
                          {
-                             a.Id,
-                             a.ImgType,
-                             a.OrderNum,
-                             a.PublishTime,
-                             a.Status,
-                             a.ImageUrl,
-                             a.Title,
-                             a.CreatedByName,
-                             a.CreatedOn,
-                             a.ModifiedByName,
-                             a.ModifiedOn,
+                             a.createTime,
+                             a.createUid,
+                             a.id,
+                             a.imageUrl,
+                             a.modifyUid,
+                             a.publishTime,
+                             a.sequence,
+                             a.status,
+                             a.title,
+                             a.type,
+                             a.updateTime,
                          });
-            query = query.OrderByDescending(q => q.ModifiedOn).ThenByDescending(q => q.Id);
-            result.total = CustomerTools.FindAll(sql, null, null, 0, 0).Count;//query.Count();
+            result.total = CustomerTools.FindAll(sql, null, null, 0, 0).Count;
             if (result.total == 0) return result;
             result.list = query.Select(a => new CustomerToolsItemRS
             {
-                Id = a.Id,
-                ImgType=a.ImgType,
-                OrderNum=a.OrderNum,
-                PublishTime=a.PublishTime,
-                Status=a.Status,
-                ImageUrl = a.ImageUrl,
-                Title = a.Title,
-                ModifiedByName = a.ModifiedByName,
-                ModifiedOn = a.ModifiedOn,
-                CreatedOn = a.CreatedOn,
-                CreatedByName = a.CreatedByName
+                createTime=a.createTime,
+                createUid=a.createUid,
+                id=a.id,
+                imageUrl=a.imageUrl,
+                publishTime=a.publishTime,
+                sequence=a.sequence,
+                status=a.status,
+                title=a.title,
+                type=a.type,
+                updateTime=a.updateTime
             }).ToList();
             return result;
         }
 
-        public ResultModel<string> DelTools(SaveCustomerToolsRQ rq)
-        {
-            var obj = CustomerTools.FindById(rq.Id);
-            int nCount = obj.Delete();
-            return new ResultModel<string>
-            {
-                state = nCount,
-                message = nCount > 0 ? "删除成功！" : "操作失败！",
-                data = nCount.ToString()
-            };
-        }
-
         /// <summary>
-        /// 保存获客助手
+        /// 获客助手：图片保存
         /// </summary>
         /// <param name="rq"></param>
         /// <returns></returns>
         public ResultModel<string> SaveTools(SaveCustomerToolsRQ rq)
         {
-            EntityList<CustomerTools> users = new EntityList<CustomerTools>();
-            var user = CustomerTools.FindById(rq.Id);
+            EntityList<Picture> users = new EntityList<Picture>();
+            var user = Picture.FindByid(rq.id);
             if (null == user)
             {
-                user = new CustomerTools();
-                user.CreatedByName = rq.CreatedByName;
-                user.CreatedOn = DateTime.Now;
+                user = new Picture();
+                user.createUid = Convert.ToInt32(rq.CreatedByName);
+                user.createTime = DateTime.Now;
             }
-            user.Status = rq.Status;
-            user.ImgType = rq.ImgType;
-            user.OrderNum = rq.OrderNum;
-            user.PublishTime = DateTime.Now;
-            user.ImageUrl = rq.ImageUrl;
-            user.Title = rq.Title;
-            user.ModifiedByName = rq.CreatedByName;
-            user.ModifiedOn = DateTime.Now;
+            user.imageUrl = rq.imageUrl;
+            user.publishTime = rq.publishTime;
+            user.sequence = rq.sequence;
+            user.status = rq.status;
+            user.title = rq.title;
+            user.type = rq.type;
+            user.updateTime = DateTime.Now;
             users.Add(user);
             int nCount = users.Save();
             return new ResultModel<string>
@@ -110,6 +95,34 @@ namespace Dafy.OnlineTran.ServiceImpl.Pc
                 message = nCount > 0 ? "保存成功！" : "操作失败！",
                 data = nCount.ToString()
             };
+        }
+
+        /// <summary>
+        /// 获客助手：图片详情
+        /// </summary>
+        /// <param name="rq"></param>
+        /// <returns></returns>
+        public CustomerToolsItemRS GetDetailTool(CustomerToolsRQ rq)
+        {
+            var condition = new CustomerToolsRQ()
+            {
+                pageIndex = 1,
+                pageSize = Int32.MaxValue,
+                id = rq.id
+            };
+            var list = GetTools(condition).list;
+            var result = list == null ? new CustomerToolsItemRS() : list.Where(q => q.id == rq.id).FirstOrDefault();
+            return result;
+        }
+
+        /// <summary>
+        /// 获客助手：发文章列表
+        /// </summary>
+        /// <param name="rq"></param>
+        /// <returns></returns>
+        public CustomerToolsRS GetArticles(CustomerToolsRQ rq)
+        {
+            throw new NotImplementedException();
         }
     }
 }

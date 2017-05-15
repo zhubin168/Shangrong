@@ -16,19 +16,31 @@ namespace Dafy.OnlineTran.IService.Pc
     public interface ICustomerToolService
     {
         /// <summary>
-        /// 获客助手管理列表
+        /// 获客助手：图片管理
         /// </summary>
         /// <param name="rq"></param>
         /// <returns></returns>
         CustomerToolsRS GetTools(CustomerToolsRQ rq);
 
-        ResultModel<string> DelTools(SaveCustomerToolsRQ rq);
-
         /// <summary>
-        /// 保存获客助手
+        /// 获客助手：图片保存
         /// </summary>
         /// <param name="rq"></param>
         /// <returns></returns>
         ResultModel<string> SaveTools(SaveCustomerToolsRQ rq);
+
+        /// <summary>
+        /// 获客助手：图片详情
+        /// </summary>
+        /// <param name="rq"></param>
+        /// <returns></returns>
+        CustomerToolsItemRS GetDetailTool(CustomerToolsRQ rq);
+
+        /// <summary>
+        /// 获客助手：发文章列表
+        /// </summary>
+        /// <param name="rq"></param>
+        /// <returns></returns>
+        CustomerToolsRS GetArticles(CustomerToolsRQ rq);
     }
 }

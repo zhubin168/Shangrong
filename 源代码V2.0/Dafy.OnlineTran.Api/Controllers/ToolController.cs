@@ -30,7 +30,7 @@ namespace Dafy.OnlineTran.Api.Controllers
         }
 
         /// <summary>
-        /// 获客助手管理列表
+        /// 获客助手：图片管理
         /// </summary>
         [HttpPost]
         public CustomerToolsRS GetTools(CustomerToolsRQ rq)
@@ -41,16 +41,16 @@ namespace Dafy.OnlineTran.Api.Controllers
         }
 
         /// <summary>
-        /// 删除获客助手
+        /// 获客助手：图片详情
         /// </summary>
         [HttpPost]
-        public ResultModel<string> DelTools(SaveCustomerToolsRQ rq)
+        public CustomerToolsItemRS GetDetailTool(CustomerToolsRQ rq)
         {
-            return _service.DelTools(rq);
+            return _service.GetDetailTool(rq);
         }
 
         /// <summary>
-        /// 保存获客助手
+        /// 获客助手：图片保存
         /// </summary>
         [HttpPost]
         public ResultModel<string> SaveTools(SaveCustomerToolsRQ rq)
