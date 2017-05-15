@@ -97,7 +97,11 @@ namespace Dafy.OnlineTran.IService.Pc
         /// </summary>
         /// <param name="rq"></param>
         /// <returns></returns>
+<<<<<<< HEAD
         DetailMemberRS DetailMember(DetailMemberRQ rq);
+=======
+        WeixinUserItemRS DetailMember(DetailUserRQ rq);
+>>>>>>> f4e2de8cb81036ec7f44bd05fd698f70ccfb2b11
 
         /// <summary>
         /// 公司详情
@@ -105,6 +109,7 @@ namespace Dafy.OnlineTran.IService.Pc
         /// <param name="rq"></param>
         /// <returns></returns>
         CompanyRs DetailCompany(CompanyRQ rq);
+<<<<<<< HEAD
 
         /// <summary>
         /// 理财师业绩
@@ -147,5 +152,7 @@ namespace Dafy.OnlineTran.IService.Pc
         /// <param name="rq"></param>
         /// <returns></returns>
         ResultModel<string> CheckUser(CheckUserRQ rq);
+=======
+>>>>>>> f4e2de8cb81036ec7f44bd05fd698f70ccfb2b11
     }
 }

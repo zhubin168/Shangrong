@@ -156,6 +156,7 @@ namespace Dafy.OnlineTran.Api.Controllers
         {
             return _service.DetailCompany(rq);
         }
+<<<<<<< HEAD
 
         /// <summary>
         /// 理财师业绩
@@ -211,5 +212,7 @@ namespace Dafy.OnlineTran.Api.Controllers
             rq.auditUid = 100321;//Convert.ToInt32(this.User.Identity.Name);
             return _service.CheckUser(rq);
         }
+=======
+>>>>>>> f4e2de8cb81036ec7f44bd05fd698f70ccfb2b11
     }
 }

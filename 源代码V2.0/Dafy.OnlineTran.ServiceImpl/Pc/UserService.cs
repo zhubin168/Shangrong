@@ -1013,5 +1013,24 @@ namespace Dafy.OnlineTran.ServiceImpl.Pc
                 };
             }
         }
+
+        /// <summary>
+        /// 公司详情
+        /// </summary>
+        /// <param name="rq"></param>
+        /// <returns></returns>
+        public CompanyRs DetailCompany(CompanyRQ rq)
+        {
+            var obj = Company.FindById(rq.Id);
+            var city= BaseCity.FindByCityID(Convert.ToInt32(obj.CityId));
+            return new CompanyRs() {
+                Id=obj.Id,
+                CompanyName=obj.CompanyName,
+                DepartmentName=obj.DepartmentName,
+                CityId=obj.CityId,
+                Postion=obj.Postion,
+                CityName = city==null?string.Empty:city.CityName
+            };
+        }
     }
 }
