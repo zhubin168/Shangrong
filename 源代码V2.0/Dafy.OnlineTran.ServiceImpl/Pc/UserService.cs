@@ -1013,5 +1013,11 @@ namespace Dafy.OnlineTran.ServiceImpl.Pc
                 };
             }
         }
+
+
+        public WeixinUserItemRS DetailMember(DetailUserRQ rq)
+        {
+            throw new NotImplementedException();
+        }
     }
 }
