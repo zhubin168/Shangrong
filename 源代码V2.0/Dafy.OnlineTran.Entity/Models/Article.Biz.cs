@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Text;
 using System.Xml.Serialization;
-
 using NewLife.Log;
 using NewLife.Web;
 using XCode;
@@ -11,7 +10,7 @@ using XCode.Configuration;
 
 namespace Dafy.OnlineTran.Entity.Models
 {
-    /// <summary>文章管理</summary>
+    /// <summary></summary>
     public partial class Article : Entity<Article>
     {
         #region 对象操作﻿
@@ -30,7 +29,8 @@ namespace Dafy.OnlineTran.Entity.Models
             // 在新插入数据或者修改了指定字段时进行唯一性验证，CheckExist内部抛出参数异常
             //if (isNew || Dirtys[__.Name]) CheckExist(__.Name);
             
-            if (isNew && !Dirtys[__.CreatedOn]) CreatedOn = DateTime.Now;
+            if (isNew && !Dirtys[__.createTime]) createTime = DateTime.Now;
+            if (!Dirtys[__.updateTime]) updateTime = DateTime.Now;
         }
 
         ///// <summary>首次连接数据库时初始化数据，仅用于实体类重载，用户不应该调用该方法</summary>
@@ -47,17 +47,20 @@ namespace Dafy.OnlineTran.Entity.Models
         //    if (XTrace.Debug) XTrace.WriteLine("开始初始化{0}[{1}]数据……", typeof(Article).Name, Meta.Table.DataTable.DisplayName);
 
         //    var entity = new Article();
-        //    entity.ArticleTitle = "abc";
-        //    entity.ArticleType = 0;
-        //    entity.ArticleImg = "abc";
-        //    entity.ArticleContent = "abc";
-        //    entity.IsRecommand = 0;
-        //    entity.IsPublish = 0;
-        //    entity.Status = 0;
-        //    entity.CreatedOn = DateTime.Now;
-        //    entity.CreatedByName = "abc";
-        //    entity.ModifiedOn = DateTime.Now;
-        //    entity.ModifiedByName = "abc";
+        //    entity.id = 0;
+        //    entity.title = System.Byte[];
+        //    entity.type = 0;
+        //    entity.shareUrl = System.Byte[];
+        //    entity.shareTitle = System.Byte[];
+        //    entity.listUrl = System.Byte[];
+        //    entity.contentUrl = System.Byte[];
+        //    entity.content = "abc";
+        //    entity.status = 0;
+        //    entity.publishTime = DateTime.Now;
+        //    entity.createTime = DateTime.Now;
+        //    entity.updateTime = DateTime.Now;
+        //    entity.createUid = 0;
+        //    entity.modifyUid = 0;
         //    entity.Insert();
 
         //    if (XTrace.Debug) XTrace.WriteLine("完成初始化{0}[{1}]数据！", typeof(Article).Name, Meta.Table.DataTable.DisplayName);
@@ -83,18 +86,18 @@ namespace Dafy.OnlineTran.Entity.Models
         #endregion
 
         #region 扩展查询﻿
-        /// <summary>根据主键ID(自增列)查找</summary>
-        /// <param name="id">主键ID(自增列)</param>
+        /// <summary>根据文章ID查找</summary>
+        /// <param name="__id">文章ID</param>
         /// <returns></returns>
         [DataObjectMethod(DataObjectMethodType.Select, false)]
-        public static Article FindById(Int64 id)
+        public static Article FindByid(Int64 __id)
         {
             if (Meta.Count >= 1000)
-                return Find(_.Id, id);
+                return Find(_.id, __id);
             else // 实体缓存
-                return Meta.Cache.Entities.Find(_.Id, id);
+                return Meta.Cache.Entities.Find(_.id, __id);
             // 单对象缓存
-            //return Meta.SingleCache[id];
+            //return Meta.SingleCache[__id];
         }
         #endregion
 

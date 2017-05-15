@@ -8,157 +8,181 @@ using XCode.DataAccessLayer;
 
 namespace Dafy.OnlineTran.Entity.Models
 {
-    /// <summary>文章管理</summary>
+    /// <summary></summary>
     [Serializable]
     [DataObject]
-    [Description("文章管理")]
-    [BindIndex("PK_ARTICLE", true, "Id")]
-    [BindTable("Article", Description = "文章管理", ConnName = "Lomark", DbType = DatabaseType.SqlServer)]
+    [Description("")]
+    [BindIndex("PK_Aritcle", true, "id")]
+    [BindTable("Article", Description = "", ConnName = "Lomark", DbType = DatabaseType.SqlServer)]
     public partial class Article : IArticle
     {
         #region 属性
-        private Int64 _Id;
-        /// <summary>主键ID(自增列)</summary>
-        [DisplayName("主键ID自增列")]
-        [Description("主键ID(自增列)")]
-        [DataObjectField(true, true, false, 19)]
-        [BindColumn(1, "Id", "主键ID(自增列)", null, "bigint", 19, 0, false)]
-        public virtual Int64 Id
+        private Int64 _id;
+        /// <summary>文章ID</summary>
+        [DisplayName("文章ID")]
+        [Description("文章ID")]
+        [DataObjectField(true, false, false, 19)]
+        [BindColumn(1, "id", "文章ID", null, "bigint", 19, 0, false)]
+        public virtual Int64 id
         {
-            get { return _Id; }
-            set { if (OnPropertyChanging(__.Id, value)) { _Id = value; OnPropertyChanged(__.Id); } }
+            get { return _id; }
+            set { if (OnPropertyChanging(__.id, value)) { _id = value; OnPropertyChanged(__.id); } }
         }
 
-        private String _ArticleTitle;
-        /// <summary>创建者名称</summary>
-        [DisplayName("创建者名称")]
-        [Description("创建者名称")]
-        [DataObjectField(false, false, false, 150)]
-        [BindColumn(2, "ArticleTitle", "创建者名称", null, "nvarchar(150)", 0, 0, true)]
-        public virtual String ArticleTitle
+        private String _title;
+        /// <summary>文章标题</summary>
+        [DisplayName("文章标题")]
+        [Description("文章标题")]
+        [DataObjectField(false, false, false, 50)]
+        [BindColumn(2, "title", "文章标题", null, "nvarchar(50)", 0, 0, true)]
+        public virtual String title
         {
-            get { return _ArticleTitle; }
-            set { if (OnPropertyChanging(__.ArticleTitle, value)) { _ArticleTitle = value; OnPropertyChanged(__.ArticleTitle); } }
+            get { return _title; }
+            set { if (OnPropertyChanging(__.title, value)) { _title = value; OnPropertyChanged(__.title); } }
         }
 
-        private Int32 _ArticleType;
-        /// <summary>创建者名称</summary>
-        [DisplayName("创建者名称")]
-        [Description("创建者名称")]
-        [DataObjectField(false, false, true, 10)]
-        [BindColumn(3, "ArticleType", "创建者名称", null, "int", 10, 0, false)]
-        public virtual Int32 ArticleType
+        private Int32 _type;
+        /// <summary>文章类型</summary>
+        [DisplayName("文章类型")]
+        [Description("文章类型")]
+        [DataObjectField(false, false, false, 10)]
+        [BindColumn(3, "type", "文章类型", null, "int", 10, 0, false)]
+        public virtual Int32 type
         {
-            get { return _ArticleType; }
-            set { if (OnPropertyChanging(__.ArticleType, value)) { _ArticleType = value; OnPropertyChanged(__.ArticleType); } }
+            get { return _type; }
+            set { if (OnPropertyChanging(__.type, value)) { _type = value; OnPropertyChanged(__.type); } }
         }
 
-        private String _ArticleImg;
-        /// <summary>创建者名称</summary>
-        [DisplayName("创建者名称")]
-        [Description("创建者名称")]
-        [DataObjectField(false, false, true, 150)]
-        [BindColumn(4, "ArticleImg", "创建者名称", null, "nvarchar(150)", 0, 0, true)]
-        public virtual String ArticleImg
+        private String _shareUrl;
+        /// <summary>文章分享图片</summary>
+        [DisplayName("文章分享图片")]
+        [Description("文章分享图片")]
+        [DataObjectField(false, false, true, 50)]
+        [BindColumn(4, "shareUrl", "文章分享图片", null, "nvarchar(50)", 0, 0, true)]
+        public virtual String shareUrl
         {
-            get { return _ArticleImg; }
-            set { if (OnPropertyChanging(__.ArticleImg, value)) { _ArticleImg = value; OnPropertyChanged(__.ArticleImg); } }
+            get { return _shareUrl; }
+            set { if (OnPropertyChanging(__.shareUrl, value)) { _shareUrl = value; OnPropertyChanged(__.shareUrl); } }
         }
 
-        private String _ArticleContent;
-        /// <summary>创建者名称</summary>
-        [DisplayName("创建者名称")]
-        [Description("创建者名称")]
-        [DataObjectField(false, false, true, 2147483647)]
-        [BindColumn(5, "ArticleContent", "创建者名称", null, "text", 0, 0, false)]
-        public virtual String ArticleContent
+        private String _shareTitle;
+        /// <summary>文章分享描述</summary>
+        [DisplayName("文章分享描述")]
+        [Description("文章分享描述")]
+        [DataObjectField(false, false, true, 50)]
+        [BindColumn(5, "shareTitle", "文章分享描述", null, "nvarchar(50)", 0, 0, true)]
+        public virtual String shareTitle
         {
-            get { return _ArticleContent; }
-            set { if (OnPropertyChanging(__.ArticleContent, value)) { _ArticleContent = value; OnPropertyChanged(__.ArticleContent); } }
+            get { return _shareTitle; }
+            set { if (OnPropertyChanging(__.shareTitle, value)) { _shareTitle = value; OnPropertyChanged(__.shareTitle); } }
         }
 
-        private Int32 _IsRecommand;
-        /// <summary>状态(0：未激活  1：激活失败 2：已启用  3：已停用 4：已删除)</summary>
-        [DisplayName("状态0：未激活1：激活失败2：已启用3：已停用4：已删除")]
-        [Description("状态(0：未激活  1：激活失败 2：已启用  3：已停用 4：已删除)")]
-        [DataObjectField(false, false, true, 10)]
-        [BindColumn(6, "IsRecommand", "状态(0：未激活  1：激活失败 2：已启用  3：已停用 4：已删除)", "0", "int", 10, 0, false)]
-        public virtual Int32 IsRecommand
+        private String _listUrl;
+        /// <summary>文章列表图片</summary>
+        [DisplayName("文章列表图片")]
+        [Description("文章列表图片")]
+        [DataObjectField(false, false, true, 50)]
+        [BindColumn(6, "listUrl", "文章列表图片", null, "nvarchar(50)", 0, 0, true)]
+        public virtual String listUrl
         {
-            get { return _IsRecommand; }
-            set { if (OnPropertyChanging(__.IsRecommand, value)) { _IsRecommand = value; OnPropertyChanged(__.IsRecommand); } }
+            get { return _listUrl; }
+            set { if (OnPropertyChanging(__.listUrl, value)) { _listUrl = value; OnPropertyChanged(__.listUrl); } }
         }
 
-        private Int32 _IsPublish;
-        /// <summary>状态(0：未激活  1：激活失败 2：已启用  3：已停用 4：已删除)</summary>
-        [DisplayName("状态0：未激活1：激活失败2：已启用3：已停用4：已删除")]
-        [Description("状态(0：未激活  1：激活失败 2：已启用  3：已停用 4：已删除)")]
-        [DataObjectField(false, false, true, 10)]
-        [BindColumn(7, "IsPublish", "状态(0：未激活  1：激活失败 2：已启用  3：已停用 4：已删除)", "0", "int", 10, 0, false)]
-        public virtual Int32 IsPublish
+        private String _contentUrl;
+        /// <summary>正文链接</summary>
+        [DisplayName("正文链接")]
+        [Description("正文链接")]
+        [DataObjectField(false, false, true, 50)]
+        [BindColumn(7, "contentUrl", "正文链接", null, "nvarchar(50)", 0, 0, true)]
+        public virtual String contentUrl
         {
-            get { return _IsPublish; }
-            set { if (OnPropertyChanging(__.IsPublish, value)) { _IsPublish = value; OnPropertyChanged(__.IsPublish); } }
+            get { return _contentUrl; }
+            set { if (OnPropertyChanging(__.contentUrl, value)) { _contentUrl = value; OnPropertyChanged(__.contentUrl); } }
         }
 
-        private Int32 _Status;
-        /// <summary>状态(0：未激活  1：激活失败 2：已启用  3：已停用 4：已删除)</summary>
-        [DisplayName("状态0：未激活1：激活失败2：已启用3：已停用4：已删除")]
-        [Description("状态(0：未激活  1：激活失败 2：已启用  3：已停用 4：已删除)")]
-        [DataObjectField(false, false, true, 10)]
-        [BindColumn(8, "Status", "状态(0：未激活  1：激活失败 2：已启用  3：已停用 4：已删除)", "0", "int", 10, 0, false)]
-        public virtual Int32 Status
+        private String _content;
+        /// <summary>文章内容</summary>
+        [DisplayName("文章内容")]
+        [Description("文章内容")]
+        [DataObjectField(false, false, false, 2147483647)]
+        [BindColumn(8, "content", "文章内容", null, "text", 0, 0, false)]
+        public virtual String content
         {
-            get { return _Status; }
-            set { if (OnPropertyChanging(__.Status, value)) { _Status = value; OnPropertyChanged(__.Status); } }
+            get { return _content; }
+            set { if (OnPropertyChanging(__.content, value)) { _content = value; OnPropertyChanged(__.content); } }
         }
 
-        private DateTime _CreatedOn;
+        private Int32 _status;
+        /// <summary>文章状态</summary>
+        [DisplayName("文章状态")]
+        [Description("文章状态")]
+        [DataObjectField(false, false, false, 10)]
+        [BindColumn(9, "status", "文章状态", null, "int", 10, 0, false)]
+        public virtual Int32 status
+        {
+            get { return _status; }
+            set { if (OnPropertyChanging(__.status, value)) { _status = value; OnPropertyChanged(__.status); } }
+        }
+
+        private DateTime _publishTime;
+        /// <summary>发布时间</summary>
+        [DisplayName("发布时间")]
+        [Description("发布时间")]
+        [DataObjectField(false, false, false, 3)]
+        [BindColumn(10, "publishTime", "发布时间", null, "datetime", 3, 0, false)]
+        public virtual DateTime publishTime
+        {
+            get { return _publishTime; }
+            set { if (OnPropertyChanging(__.publishTime, value)) { _publishTime = value; OnPropertyChanged(__.publishTime); } }
+        }
+
+        private DateTime _createTime;
         /// <summary>创建时间</summary>
         [DisplayName("创建时间")]
         [Description("创建时间")]
-        [DataObjectField(false, false, true, 3)]
-        [BindColumn(9, "CreatedOn", "创建时间", null, "datetime", 3, 0, false)]
-        public virtual DateTime CreatedOn
+        [DataObjectField(false, false, false, 3)]
+        [BindColumn(11, "createTime", "创建时间", null, "datetime", 3, 0, false)]
+        public virtual DateTime createTime
         {
-            get { return _CreatedOn; }
-            set { if (OnPropertyChanging(__.CreatedOn, value)) { _CreatedOn = value; OnPropertyChanged(__.CreatedOn); } }
+            get { return _createTime; }
+            set { if (OnPropertyChanging(__.createTime, value)) { _createTime = value; OnPropertyChanged(__.createTime); } }
         }
 
-        private String _CreatedByName;
-        /// <summary>创建者名称</summary>
-        [DisplayName("创建者名称")]
-        [Description("创建者名称")]
-        [DataObjectField(false, false, true, 150)]
-        [BindColumn(10, "CreatedByName", "创建者名称", null, "nvarchar(150)", 0, 0, true)]
-        public virtual String CreatedByName
+        private DateTime _updateTime;
+        /// <summary>更新时间</summary>
+        [DisplayName("更新时间")]
+        [Description("更新时间")]
+        [DataObjectField(false, false, false, 3)]
+        [BindColumn(12, "updateTime", "更新时间", null, "datetime", 3, 0, false)]
+        public virtual DateTime updateTime
         {
-            get { return _CreatedByName; }
-            set { if (OnPropertyChanging(__.CreatedByName, value)) { _CreatedByName = value; OnPropertyChanged(__.CreatedByName); } }
+            get { return _updateTime; }
+            set { if (OnPropertyChanging(__.updateTime, value)) { _updateTime = value; OnPropertyChanged(__.updateTime); } }
         }
 
-        private DateTime _ModifiedOn;
-        /// <summary>修改时间</summary>
-        [DisplayName("修改时间")]
-        [Description("修改时间")]
-        [DataObjectField(false, false, true, 3)]
-        [BindColumn(11, "ModifiedOn", "修改时间", null, "datetime", 3, 0, false)]
-        public virtual DateTime ModifiedOn
+        private Int64 _createUid;
+        /// <summary>创建者,用户表的uid</summary>
+        [DisplayName("创建者,用户表的uid")]
+        [Description("创建者,用户表的uid")]
+        [DataObjectField(false, false, false, 19)]
+        [BindColumn(13, "createUid", "创建者,用户表的uid", null, "bigint", 19, 0, false)]
+        public virtual Int64 createUid
         {
-            get { return _ModifiedOn; }
-            set { if (OnPropertyChanging(__.ModifiedOn, value)) { _ModifiedOn = value; OnPropertyChanged(__.ModifiedOn); } }
+            get { return _createUid; }
+            set { if (OnPropertyChanging(__.createUid, value)) { _createUid = value; OnPropertyChanged(__.createUid); } }
         }
 
-        private String _ModifiedByName;
-        /// <summary>修改者名称</summary>
-        [DisplayName("修改者名称")]
-        [Description("修改者名称")]
-        [DataObjectField(false, false, true, 150)]
-        [BindColumn(12, "ModifiedByName", "修改者名称", null, "nvarchar(150)", 0, 0, true)]
-        public virtual String ModifiedByName
+        private Int64 _modifyUid;
+        /// <summary>修改者，用户表的uid</summary>
+        [DisplayName("修改者，用户表的uid")]
+        [Description("修改者，用户表的uid")]
+        [DataObjectField(false, false, true, 19)]
+        [BindColumn(14, "modifyUid", "修改者，用户表的uid", null, "bigint", 19, 0, false)]
+        public virtual Int64 modifyUid
         {
-            get { return _ModifiedByName; }
-            set { if (OnPropertyChanging(__.ModifiedByName, value)) { _ModifiedByName = value; OnPropertyChanged(__.ModifiedByName); } }
+            get { return _modifyUid; }
+            set { if (OnPropertyChanging(__.modifyUid, value)) { _modifyUid = value; OnPropertyChanged(__.modifyUid); } }
         }
         #endregion
 
@@ -176,18 +200,20 @@ namespace Dafy.OnlineTran.Entity.Models
             {
                 switch (name)
                 {
-                    case __.Id : return _Id;
-                    case __.ArticleTitle : return _ArticleTitle;
-                    case __.ArticleType : return _ArticleType;
-                    case __.ArticleImg : return _ArticleImg;
-                    case __.ArticleContent : return _ArticleContent;
-                    case __.IsRecommand : return _IsRecommand;
-                    case __.IsPublish : return _IsPublish;
-                    case __.Status : return _Status;
-                    case __.CreatedOn : return _CreatedOn;
-                    case __.CreatedByName : return _CreatedByName;
-                    case __.ModifiedOn : return _ModifiedOn;
-                    case __.ModifiedByName : return _ModifiedByName;
+                    case __.id : return _id;
+                    case __.title : return _title;
+                    case __.type : return _type;
+                    case __.shareUrl : return _shareUrl;
+                    case __.shareTitle : return _shareTitle;
+                    case __.listUrl : return _listUrl;
+                    case __.contentUrl : return _contentUrl;
+                    case __.content : return _content;
+                    case __.status : return _status;
+                    case __.publishTime : return _publishTime;
+                    case __.createTime : return _createTime;
+                    case __.updateTime : return _updateTime;
+                    case __.createUid : return _createUid;
+                    case __.modifyUid : return _modifyUid;
                     default: return base[name];
                 }
             }
@@ -195,18 +221,20 @@ namespace Dafy.OnlineTran.Entity.Models
             {
                 switch (name)
                 {
-                    case __.Id : _Id = Convert.ToInt64(value); break;
-                    case __.ArticleTitle : _ArticleTitle = Convert.ToString(value); break;
-                    case __.ArticleType : _ArticleType = Convert.ToInt32(value); break;
-                    case __.ArticleImg : _ArticleImg = Convert.ToString(value); break;
-                    case __.ArticleContent : _ArticleContent = Convert.ToString(value); break;
-                    case __.IsRecommand : _IsRecommand = Convert.ToInt32(value); break;
-                    case __.IsPublish : _IsPublish = Convert.ToInt32(value); break;
-                    case __.Status : _Status = Convert.ToInt32(value); break;
-                    case __.CreatedOn : _CreatedOn = Convert.ToDateTime(value); break;
-                    case __.CreatedByName : _CreatedByName = Convert.ToString(value); break;
-                    case __.ModifiedOn : _ModifiedOn = Convert.ToDateTime(value); break;
-                    case __.ModifiedByName : _ModifiedByName = Convert.ToString(value); break;
+                    case __.id : _id = Convert.ToInt64(value); break;
+                    case __.title : _title = Convert.ToString(value); break;
+                    case __.type : _type = Convert.ToInt32(value); break;
+                    case __.shareUrl : _shareUrl = Convert.ToString(value); break;
+                    case __.shareTitle : _shareTitle = Convert.ToString(value); break;
+                    case __.listUrl : _listUrl = Convert.ToString(value); break;
+                    case __.contentUrl : _contentUrl = Convert.ToString(value); break;
+                    case __.content : _content = Convert.ToString(value); break;
+                    case __.status : _status = Convert.ToInt32(value); break;
+                    case __.publishTime : _publishTime = Convert.ToDateTime(value); break;
+                    case __.createTime : _createTime = Convert.ToDateTime(value); break;
+                    case __.updateTime : _updateTime = Convert.ToDateTime(value); break;
+                    case __.createUid : _createUid = Convert.ToInt64(value); break;
+                    case __.modifyUid : _modifyUid = Convert.ToInt64(value); break;
                     default: base[name] = value; break;
                 }
             }
@@ -214,130 +242,148 @@ namespace Dafy.OnlineTran.Entity.Models
         #endregion
 
         #region 字段名
-        /// <summary>取得文章管理字段信息的快捷方式</summary>
+        /// <summary>取得字段信息的快捷方式</summary>
         public partial class _
         {
-            ///<summary>主键ID(自增列)</summary>
-            public static readonly Field Id = FindByName(__.Id);
+            ///<summary>文章ID</summary>
+            public static readonly Field id = FindByName(__.id);
 
-            ///<summary>创建者名称</summary>
-            public static readonly Field ArticleTitle = FindByName(__.ArticleTitle);
+            ///<summary>文章标题</summary>
+            public static readonly Field title = FindByName(__.title);
 
-            ///<summary>创建者名称</summary>
-            public static readonly Field ArticleType = FindByName(__.ArticleType);
+            ///<summary>文章类型</summary>
+            public static readonly Field type = FindByName(__.type);
 
-            ///<summary>创建者名称</summary>
-            public static readonly Field ArticleImg = FindByName(__.ArticleImg);
+            ///<summary>文章分享图片</summary>
+            public static readonly Field shareUrl = FindByName(__.shareUrl);
 
-            ///<summary>创建者名称</summary>
-            public static readonly Field ArticleContent = FindByName(__.ArticleContent);
+            ///<summary>文章分享描述</summary>
+            public static readonly Field shareTitle = FindByName(__.shareTitle);
 
-            ///<summary>状态(0：未激活  1：激活失败 2：已启用  3：已停用 4：已删除)</summary>
-            public static readonly Field IsRecommand = FindByName(__.IsRecommand);
+            ///<summary>文章列表图片</summary>
+            public static readonly Field listUrl = FindByName(__.listUrl);
 
-            ///<summary>状态(0：未激活  1：激活失败 2：已启用  3：已停用 4：已删除)</summary>
-            public static readonly Field IsPublish = FindByName(__.IsPublish);
+            ///<summary>正文链接</summary>
+            public static readonly Field contentUrl = FindByName(__.contentUrl);
 
-            ///<summary>状态(0：未激活  1：激活失败 2：已启用  3：已停用 4：已删除)</summary>
-            public static readonly Field Status = FindByName(__.Status);
+            ///<summary>文章内容</summary>
+            public static readonly Field content = FindByName(__.content);
+
+            ///<summary>文章状态</summary>
+            public static readonly Field status = FindByName(__.status);
+
+            ///<summary>发布时间</summary>
+            public static readonly Field publishTime = FindByName(__.publishTime);
 
             ///<summary>创建时间</summary>
-            public static readonly Field CreatedOn = FindByName(__.CreatedOn);
+            public static readonly Field createTime = FindByName(__.createTime);
 
-            ///<summary>创建者名称</summary>
-            public static readonly Field CreatedByName = FindByName(__.CreatedByName);
+            ///<summary>更新时间</summary>
+            public static readonly Field updateTime = FindByName(__.updateTime);
 
-            ///<summary>修改时间</summary>
-            public static readonly Field ModifiedOn = FindByName(__.ModifiedOn);
+            ///<summary>创建者,用户表的uid</summary>
+            public static readonly Field createUid = FindByName(__.createUid);
 
-            ///<summary>修改者名称</summary>
-            public static readonly Field ModifiedByName = FindByName(__.ModifiedByName);
+            ///<summary>修改者，用户表的uid</summary>
+            public static readonly Field modifyUid = FindByName(__.modifyUid);
 
             static Field FindByName(String name) { return Meta.Table.FindByName(name); }
         }
 
-        /// <summary>取得文章管理字段名称的快捷方式</summary>
+        /// <summary>取得字段名称的快捷方式</summary>
         partial class __
         {
-            ///<summary>主键ID(自增列)</summary>
-            public const String Id = "Id";
+            ///<summary>文章ID</summary>
+            public const String id = "id";
 
-            ///<summary>创建者名称</summary>
-            public const String ArticleTitle = "ArticleTitle";
+            ///<summary>文章标题</summary>
+            public const String title = "title";
 
-            ///<summary>创建者名称</summary>
-            public const String ArticleType = "ArticleType";
+            ///<summary>文章类型</summary>
+            public const String type = "type";
 
-            ///<summary>创建者名称</summary>
-            public const String ArticleImg = "ArticleImg";
+            ///<summary>文章分享图片</summary>
+            public const String shareUrl = "shareUrl";
 
-            ///<summary>创建者名称</summary>
-            public const String ArticleContent = "ArticleContent";
+            ///<summary>文章分享描述</summary>
+            public const String shareTitle = "shareTitle";
 
-            ///<summary>状态(0：未激活  1：激活失败 2：已启用  3：已停用 4：已删除)</summary>
-            public const String IsRecommand = "IsRecommand";
+            ///<summary>文章列表图片</summary>
+            public const String listUrl = "listUrl";
 
-            ///<summary>状态(0：未激活  1：激活失败 2：已启用  3：已停用 4：已删除)</summary>
-            public const String IsPublish = "IsPublish";
+            ///<summary>正文链接</summary>
+            public const String contentUrl = "contentUrl";
 
-            ///<summary>状态(0：未激活  1：激活失败 2：已启用  3：已停用 4：已删除)</summary>
-            public const String Status = "Status";
+            ///<summary>文章内容</summary>
+            public const String content = "content";
+
+            ///<summary>文章状态</summary>
+            public const String status = "status";
+
+            ///<summary>发布时间</summary>
+            public const String publishTime = "publishTime";
 
             ///<summary>创建时间</summary>
-            public const String CreatedOn = "CreatedOn";
+            public const String createTime = "createTime";
 
-            ///<summary>创建者名称</summary>
-            public const String CreatedByName = "CreatedByName";
+            ///<summary>更新时间</summary>
+            public const String updateTime = "updateTime";
 
-            ///<summary>修改时间</summary>
-            public const String ModifiedOn = "ModifiedOn";
+            ///<summary>创建者,用户表的uid</summary>
+            public const String createUid = "createUid";
 
-            ///<summary>修改者名称</summary>
-            public const String ModifiedByName = "ModifiedByName";
+            ///<summary>修改者，用户表的uid</summary>
+            public const String modifyUid = "modifyUid";
 
         }
         #endregion
     }
 
-    /// <summary>文章管理接口</summary>
+    /// <summary>接口</summary>
     public partial interface IArticle
     {
         #region 属性
-        /// <summary>主键ID(自增列)</summary>
-        Int64 Id { get; set; }
+        /// <summary>文章ID</summary>
+        Int64 id { get; set; }
 
-        /// <summary>创建者名称</summary>
-        String ArticleTitle { get; set; }
+        /// <summary>文章标题</summary>
+        String title { get; set; }
 
-        /// <summary>创建者名称</summary>
-        Int32 ArticleType { get; set; }
+        /// <summary>文章类型</summary>
+        Int32 type { get; set; }
 
-        /// <summary>创建者名称</summary>
-        String ArticleImg { get; set; }
+        /// <summary>文章分享图片</summary>
+        String shareUrl { get; set; }
 
-        /// <summary>创建者名称</summary>
-        String ArticleContent { get; set; }
+        /// <summary>文章分享描述</summary>
+        String shareTitle { get; set; }
 
-        /// <summary>状态(0：未激活  1：激活失败 2：已启用  3：已停用 4：已删除)</summary>
-        Int32 IsRecommand { get; set; }
+        /// <summary>文章列表图片</summary>
+        String listUrl { get; set; }
 
-        /// <summary>状态(0：未激活  1：激活失败 2：已启用  3：已停用 4：已删除)</summary>
-        Int32 IsPublish { get; set; }
+        /// <summary>正文链接</summary>
+        String contentUrl { get; set; }
 
-        /// <summary>状态(0：未激活  1：激活失败 2：已启用  3：已停用 4：已删除)</summary>
-        Int32 Status { get; set; }
+        /// <summary>文章内容</summary>
+        String content { get; set; }
+
+        /// <summary>文章状态</summary>
+        Int32 status { get; set; }
+
+        /// <summary>发布时间</summary>
+        DateTime publishTime { get; set; }
 
         /// <summary>创建时间</summary>
-        DateTime CreatedOn { get; set; }
+        DateTime createTime { get; set; }
 
-        /// <summary>创建者名称</summary>
-        String CreatedByName { get; set; }
+        /// <summary>更新时间</summary>
+        DateTime updateTime { get; set; }
 
-        /// <summary>修改时间</summary>
-        DateTime ModifiedOn { get; set; }
+        /// <summary>创建者,用户表的uid</summary>
+        Int64 createUid { get; set; }
 
-        /// <summary>修改者名称</summary>
-        String ModifiedByName { get; set; }
+        /// <summary>修改者，用户表的uid</summary>
+        Int64 modifyUid { get; set; }
         #endregion
 
         #region 获取/设置 字段值
