@@ -58,5 +58,35 @@ namespace Dafy.OnlineTran.Api.Controllers
             rq.CreatedByName = this.User.Identity.Name;
             return _service.SaveTools(rq);
         }
+
+        /// <summary>
+        /// 获客助手：发文章列表
+        /// </summary>
+        [HttpPost]
+        public ArticleListRS GetArticles(ArticleListRQ rq)
+        {
+            if (rq == null || rq.pageIndex <= 0 || rq.pageSize <= 0)
+                return new ArticleListRS { total = 0, list = null };
+            return _service.GetArticles(rq);
+        }
+
+        /// <summary>
+        /// 获客助手：发文章
+        /// </summary>
+        [HttpPost]
+        public ResultModel<string> SaveArticles(SaveArticleRQ rq)
+        {
+            rq.CreatedByName = this.User.Identity.Name;
+            return _service.SaveArticles(rq);
+        }
+
+        /// <summary>
+        /// 获客助手：发文章详情
+        /// </summary>
+        [HttpPost]
+        public ArticleListItemRS GetDetailArticle(ArticleListRQ rq)
+        {
+            return _service.GetDetailArticle(rq);
+        }
     }
 }

@@ -53,37 +53,37 @@ namespace Dafy.OnlineTran.Entity.Models
             set { if (OnPropertyChanging(__.cid, value)) { _cid = value; OnPropertyChanged(__.cid); } }
         }
 
-        private Byte[] _shareUrl;
+        private String _shareUrl;
         /// <summary>资讯分享图片</summary>
         [DisplayName("资讯分享图片")]
         [Description("资讯分享图片")]
         [DataObjectField(false, false, true, 50)]
-        [BindColumn(4, "shareUrl", "资讯分享图片", null, "varbinary(50)", 0, 0, false)]
-        public virtual Byte[] shareUrl
+        [BindColumn(4, "shareUrl", "资讯分享图片", null, "varchar(50)", 0, 0, false)]
+        public virtual String shareUrl
         {
             get { return _shareUrl; }
             set { if (OnPropertyChanging(__.shareUrl, value)) { _shareUrl = value; OnPropertyChanged(__.shareUrl); } }
         }
 
-        private Byte[] _shareTitle;
+        private String _shareTitle;
         /// <summary>资讯分享描述</summary>
         [DisplayName("资讯分享描述")]
         [Description("资讯分享描述")]
         [DataObjectField(false, false, true, 50)]
-        [BindColumn(5, "shareTitle", "资讯分享描述", null, "varbinary(50)", 0, 0, false)]
-        public virtual Byte[] shareTitle
+        [BindColumn(5, "shareTitle", "资讯分享描述", null, "varchar(50)", 0, 0, false)]
+        public virtual String shareTitle
         {
             get { return _shareTitle; }
             set { if (OnPropertyChanging(__.shareTitle, value)) { _shareTitle = value; OnPropertyChanged(__.shareTitle); } }
         }
 
-        private Byte[] _listUrl;
+        private String _listUrl;
         /// <summary>资讯列表图片</summary>
         [DisplayName("资讯列表图片")]
         [Description("资讯列表图片")]
         [DataObjectField(false, false, true, 50)]
-        [BindColumn(6, "listUrl", "资讯列表图片", null, "varbinary(50)", 0, 0, false)]
-        public virtual Byte[] listUrl
+        [BindColumn(6, "listUrl", "资讯列表图片", null, "varchar(50)", 0, 0, false)]
+        public virtual String listUrl
         {
             get { return _listUrl; }
             set { if (OnPropertyChanging(__.listUrl, value)) { _listUrl = value; OnPropertyChanged(__.listUrl); } }
@@ -224,9 +224,9 @@ namespace Dafy.OnlineTran.Entity.Models
                     case __.id : _id = Convert.ToInt64(value); break;
                     case __.title : _title = Convert.ToString(value); break;
                     case __.cid : _cid = Convert.ToInt64(value); break;
-                    case __.shareUrl : _shareUrl = (Byte[])value; break;
-                    case __.shareTitle : _shareTitle = (Byte[])value; break;
-                    case __.listUrl : _listUrl = (Byte[])value; break;
+                    case __.shareUrl : _shareUrl = Convert.ToString(value); break;
+                    case __.shareTitle : _shareTitle = Convert.ToString(value); break;
+                    case __.listUrl : _listUrl = Convert.ToString(value); break;
                     case __.contentUrl : _contentUrl = Convert.ToString(value); break;
                     case __.content : _content = Convert.ToString(value); break;
                     case __.status : _status = Convert.ToInt32(value); break;
@@ -353,13 +353,13 @@ namespace Dafy.OnlineTran.Entity.Models
         Int64 cid { get; set; }
 
         /// <summary>资讯分享图片</summary>
-        Byte[] shareUrl { get; set; }
+        String shareUrl { get; set; }
 
         /// <summary>资讯分享描述</summary>
-        Byte[] shareTitle { get; set; }
+        String shareTitle { get; set; }
 
         /// <summary>资讯列表图片</summary>
-        Byte[] listUrl { get; set; }
+        String listUrl { get; set; }
 
         /// <summary>正文链接</summary>
         String contentUrl { get; set; }

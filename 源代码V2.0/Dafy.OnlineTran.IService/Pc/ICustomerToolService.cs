@@ -41,6 +41,20 @@ namespace Dafy.OnlineTran.IService.Pc
         /// </summary>
         /// <param name="rq"></param>
         /// <returns></returns>
-        CustomerToolsRS GetArticles(CustomerToolsRQ rq);
+        ArticleListRS GetArticles(ArticleListRQ rq);
+
+        /// <summary>
+        /// 获客助手：发文章
+        /// </summary>
+        /// <param name="rq"></param>
+        /// <returns></returns>
+        ResultModel<string> SaveArticles(SaveArticleRQ rq);
+
+        /// <summary>
+        /// 获客助手：发文章详情
+        /// </summary>
+        /// <param name="rq"></param>
+        /// <returns></returns>
+        ArticleListItemRS GetDetailArticle(ArticleListRQ rq);
     }
 }
