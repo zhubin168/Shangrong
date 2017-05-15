@@ -4,7 +4,7 @@ require.config({
         'jquery': '../lib/jquery/jquery.min',
         'angularAMD': '../lib/angularAMD/angularAMD.min', 
         'ngload': '../lib/angularAMD/ngload.min', 
-        'ui-router': '../lib/angular-ui-router/release/angular-ui-router',
+        'ui-router': '../lib/angular-ui-router/dist/angular-ui-router',
         'angular': '../lib/angular/angular',
         'ngAnimate':"../lib/angular-animate/angular-animate.min",
         'ngSanitize':'../lib/angular-sanitize/angular-sanitize.min',

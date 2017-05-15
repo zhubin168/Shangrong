@@ -12,16 +12,16 @@ define(['app'], function(app) {
 			});
 		};
 		//获取登录姓名
-		var authData = localStorage.getItem('onLineauthorization');
-		console.log(authData);
-        if(authData != undefined && authData != null)
-        {
-            authData = eval('(' + authData + ')');
-			$scope.userName = authData.userName != "" ? authData.userName : '';
-        }else{
-        	localStorage.removeItem('onLineauthorization');
-			$state.go('login');
-        }
+		// var authData = localStorage.getItem('onLineauthorization');
+		// console.log(authData);
+  //       if(authData != undefined && authData != null)
+  //       {
+  //           authData = eval('(' + authData + ')');
+		// 	$scope.userName = authData.userName != "" ? authData.userName : '';
+  //       }else{
+  //       	localStorage.removeItem('onLineauthorization');
+		// 	$state.go('login');
+  //       }
         //获取登录用户的菜单
         homeService.getAuthorityMeun({}, function(data) {
 				if(data!=null)

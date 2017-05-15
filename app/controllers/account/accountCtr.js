@@ -7,33 +7,34 @@ define(['app'], function(app) {
             };
 
             $scope.login = function(user) { //登录
-                if (user.userId == '') {
-                    toastr.warning('请输入用户名!');
-                    return;
-                } else if (!/^[0-9]*$/.test(user.userId)) {
-                    toastr.warning('用户名只能输入数字!');
-                    return;
-                }
-                if (user.password == '') {
-                    toastr.warning('请输入密码!');
-                    return;
-                }
-                $loading.start("loginLoad");
-	            AccountService.login(user, function(data) {
-	            	console.log(data);
-	            	    $loading.finish("loginLoad");
-	                    if (data != null && data.state == 1) {	        
-	                    	localStorage.setItem('onLineauthorization', JSON.stringify(data.data));
-	                        $rootScope.token = data.data.token;
-	                        $rootScope.userId=user.userId;	                        
-	                        $state.go('home.getOrders');
-	                    } else {
-	                    	toastr.warning('用户名或密码不对!');
-	                    	localStorage.removeItem('onLineauthorization');
-	                    }
-	            });
+            	$state.go("home.products");
+             //    if (user.userId == '') {
+             //        toastr.warning('请输入用户名!');
+             //        return;
+             //    } else if (!/^[0-9]*$/.test(user.userId)) {
+             //        toastr.warning('用户名只能输入数字!');
+             //        return;
+             //    }
+             //    if (user.password == '') {
+             //        toastr.warning('请输入密码!');
+             //        return;
+             //    }
+             //    $loading.start("loginLoad");
+	            // AccountService.login(user, function(data) {
+	            // 	console.log(data);
+	            // 	    $loading.finish("loginLoad");
+	            //         if (data != null && data.state == 1) {	        
+	            //         	localStorage.setItem('onLineauthorization', JSON.stringify(data.data));
+	            //             $rootScope.token = data.data.token;
+	            //             $rootScope.userId=user.userId;	                        
+	            //             $state.go('home.getOrders');
+	            //         } else {
+	            //         	toastr.warning('用户名或密码不对!');
+	            //         	localStorage.removeItem('onLineauthorization');
+	            //         }
+	            // });
 
-            };
+            }
 		}]);
 		 //忘记密码
 		app.controller('forgetPwdCtrl', ['$rootScope','$state','$scope','$uibModal','$loading','AccountService','CommonService','UtilService','toastr','$interval', function($rootScope, $state,$scope,$uibModal,$loading,AccountService,CommonService,UtilService,toastr,$interval){
@@ -529,116 +530,6 @@ define(['app'], function(app) {
 				   }
 			}
 		}]);
-		
-		app.controller('productsCtrl', ['$rootScope','$state','$scope','$uibModal','$loading','AccountService','toastr', function($rootScope, $state,$scope,$uibModal,$loading,AccountService,toastr){
-            $scope.parm = {
-			"paraName":"",
-			"pageIndex": 1,
-			"pageSize": 10
-	        }		
-			//产品管理
-			$rootScope.getProducts=function(){
-				AccountService.getProducts($scope.parm,function(data){
-					    console.log(data);
-					    $scope.getProductsList = data.list;
-					    $scope.totalItems = data.total;
-				        $loading.finish("getProducts");
-				        
-			    });
-			 }
-			$rootScope.getProducts();
-			
-			//分页事件,获取当前的点击的页数
-			$scope.pageChanged = function() {
-				console.log($scope.parm.pageIndex);
-				$rootScope.getProducts();
-			};	
-			
-		    //删除
-			$scope.delProducts = function(id){
-				var parm = {"id":id}
-				var comfirm =confirm("是否确认删除该行？");
-	           	  if(comfirm){
-					  AccountService.delProducts (parm, function(data) {
-					  	     toastr.success(data.message);
-					  	     $rootScope.getProducts();
-					    })
-				   }
-			}
-			
-			//保存产品
-			$scope.saveProducts = function(index) { //打开模态 
-					var modalInstance = $uibModal.open({
-						templateUrl: 'saveProducts.html', //指向上面创建的视图
-						controller: 'saveProductsCtrl', // 初始化模态范围
-						size: 'lg', //大小配置
-						resolve: {
-							configItem: function() {
-								if(index == -1) {
-									return {
-									  "id": '',
-									  "proName": '',
-									  "proType":'',
-									  "banner":'',
-									  "price":'',
-									  "proAge": '',
-									  "logo": '',
-									  "proPlan": '',
-									  "proUse": '',
-									  "proDoc": '',
-									  "proCase": '',
-									  "whyChoose":'',
-									  "isHot": '',
-									  "status":'',
-									};
-								} else {
-									return $scope.getProductsList[index];
-								}
-							}
-						}
-					})
-				}
-		}]);
-		
-		//保存产品
-		app.controller('saveProductsCtrl',['$uibModalInstance','$scope','$state','$rootScope','$loading','UtilService','AccountService','configItem','Settings','toastr', function($uibModalInstance, $scope, $state, $rootScope,$loading ,UtilService,AccountService, configItem,Settings, toastr) {
-				
-				$scope.configItem = configItem;
-				$scope.ok = function() {
-					console.log(JSON.stringify($scope.configItem));
-					AccountService.saveProducts($scope.configItem, function(data) {
-						if(data != null && data.state == 1) {
-							 $rootScope.getProducts();
-							 toastr.success(data.message);
-						} else {
-							toastr.warning(data.message);
-							$rootScope.getProducts();
-						}
-					})
-					$uibModalInstance.close(); //关闭并返回当前选项
-				};
-				//取消
-				$scope.cancel = function() {
-						$uibModalInstance.dismiss('cancel'); // 退出
-						$rootScope.getProducts();
-				}
-				
-				//文件上传
-	            $scope.uploadPlanImg = function (file) {
-	            	console.log(file);
-	            	$loading.start("upLoadTrainImg");
-	                AccountService.uploadImg({}, file, function(data) {
-	                	    console.log(data);
-					        if (data.state != 0) {
-		                    	var photoUrl=data.data;
-				                $scope.configItem.banner="http://"+photoUrl;
-					        }else{
-					            toastr.warning(data.message);
-					        }
-					        $loading.finish("upLoadTrainImg");
-		               });
-	            };	
-		  }]);
 		
 		app.controller('coursesCtrl', ['$rootScope','$state','$scope','$uibModal','$loading','AccountService','toastr', function($rootScope, $state,$scope,$uibModal,$loading,AccountService,toastr){
             $scope.parm = {

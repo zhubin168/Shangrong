@@ -62,28 +62,29 @@ define(['angular'], function(angular) {
                         data: par,
                         timeout:100000
                     }).success(function(data) {
-                        if (JSON.stringify(data).indexOf('login')>0 || (data.message!=undefined && data.message.indexOf('请求授权')>0)) {
-                            localStorage.removeItem('onLineauthorization');
-                            $state.go('login');
-                        }
-                        else {
-                            deferred.resolve(data);
-                        }
+                        // if (JSON.stringify(data).indexOf('login')>0 || (data.message!=undefined && data.message.indexOf('请求授权')>0)) {
+                        //     localStorage.removeItem('onLineauthorization');
+                        //     $state.go('login');
+                        // }
+                        // else {
+                        //     deferred.resolve(data);
+                        // }
+                        deferred.resolve(data);
                     }).error(function(error, status) {                    	
                         var msg = '获取数据出现错误!';
-                        if(status == undefined){
-                        	toastr.error('认证失效,请重新登录!');
-                            localStorage.removeItem('onLineauthorization');
-					        $state.go('login');
+             //            if(status == undefined){
+             //            	toastr.error('认证失效,请重新登录!');
+             //                localStorage.removeItem('onLineauthorization');
+					        // $state.go('login');
 
-                        }else if (status==0 || status == 500 || status==404){
-                            msg = '服务器错误!';
-                            toastr.error(msg);
-                            deferred.reject(msg);
-                        }else{
-                            toastr.error(msg);
-                            deferred.reject(msg);
-                        }
+             //            }else if (status==0 || status == 500 || status==404){
+             //                msg = '服务器错误!';
+             //                toastr.error(msg);
+             //                deferred.reject(msg);
+             //            }else{
+             //                toastr.error(msg);
+             //                deferred.reject(msg);
+             //            }
                     });
                     return deferred.promise;
                 },

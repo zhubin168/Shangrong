@@ -35,7 +35,7 @@ define([
     app.constant('Settings', {
         apiServiceBaseUrl: serviceUrl,
         picterServiceURL:picterServiceURL,
-        clientId: 'CollectionPC',
+        clientId: 'shangRong',
         version: '1.0.0',
         deBug: false
     });
@@ -44,17 +44,17 @@ define([
     app.config(['$stateProvider', '$urlRouterProvider', function($stateProvider, $urlRouterProvider) {
         
         //判断是否登录
-        var authData = null;
-        authData = localStorage.getItem('onLineauthorization');
-        if(authData != undefined && authData != null)
-        {
-            authData = eval('(' + authData + ')');
-        }
-        if (authData === null) {
-            $urlRouterProvider.otherwise('/login');
-        } else {
-            $urlRouterProvider.otherwise('/home');
-        }
+        // var authData = null;
+        // authData = localStorage.getItem('onLineauthorization');
+        // if(authData != undefined && authData != null)
+        // {
+        //     authData = eval('(' + authData + ')');
+        // }
+        // if (authData === null) {
+        //     $urlRouterProvider.otherwise('/login');
+        // } else {
+        //     $urlRouterProvider.otherwise('/home');
+        // }
         $stateProvider
             .state('home', angularAMD.route({
                 url: '/home',
@@ -77,6 +77,7 @@ define([
 		                return "homeCtrl";
 		            }
             }))
+
             .state('login', angularAMD.route({ //登录
 		            url: '/login',
 		            templateUrl: 'templates/account/login.html',
@@ -342,14 +343,14 @@ define([
 		            }
 		    }))
             
-             .state('home.getProducts', angularAMD.route({ //产品管理列表
+             .state('home.products', angularAMD.route({ //产品管理列表
 		            url: '/getProducts',
-		            templateUrl: 'templates/account/getProducts.html',
+		            templateUrl: 'templates/product/products.html',
 		            resolve: {
 		                loadController: ['$q', '$stateParams',
 		                    function($q, $stateParams) {
-		                        var accountCtrl = "app/controllers/account/accountCtr.js";
-		                        var accountService = "app/services/account/accountService.js";
+		                        var accountCtrl = "app/controllers/product/productCtr.js";
+		                        var accountService = "app/services/product/productService.js";
 		
 		                        var deferred = $q.defer();
 		                        require([accountCtrl, accountService], function() {
@@ -361,6 +362,28 @@ define([
 		            },
 		            controllerProvider: function($stateParams) {
 		                return "productsCtrl";
+		            }
+		    }))
+
+            .state('home.addProducts', angularAMD.route({ //产品管理列表
+		            url: '/editProducts/:id',
+		            templateUrl: 'templates/product/addProduct.html',
+		            resolve: {
+		                loadController: ['$q', '$stateParams',
+		                    function($q, $stateParams) {
+		                        var accountCtrl = "app/controllers/product/productCtr.js";
+		                        var accountService = "app/services/product/productService.js";
+		
+		                        var deferred = $q.defer();
+		                        require([accountCtrl, accountService], function() {
+		                            deferred.resolve();
+		                        });
+		                        return deferred.promise;
+		                    }
+		                ]
+		            },
+		            controllerProvider: function($stateParams) {
+		                return "saveProductsCtrl";
 		            }
 		    }))
              
