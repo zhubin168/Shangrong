@@ -123,10 +123,18 @@ namespace Dafy.OnlineTran.ServiceImpl.Pc
         public ArticleListRS GetArticles(ArticleListRQ rq)
         {
             var result = new ArticleListRS { total = 0, list = null };
-            var sql = string.Empty;//"select * from Article where 1=1 ";
+            var sql = " 1=1 ";//"select * from Article where 1=1 ";
             if (!string.IsNullOrWhiteSpace(rq.paraName))
             {
-                sql += string.Format(" (ArticleTitle like '%{0}%' or ArticleType like '%{0}%') ", rq.paraName);
+                sql += string.Format(" and ArticleTitle like '%{0}%' ", rq.paraName);
+            }
+            if (!string.IsNullOrWhiteSpace(rq.type))
+            {
+                sql += string.Format(" and ArticleType='{0}' ", rq.type);
+            }
+            if (!string.IsNullOrWhiteSpace(rq.status))
+            {
+                sql += string.Format(" and Status='{0}' ", rq.status);
             }
             var user = Article.FindAll(sql, "Id desc", null, (rq.pageIndex - 1) * rq.pageSize, rq.pageSize);
             var query = (from a in user.ToList()

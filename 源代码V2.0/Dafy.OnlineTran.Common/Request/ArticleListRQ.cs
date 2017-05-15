@@ -15,6 +15,8 @@ namespace Dafy.OnlineTran.Common.Request
         /// </summary>
         public string paraName { get; set; }
         public int id { get;set;}
+        public string type { get; set; }
+        public string status { get; set; }
     }
     public class SaveArticleRQ
     {
