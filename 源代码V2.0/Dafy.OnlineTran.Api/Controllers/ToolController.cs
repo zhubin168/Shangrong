@@ -76,7 +76,7 @@ namespace Dafy.OnlineTran.Api.Controllers
         [HttpPost]
         public ResultModel<string> SaveArticles(SaveArticleRQ rq)
         {
-            rq.CreatedByName = this.User.Identity.Name;
+            rq.createUid = Convert.ToInt32(this.User.Identity.Name);
             return _service.SaveArticles(rq);
         }
 

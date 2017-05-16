@@ -195,7 +195,7 @@ namespace Dafy.OnlineTran.ServiceImpl.Pc
             user.content = rq.content;
             user.contentUrl = rq.contentUrl;
             user.listUrl = rq.listUrl;
-            user.modifyUid = rq.modifyUid;
+            user.modifyUid = rq.createUid;
             user.publishTime = rq.publishTime;
             user.shareTitle = rq.shareTitle;
             user.shareUrl = rq.shareUrl;

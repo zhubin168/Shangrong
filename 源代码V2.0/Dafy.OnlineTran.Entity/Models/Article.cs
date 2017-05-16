@@ -21,7 +21,7 @@ namespace Dafy.OnlineTran.Entity.Models
         /// <summary>文章ID</summary>
         [DisplayName("文章ID")]
         [Description("文章ID")]
-        [DataObjectField(true, false, false, 19)]
+        [DataObjectField(true, true, false, 19)]
         [BindColumn(1, "id", "文章ID", null, "bigint", 19, 0, false)]
         public virtual Int64 id
         {

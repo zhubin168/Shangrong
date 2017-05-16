@@ -26,50 +26,63 @@ namespace Dafy.OnlineTran.ServiceImpl.Pc
         public ArticleListRS GetArticles(ArticleListRQ rq)
         {
             var result = new ArticleListRS { total = 0, list = null };
-            var sql = string.Empty;//"select * from Article where 1=1 ";
+            var sql = " 1=1 ";
             if (!string.IsNullOrWhiteSpace(rq.paraName))
             {
-                sql += string.Format(" (ArticleTitle like '%{0}%' or ArticleType like '%{0}%') ", rq.paraName);
+                sql += string.Format(" and title like '%{0}%' ", rq.paraName);
+            }
+            if (!string.IsNullOrWhiteSpace(rq.type))
+            {
+                sql += string.Format(" and type='{0}' ", rq.type);
+            }
+            if (!string.IsNullOrWhiteSpace(rq.status))
+            {
+                sql += string.Format(" and status='{0}' ", rq.status);
             }
             var user = Article.FindAll(sql, "Id desc", null, (rq.pageIndex - 1) * rq.pageSize, rq.pageSize);
             var query = (from a in user.ToList()
                          select new
                          {
-                             a.ArticleContent,
-                             a.ArticleImg,
-                             a.ArticleTitle,
-                             a.ArticleType,
-                             a.CreatedByName,
-                             a.CreatedOn,
-                             a.Id,
-                             a.IsPublish,
-                             a.IsRecommand,
-                             a.ModifiedByName,
-                             a.ModifiedOn,
-                             a.Status,
+                             a.content,
+                             a.contentUrl,
+                             a.createTime,
+                             a.createUid,
+                             a.id,
+                             a.listUrl,
+                             a.modifyUid,
+                             a.publishTime,
+                             a.shareTitle,
+                             a.shareUrl,
+                             a.status,
+                             a.title,
+                             a.type,
+                             a.updateTime,
                          });
-            query = query.OrderByDescending(q => q.ModifiedOn).ThenByDescending(q => q.Id);
-            result.total = Article.FindAll(sql, null, null, 0, 0).Count;//query.Count();
+            result.total = Article.FindAll(sql, null, null, 0, 0).Count;
             if (result.total == 0) return result;
             result.list = query.Select(a => new ArticleListItemRS
             {
-                Id=a.Id,
-                ArticleContent=a.ArticleContent,
-                ArticleImg=a.ArticleImg,
-                ArticleType=a.ArticleType,
-                ArticleTitle=a.ArticleTitle,
-                IsPublish=a.IsPublish,
-                IsRecommand=a.IsRecommand,
-                Status=a.Status,
-                CreatedOn=a.CreatedOn,
-                CreatedByName=a.CreatedByName
+                content = a.content,
+                contentUrl = a.contentUrl,
+                createTime = a.createTime,
+                createUid = a.createUid,
+                id = a.id,
+                listUrl = a.listUrl,
+                modifyUid = a.modifyUid,
+                publishTime = a.publishTime,
+                shareTitle = a.shareTitle,
+                shareUrl = a.shareUrl,
+                status = a.status,
+                title = a.title,
+                type = a.type,
+                updateTime = a.updateTime
             }).ToList();
             return result;
         }
 
         public ResultModel<string> DelArticles(SaveArticleRQ rq)
         {
-            var obj = Article.FindById(rq.Id);
+            var obj = Article.FindByid(rq.id);
             int nCount = obj.Delete();
             return new ResultModel<string>
             {
@@ -87,22 +100,24 @@ namespace Dafy.OnlineTran.ServiceImpl.Pc
         public ResultModel<string> SaveArticles(SaveArticleRQ rq)
         {
             EntityList<Article> users = new EntityList<Article>();
-            var user = Article.FindById(rq.Id);
+            var user = Article.FindByid(rq.id);
             if (null == user)
             {
                 user = new Article();
-                user.CreatedByName = rq.CreatedByName;
-                user.CreatedOn = DateTime.Now;
+                user.createUid = rq.createUid;
+                user.createTime = DateTime.Now;
             }
-            user.ArticleContent = rq.ArticleContent;
-            user.ArticleImg=rq.ArticleImg;
-            user.ArticleTitle = rq.ArticleTitle;
-            user.ArticleType = rq.ArticleType;
-            user.IsPublish = rq.IsPublish;
-            user.IsRecommand = rq.IsRecommand;
-            user.ModifiedByName = rq.CreatedByName;
-            user.ModifiedOn = DateTime.Now;
-            user.Status = rq.Status;
+            user.content = rq.content;
+            user.contentUrl = rq.contentUrl;
+            user.listUrl = rq.listUrl;
+            user.modifyUid = rq.modifyUid;
+            user.publishTime = rq.publishTime;
+            user.shareTitle = rq.shareTitle;
+            user.shareUrl = rq.shareUrl;
+            user.status = rq.status;
+            user.title = rq.title;
+            user.type = rq.type;
+            user.updateTime = DateTime.Now;
             users.Add(user);
             int nCount = users.Save();
             return new ResultModel<string>
