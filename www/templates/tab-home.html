@@ -1,77 +1,62 @@
-<ion-view view-title="尚融" hide-tabs="false">
+<ion-view view-title="尚融" hide-tabs="false" hide-nav-bar="true">
     <ion-content>
-        <ion-slide-box auto-play="true" does-continue="true">
+        <ion-slide-box auto-play="false" does-continue="true">
             <ion-slide>
-                <a>
-                    <img src="./img/home/1.jpg" />
-                </a>
+                <img src="./img/home/banner1.png" />
             </ion-slide>
             <ion-slide>
-                <a>
-                    <img src="./img/home/2.jpg" />
-                </a>
+                 <img src="./img/home/banner1.png" />
             </ion-slide>
             <ion-slide>
-                <a>
-                    <img src="./img/home/3.png" />
-                </a>
+                 <img src="./img/home/banner1.png" />
             </ion-slide>
         </ion-slide-box>
-        <div class="hotTitle">
-            <h3 class="item-title">
-                <span class="ion01">
-                    <i class="ion-android-radio-button-off" style="margin-right: 8px;"></i>热门产品
-                </span>
-            </h3>
+        
+        <div class="home_hotPro vm">
+        	<img width="8" src="./img/home/circle_blue.png"/>
+        	<span class="hotPro_title">热门产品</span>
         </div>
-        <div class="card" style="padding:0 10px;">
-            <img src="./img/home/pro01.jpg" width="100%" border="0" height="223"/>
+
+        <div class="srCard padding">
+            <img class="hotPro_bannerImg" src="./img/home/loveChildren.png" width="100%"/>
             <div>
-                <h3 class="info title">少儿学习计划</h3>
-                <p class="IT_summary">
-                    建这个楼的目的是希望大家监督我去陪着孩子完成这个计划建这个楼的目的是希望大家监督我去陪着孩子完成这个计划
+                <div class="hotPro_itemTitle">少儿学生医疗保障计划</div>
+                <p class="hotPro_discrible">
+                                   专为满3-18岁儿童提供身故、交通意外、重疾、住院医疗等保障外，
+                                    更有儿童绑架津贴和儿童公共场所个人责任，人性化设计、保障全面，
+                                    让你的小孩成长无忧！
                 </p>
             </div>
         </div>
-        <div class="part">
-            <ul>
-                <li>
-                    <a>
-                        <div class="card" style="padding:0 5px;">
-                            <img src="./img/home/pro01.jpg" width="100%" border="0" height="162"/>
-                            <div>
-                                <h3 class="info title">少儿学习计划</h3>
-                                <p class="tit">
-                                    建这个楼的目的是希望大家监督我去陪着孩子完成这个计划建这个楼的目的是希望大家监督我去陪着孩子完成这个计划
-                                </p>
-                            </div>
-                        </div>
-                    </a>
-                </li>
-                <li>
-                    <div class="card" style="padding:0 5px;">
-                            <img src="./img/home/pro01.jpg" width="100%" border="0" height="162"/>
-                            <div>
-                                <h3 class="info title">少儿学习计划</h3>
-                                <p class="tit">
-                                    建这个楼的目的是希望大家监督我去陪着孩子完成这个计划建这个楼的目的是希望大家监督我去陪着孩子完成这个计划
-                                </p>
-                            </div>
-                    </div>
-                </li>
-            </ul>
+        <div class="row row-no-padding">
+        	<div class="col col-50">
+		        <div class="srCard padding5 margin5-top">
+		            <img src="./img/home/hot_left.png" width="100%"/>
+		            <div>
+		                <div class="hotPro_itemTitle">少儿学生医疗保障计划</div>
+		                <p class="hotPro_discrible ellipsis2">
+                                                   专为满3-18岁儿童提供身故、交通意外、重疾、住院医疗等保障外，
+		                                    更有儿童绑架津贴和儿童公共场所个人责任，人性化设计、保障全面，
+		                                    让你的小孩成长无忧！
+		                </p>
+		            </div>
+		        </div>        		
+        	</div>
+        	<div class="col col-50">
+		        <div class="srCard padding5 margin5-top">
+		            <img src="./img/home/hot_right.png" width="100%"/>
+		            <div>
+		                <div class="hotPro_itemTitle">少儿学生医疗保障计划</div>
+		                <p class="hotPro_discrible ellipsis2">
+		                               专为满3-18岁儿童提供身故、交通意外、重疾、住院医疗等保障外，
+		                                更有儿童绑架津贴和儿童公共场所个人责任，人性化设计、保障全面，
+		                                让你的小孩成长无忧！
+		                </p>
+		            </div>
+		        </div>        		
+        	</div>
         </div>
-        <div style="width:100%;text-align:center;line-height:40px;">
-            <a class="btn">更多内容<i></i></a>
-        </div>
-        <div class="hotTitle">
-            <h3 class="item-title">
-                <span class="ion02">
-                    <i class="ion-android-radio-button-off" style="margin-right: 8px;"></i>行业资讯
-                </span>
-            </h3>
-            <div class="card">
-            </div>
-        </div>
+        
+        
     </ion-content>
 </ion-view>

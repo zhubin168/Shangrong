@@ -17,4 +17,15 @@
 
     <ion-nav-view></ion-nav-view>
   </body>
+    <script type="text/javascript">
+     (function() {
+        var reSize =function() {
+            var deviceWidth = document.documentElement.clientWidth > 1300 ? 1300 : document.documentElement.clientWidth;
+            //按照640像素下字体为100px的标准来，得到一个字体缩放比例值 6.4
+            document.documentElement.style.fontSize = (deviceWidth / 3.75) + 'px';
+        };
+        reSize();
+        window.onresize = reSize;
+      })();
+    </script>    
 </html>
