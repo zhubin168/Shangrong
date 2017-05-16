@@ -68,6 +68,7 @@ namespace Dafy.OnlineTran.Common.Response
         public int hotPosition { get; set; }
 
         /// <summary>状态</summary>
-        public int status { get; set; }
+        public string status { get; set; }
+        public DateTime publishTime { get; set; }
     }
 }

@@ -16,19 +16,80 @@ namespace Dafy.OnlineTran.IService.Pc
     public interface ICourseService
     {
         /// <summary>
-        /// 课程管理列表
+        /// 资讯分类管理
         /// </summary>
         /// <param name="rq"></param>
         /// <returns></returns>
-        CourseListRS GetCourses(CourseListRQ rq);
-
-        ResultModel<string> DelCourses(SaveCourseRQ rq);
+        InfoCategorysRS GetInfoCategorys(InfoCategorysRQ rq);
 
         /// <summary>
-        /// 保存课程信息
+        /// 保存资讯分类
         /// </summary>
         /// <param name="rq"></param>
         /// <returns></returns>
-        ResultModel<string> SaveCourses(SaveCourseRQ rq);
+        ResultModel<string> SaveInfoCategory(InfoCategorysItemRS rq);
+
+        /// <summary>
+        /// 资讯管理
+        /// </summary>
+        /// <param name="rq"></param>
+        /// <returns></returns>
+        InformationRS GetInformations(InformationRQ rq);
+
+        /// <summary>
+        /// 保存资讯
+        /// </summary>
+        /// <param name="rq"></param>
+        /// <returns></returns>
+        ResultModel<string> SaveInformation(InformationItemRS rq);
+
+        /// <summary>
+        /// 资讯详情
+        /// </summary>
+        /// <param name="rq"></param>
+        /// <returns></returns>
+        InformationItemRS GetDetailInformation(InformationRQ rq);
+
+        /// <summary>
+        /// 小知识管理
+        /// </summary>
+        /// <param name="rq"></param>
+        /// <returns></returns>
+        KnowledgeRS GetKnowledges(KnowledgeRQ rq);
+
+        /// <summary>
+        /// 保存小知识
+        /// </summary>
+        /// <param name="rq"></param>
+        /// <returns></returns>
+        ResultModel<string> SaveKnowledge(KnowledgeItemRS rq);
+
+        /// <summary>
+        /// 小知识详情
+        /// </summary>
+        /// <param name="rq"></param>
+        /// <returns></returns>
+        KnowledgeItemRS GetDetailKnowledge(KnowledgeRQ rq);
+
+        /// <summary>
+        /// 理财师充电站
+        /// </summary>
+        /// <param name="rq"></param>
+        /// <returns></returns>
+        CourseRS GetCourses(CourseRQ rq);
+
+        /// <summary>
+        /// 保存充电站
+        /// </summary>
+        /// <param name="rq"></param>
+        /// <returns></returns>
+        ResultModel<string> SaveCourse(CourseItemRS rq);
+
+        /// <summary>
+        /// 充电站详情
+        /// </summary>
+        /// <param name="rq"></param>
+        /// <returns></returns>
+        CourseItemRS GetDetailCourse(CourseRQ rq);
     }
 }

@@ -31,7 +31,7 @@ namespace Dafy.OnlineTran.ServiceImpl.Pc
             var sql = " 1=1 ";
             if (!string.IsNullOrWhiteSpace(rq.paraName))
             {
-                sql += string.Format(" and (ProName like '%{0}%' or companyName like '%{0}%') ", rq.paraName);
+                sql += string.Format(" and (productName like '%{0}%' or companyName like '%{0}%') ", rq.paraName);
             }
             if (!string.IsNullOrWhiteSpace(rq.productType))
             {
@@ -95,10 +95,10 @@ namespace Dafy.OnlineTran.ServiceImpl.Pc
                 proAge=a.proAge,
                 problemContent=a.problemContent,
                 productName=a.productName,
-                productType=a.productType,
-                //publishTime=a.publishTime,
+                productType = a.productType.Replace("1", "保险类").Replace("2", "投融类").Replace("3", "其他类"),
                 reasonContent=a.reasonContent,
-                status=a.status,
+                status = a.status.ToString().Replace("1", "上架").Replace("2", "下架").Replace("3", "草稿"),
+                publishTime=a.publishTime
             }).ToList();
             return result;
         }

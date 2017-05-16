@@ -39,4 +39,60 @@ namespace Dafy.OnlineTran.Common.Request
         public int Status { get; set; }
         public string CreatedByName { get; set; }
     }
+
+    /// <summary>
+    /// 资讯分类管理
+    /// </summary>
+    public class InfoCategorysRQ
+    {
+        public int pageIndex { get; set; }
+        public int pageSize { get; set; }
+        /// <summary>
+        /// 参数名
+        /// </summary>
+        public string paraName { get; set; }
+    }
+    /// <summary>
+    /// 资讯管理
+    /// </summary>
+    public class InformationRQ
+    {
+        public int pageIndex { get; set; }
+        public int pageSize { get; set; }
+        /// <summary>
+        /// 参数名
+        /// </summary>
+        public string paraName { get; set; }
+        public string type { get; set; }
+        public string status { get; set; }
+        public int id { get; set; }
+    }
+    /// <summary>
+    /// 小知识管理
+    /// </summary>
+    public class KnowledgeRQ
+    {
+        public int pageIndex { get; set; }
+        public int pageSize { get; set; }
+        /// <summary>
+        /// 参数名
+        /// </summary>
+        public string paraName { get; set; }
+        public string status { get; set; }
+        public int id { get; set; }
+    }
+    /// <summary>
+    /// 理财师充电站
+    /// </summary>
+    public class CourseRQ
+    {
+        public int pageIndex { get; set; }
+        public int pageSize { get; set; }
+        /// <summary>
+        /// 参数名
+        /// </summary>
+        public string paraName { get; set; }
+        public string status { get; set; }
+        public int id { get; set; }
+    }
 }

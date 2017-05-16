@@ -29,13 +29,13 @@ namespace Dafy.OnlineTran.Entity.Models
             set { if (OnPropertyChanging(__.id, value)) { _id = value; OnPropertyChanged(__.id); } }
         }
 
-        private Byte[] _name;
+        private String _name;
         /// <summary>资讯分类名称</summary>
         [DisplayName("资讯分类名称")]
         [Description("资讯分类名称")]
         [DataObjectField(false, false, false, 50)]
-        [BindColumn(2, "name", "资讯分类名称", null, "varbinary(50)", 0, 0, false)]
-        public virtual Byte[] name
+        [BindColumn(2, "name", "资讯分类名称", null, "varchar(50)", 0, 0, false)]
+        public virtual String name
         {
             get { return _name; }
             set { if (OnPropertyChanging(__.name, value)) { _name = value; OnPropertyChanged(__.name); } }
@@ -45,7 +45,7 @@ namespace Dafy.OnlineTran.Entity.Models
         /// <summary>创建时间</summary>
         [DisplayName("创建时间")]
         [Description("创建时间")]
-        [DataObjectField(false, false, false, 3)]
+        [DataObjectField(false, false, true, 3)]
         [BindColumn(3, "createTime", "创建时间", null, "datetime", 3, 0, false)]
         public virtual DateTime createTime
         {
@@ -57,7 +57,7 @@ namespace Dafy.OnlineTran.Entity.Models
         /// <summary>更新时间</summary>
         [DisplayName("更新时间")]
         [Description("更新时间")]
-        [DataObjectField(false, false, false, 3)]
+        [DataObjectField(false, false, true, 3)]
         [BindColumn(4, "updateTime", "更新时间", null, "datetime", 3, 0, false)]
         public virtual DateTime updateTime
         {
@@ -69,7 +69,7 @@ namespace Dafy.OnlineTran.Entity.Models
         /// <summary>创建者,用户表的uid</summary>
         [DisplayName("创建者,用户表的uid")]
         [Description("创建者,用户表的uid")]
-        [DataObjectField(false, false, false, 19)]
+        [DataObjectField(false, false, true, 19)]
         [BindColumn(5, "createUid", "创建者,用户表的uid", null, "bigint", 19, 0, false)]
         public virtual Int64 createUid
         {
@@ -87,6 +87,18 @@ namespace Dafy.OnlineTran.Entity.Models
         {
             get { return _modifyUid; }
             set { if (OnPropertyChanging(__.modifyUid, value)) { _modifyUid = value; OnPropertyChanged(__.modifyUid); } }
+        }
+
+        private Int32 _orderNum;
+        /// <summary></summary>
+        [DisplayName("orderNum")]
+        [Description("")]
+        [DataObjectField(false, false, true, 10)]
+        [BindColumn(7, "orderNum", "", null, "int", 10, 0, false)]
+        public virtual Int32 orderNum
+        {
+            get { return _orderNum; }
+            set { if (OnPropertyChanging(__.orderNum, value)) { _orderNum = value; OnPropertyChanged(__.orderNum); } }
         }
         #endregion
 
@@ -110,6 +122,7 @@ namespace Dafy.OnlineTran.Entity.Models
                     case __.updateTime : return _updateTime;
                     case __.createUid : return _createUid;
                     case __.modifyUid : return _modifyUid;
+                    case __.orderNum : return _orderNum;
                     default: return base[name];
                 }
             }
@@ -118,11 +131,12 @@ namespace Dafy.OnlineTran.Entity.Models
                 switch (name)
                 {
                     case __.id : _id = Convert.ToInt64(value); break;
-                    case __.name : _name = (Byte[])value; break;
+                    case __.name : _name = Convert.ToString(value); break;
                     case __.createTime : _createTime = Convert.ToDateTime(value); break;
                     case __.updateTime : _updateTime = Convert.ToDateTime(value); break;
                     case __.createUid : _createUid = Convert.ToInt64(value); break;
                     case __.modifyUid : _modifyUid = Convert.ToInt64(value); break;
+                    case __.orderNum : _orderNum = Convert.ToInt32(value); break;
                     default: base[name] = value; break;
                 }
             }
@@ -151,6 +165,9 @@ namespace Dafy.OnlineTran.Entity.Models
             ///<summary>修改者，用户表的uid</summary>
             public static readonly Field modifyUid = FindByName(__.modifyUid);
 
+            ///<summary></summary>
+            public static readonly Field orderNum = FindByName(__.orderNum);
+
             static Field FindByName(String name) { return Meta.Table.FindByName(name); }
         }
 
@@ -175,6 +192,9 @@ namespace Dafy.OnlineTran.Entity.Models
             ///<summary>修改者，用户表的uid</summary>
             public const String modifyUid = "modifyUid";
 
+            ///<summary></summary>
+            public const String orderNum = "orderNum";
+
         }
         #endregion
     }
@@ -187,7 +207,7 @@ namespace Dafy.OnlineTran.Entity.Models
         Int64 id { get; set; }
 
         /// <summary>资讯分类名称</summary>
-        Byte[] name { get; set; }
+        String name { get; set; }
 
         /// <summary>创建时间</summary>
         DateTime createTime { get; set; }
@@ -200,6 +220,9 @@ namespace Dafy.OnlineTran.Entity.Models
 
         /// <summary>修改者，用户表的uid</summary>
         Int64 modifyUid { get; set; }
+
+        /// <summary></summary>
+        Int32 orderNum { get; set; }
         #endregion
 
         #region 获取/设置 字段值

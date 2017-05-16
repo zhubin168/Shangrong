@@ -13,7 +13,7 @@ using Dafy.OnlineTran.Common.Request;
 namespace Dafy.OnlineTran.Api.Controllers
 {
     /// <summary>
-    /// 课程管理
+    /// 内容管理
     /// 创建人：朱斌
     /// 创建时间：2017-04-30
     /// </summary>
@@ -30,33 +30,114 @@ namespace Dafy.OnlineTran.Api.Controllers
         }
 
         /// <summary>
-        /// 课程管理列表
+        /// 资讯分类管理
         /// </summary>
         [HttpPost]
-        public CourseListRS GetCourses(CourseListRQ rq)
+        public InfoCategorysRS GetInfoCategorys(InfoCategorysRQ rq)
         {
             if (rq == null || rq.pageIndex <= 0 || rq.pageSize <= 0)
-                return new CourseListRS { total = 0, list = null };
+                return new InfoCategorysRS { total = 0, list = null };
+            return _service.GetInfoCategorys(rq);
+        }
+
+        /// <summary>
+        /// 保存资讯分类
+        /// </summary>
+        [HttpPost]
+        public ResultModel<string> SaveInfoCategory(InfoCategorysItemRS rq)
+        {
+            rq.createUid =Convert.ToInt32(this.User.Identity.Name);
+            return _service.SaveInfoCategory(rq);
+        }
+
+        /// <summary>
+        /// 资讯管理
+        /// </summary>
+        [HttpPost]
+        public InformationRS GetInformations(InformationRQ rq)
+        {
+            if (rq == null || rq.pageIndex <= 0 || rq.pageSize <= 0)
+                return new InformationRS { total = 0, list = null };
+            return _service.GetInformations(rq);
+        }
+
+        /// <summary>
+        /// 保存资讯
+        /// </summary>
+        [HttpPost]
+        public ResultModel<string> SaveInformation(InformationItemRS rq)
+        {
+            rq.createUid = Convert.ToInt32(this.User.Identity.Name);
+            return _service.SaveInformation(rq);
+        }
+
+        /// <summary>
+        /// 资讯详情
+        /// </summary>
+        [HttpPost]
+        public InformationItemRS GetDetailInformation(InformationRQ rq)
+        {
+            return _service.GetDetailInformation(rq);
+        }
+
+        /// <summary>
+        /// 小知识管理
+        /// </summary>
+        [HttpPost]
+        public KnowledgeRS GetKnowledges(KnowledgeRQ rq)
+        {
+            if (rq == null || rq.pageIndex <= 0 || rq.pageSize <= 0)
+                return new KnowledgeRS { total = 0, list = null };
+            return _service.GetKnowledges(rq);
+        }
+
+        /// <summary>
+        /// 保存小知识
+        /// </summary>
+        [HttpPost]
+        public ResultModel<string> SaveKnowledge(KnowledgeItemRS rq)
+        {
+            rq.createUid = Convert.ToInt32(this.User.Identity.Name);
+            return _service.SaveKnowledge(rq);
+        }
+
+        /// <summary>
+        /// 小知识详情
+        /// </summary>
+        [HttpPost]
+        public KnowledgeItemRS GetDetailKnowledge(KnowledgeRQ rq)
+        {
+            return _service.GetDetailKnowledge(rq);
+        }
+
+        /// <summary>
+        /// 理财师充电站
+        /// </summary>
+        [HttpPost]
+        public CourseRS GetCourses(CourseRQ rq)
+        {
+            if (rq == null || rq.pageIndex <= 0 || rq.pageSize <= 0)
+                return new CourseRS { total = 0, list = null };
             return _service.GetCourses(rq);
         }
 
         /// <summary>
-        /// 删除课程信息
+        /// 保存充电站
         /// </summary>
         [HttpPost]
-        public ResultModel<string> DelCourses(SaveCourseRQ rq)
+        public ResultModel<string> SaveCourse(CourseItemRS rq)
         {
-            return _service.DelCourses(rq);
+            rq.createUid = Convert.ToInt32(this.User.Identity.Name);
+            return _service.SaveCourse(rq);
         }
 
         /// <summary>
-        /// 保存课程信息
+        /// 充电站详情
         /// </summary>
         [HttpPost]
-        public ResultModel<string> SaveCourses(SaveCourseRQ rq)
+        public CourseItemRS GetDetailCourse(CourseRQ rq)
         {
-            rq.CreatedByName = this.User.Identity.Name;
-            return _service.SaveCourses(rq);
+            return _service.GetDetailCourse(rq);
         }
     }
 }

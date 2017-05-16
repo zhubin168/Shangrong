@@ -46,4 +46,196 @@ namespace Dafy.OnlineTran.Common.Response
         /// <summary>修改者名称</summary>
         public string ModifiedByName { get; set; }
     }
+
+    /// <summary>
+    /// 资讯分类管理
+    /// </summary>
+    public class InfoCategorysRS
+    {
+        public List<InfoCategorysItemRS> list { get; set; }
+        public int total { get; set; }
+    }
+    public class InfoCategorysItemRS
+    {
+        /// <summary>资讯分类ID</summary>
+        public long id { get; set; }
+
+        /// <summary>资讯分类名称</summary>
+        public string name { get; set; }
+
+        /// <summary>创建时间</summary>
+        public DateTime createTime { get; set; }
+
+        /// <summary>更新时间</summary>
+        public DateTime updateTime { get; set; }
+
+        /// <summary>创建者,用户表的uid</summary>
+        public long createUid { get; set; }
+
+        /// <summary>修改者，用户表的uid</summary>
+        public long modifyUid { get; set; }
+
+        /// <summary></summary>
+        public int orderNum { get; set; }
+    }
+
+    /// <summary>
+    /// 资讯管理
+    /// </summary>
+    public class InformationRS
+    {
+        public List<InformationItemRS> list { get; set; }
+        public int total { get; set; }
+    }
+
+    public class InformationItemRS
+    {
+        /// <summary>资讯ID</summary>
+        public long id { get; set; }
+
+        /// <summary>资讯标题</summary>
+        public string title { get; set; }
+
+        /// <summary>来源资讯分类表id</summary>
+        public long cid { get; set; }
+
+        /// <summary>资讯分享图片</summary>
+        public string shareUrl { get; set; }
+
+        /// <summary>资讯分享描述</summary>
+        public string shareTitle { get; set; }
+
+        /// <summary>资讯列表图片</summary>
+        public string listUrl { get; set; }
+
+        /// <summary>正文链接</summary>
+        public string contentUrl { get; set; }
+
+        /// <summary>资讯内容</summary>
+        public string content { get; set; }
+
+        /// <summary>资讯状态</summary>
+        public int status { get; set; }
+
+        /// <summary>发布时间</summary>
+        public DateTime publishTime { get; set; }
+
+        /// <summary>创建时间</summary>
+        public DateTime createTime { get; set; }
+
+        /// <summary>更新时间</summary>
+        public DateTime updateTime { get; set; }
+
+        /// <summary>创建者,用户表的uid</summary>
+         public long createUid { get; set; }
+
+        /// <summary>修改者，用户表的uid</summary>
+         public long modifyUid { get; set; }
+    }
+
+    /// <summary>
+    /// 小知识管理
+    /// </summary>
+    public class KnowledgeRS
+    {
+        public List<KnowledgeItemRS> list { get; set; }
+        public int total { get; set; }
+    }
+    public class KnowledgeItemRS
+    {
+        /// <summary>小知识ID</summary>
+        public long id { get; set; }
+
+        /// <summary>小知识标题</summary>
+        public string title { get; set; }
+
+        /// <summary>小知识分享图片</summary>
+        public string shareUrl { get; set; }
+
+        /// <summary>小知识分享描述</summary>
+        public string shareTitle { get; set; }
+
+        /// <summary></summary>
+        public string listUrl { get; set; }
+
+        /// <summary>正文链接</summary>
+        public string contentUrl { get; set; }
+
+        /// <summary></summary>
+        public string content { get; set; }
+
+        /// <summary>小知识状态</summary>
+        public int status { get; set; }
+
+        /// <summary>发布时间</summary>
+        public DateTime publishTime { get; set; }
+
+        /// <summary>创建时间</summary>
+        public DateTime createTime { get; set; }
+
+        /// <summary>更新时间</summary>
+        public DateTime updateTime { get; set; }
+
+        /// <summary>创建者,用户表的uid</summary>
+        public long createUid { get; set; }
+
+        /// <summary>修改者，用户表的uid</summary>
+        public long modifyUid { get; set; }
+    }
+
+    /// <summary>
+    /// 理财师充电站
+    /// </summary>
+    public class CourseRS
+    {
+        public List<CourseItemRS> list { get; set; }
+        public int total { get; set; }
+    }
+    public class CourseItemRS
+    {
+        /// <summary>课程ID</summary>
+        public long id { get; set; }
+
+        /// <summary>课程名称</summary>
+        public string title { get; set; }
+
+        /// <summary>副标题</summary>
+        public string subTitle { get; set; }
+
+        /// <summary>课程分享图片</summary>
+        public string shareUrl { get; set; }
+
+        /// <summary>课程分享描述</summary>
+        public string shareTitle { get; set; }
+
+        /// <summary>课程列表图片</summary>
+        public string listUrl { get; set; }
+
+        /// <summary>正文链接</summary>
+        public string contentUrl { get; set; }
+
+        /// <summary>课程内容</summary>
+        public string content { get; set; }
+
+        /// <summary>课程状态</summary>
+        public int status { get; set; }
+
+        /// <summary>推荐首页</summary>
+        public int position { get; set; }
+
+        /// <summary>发布时间</summary>
+        public DateTime publishTime { get; set; }
+
+        /// <summary>创建时间</summary>
+        public DateTime createTime { get; set; }
+
+        /// <summary>更新时间</summary>
+        public DateTime updateTime { get; set; }
+
+        /// <summary>创建者,用户表的uid</summary>
+        public long createUid { get; set; }
+
+        /// <summary>修改者，用户表的uid</summary>
+        public long modifyUid { get; set; }
+    }
 }
