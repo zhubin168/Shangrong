@@ -101,6 +101,11 @@ display:-webkit-box;
 .border-color{border-color:#00ADB2!important}
 .border-line{border-bottom:8px solid #EFEFEF!important;}
 .bg-grey{background: #F0F1F5;}
+/*分割线*/
+.horizontal_line{
+	border-top:1px solid #e6e6e6;
+	width: 100%;
+}
 /*字体*/
 .fs12{font-size: 12px!important;}
 .fs13{font-size: 13px!important;}
@@ -124,7 +129,6 @@ display:-webkit-box;
 /*显示,隐藏*/
 .visible{visibility: visible;}
 .invisible{visibility: hide;}
-.lh27{line-height: 1.35rem;}
 /*动画*/
 .animated5 {
   -webkit-animation-duration: .5s;
@@ -566,4 +570,30 @@ ion-slide img{
 	margin: 0px 3px 0px;
 	font-size: 13px;
 	color: #999999;
+}
+.home_moreBtn{
+	margin: 0 auto;
+	background-color: #93dfd7;
+	color: #ffffff;
+	display: block;
+}
+.newsItem .news_title{
+	color: #333333;
+	font-size: 13px;
+}
+.newsItem .news_time{
+	color: #999999;
+	margin-top: 30px;
+}
+.textCenterImg{
+	position:absolute;
+	left:50%;
+	top:50%;
+	transform: translate(-50%,-50%);
+	-webkit-transform: translate(-50%,-50%);
+	-moz--transform: translate(-50%,-50%);
+	color: #feffff;
+	font-size: .15rem;
+	width: 75%;
+	text-align: center;
 }
