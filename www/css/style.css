@@ -597,3 +597,21 @@ ion-slide img{
 	width: 75%;
 	text-align: center;
 }
+.home_about .phoneBox{
+    background: RGB(100,209,200);
+    padding: 10px 28px;
+    margin-top: 10px;
+    border-radius: 20px;
+    color: #ffffff;
+}
+.home_about .yewu_round{
+    background: RGB(100,209,200);
+    width: 60px;
+    height: 60px;
+    padding: 20px;
+    border-radius: 50%;
+}
+.home_about .yewu_round img{
+	width: 20px;
+	height: 20px;
+}
