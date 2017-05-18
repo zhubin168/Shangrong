@@ -53,8 +53,9 @@ a {
 /*默认背景颜色*/
 .bg-default{
     background-color: #00ADB2!important;
-    
 }
+/*灰背景*/
+.bg-grey{background: #F0F1F5;} 
 .bg-white{background-color:#ffffff!important;}
 /*字体颜色*/
 .ft{
@@ -100,7 +101,6 @@ display:-webkit-box;
 .border-bottom{border-bottom:1px solid #eaeaea;}
 .border-color{border-color:#00ADB2!important}
 .border-line{border-bottom:8px solid #EFEFEF!important;}
-.bg-grey{background: #F0F1F5;}
 /*分割线*/
 .horizontal_line{
 	border-top:1px solid #e6e6e6;
@@ -358,6 +358,27 @@ display:-webkit-box;
 .margin5-horizontal {
   margin-left: 5px!important; }
 /**
+ * Content Margin
+ * --------------------------------------------------
+ */
+.margin {
+  margin: 10px!important; }
+.margin-top,
+.margin-vertical {
+  margin-top: 10px!important; }
+
+.margin-right,
+.margin-horizontal {
+  margin-right: 10px!important; }
+
+.margin-bottom,
+.margin-vertical {
+  margin-bottom: 10px!important; }
+
+.margin-left,
+.margin-horizontal {
+  margin-left: 10px!important; }
+/**
  * Content Padding15
  * --------------------------------------------------
  */
@@ -614,4 +635,23 @@ ion-slide img{
 .home_about .yewu_round img{
 	width: 20px;
 	height: 20px;
+}
+.my_header{
+	background: linear-gradient(#5CE6C1,#66CBC9);
+	height: 170px;
+	padding-top:18px;
+}
+.my_header .my_name,.my_header .my_position{
+	padding-top: 10px;
+}
+.my_count{
+	background: #94DBDA;
+}
+.my_verLine{
+	border-left:2px solid #ffffff;
+	padding: 3px 0;
+}
+.my_item{
+	background: #ffffff;
+	padding:10px 15px;
 }
