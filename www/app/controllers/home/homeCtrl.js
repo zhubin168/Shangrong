@@ -6,5 +6,14 @@ define(['app'], function(app) {
          $scope.getProductList =function(){
          	$state.go("app.productList");
          }
+         $scope.getNewsList =function(){
+         	$state.go("app.newsList");
+         }
+         $scope.goFinancial =function(){
+         	$state.go("app.financiaList");
+         }
+         $scope.aboutSR =function(){
+         	$state.go("app.about");
+         }
     }]);
 });

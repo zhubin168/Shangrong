@@ -6,7 +6,17 @@
 /*ionic样式覆盖*/
   /*active时的颜色*/
 ion-tabs.tabs-color-active-positive .tab-item.tab-item-active, ion-tabs.tabs-color-active-positive .tab-item.active, 
-ion-tabs.tabs-color-active-positive .tab-item.activated{color:#00ADB2!important;}
+ion-tabs.tabs-color-active-positive .tab-item.activated{color:#65cfc9!important;}
+.tab-item{opacity: 1!important;}
+.tab-item.active .tab-pill,.tab-item.activated .tab-pill{
+    width: 70%;
+    height: 40px;
+    line-height: 40px;
+    margin:4.5px 0 0 15%;
+    color: #ffffff;
+    border-radius: 4px;	
+	background: linear-gradient(90deg,#5CE5C1,#66CDCA);
+}
 .tabs-striped .tab-item.tab-item-active, .tabs-striped .tab-item.active, .tabs-striped .tab-item.activated{border-color:#00ADB2!important;}
 .button.button-positive.activated{background-color: #00ADB2!important;}
 .checkbox input:checked:before, .checkbox input:checked + .checkbox-icon:before {
@@ -59,7 +69,7 @@ a {
 .bg-white{background-color:#ffffff!important;}
 /*字体颜色*/
 .ft{
-    color: #00ADB2!important;   
+    color: #65cfc9!important;   
 }
 .Dark{color:#000000!important;}
 .red{color:#E74128}
@@ -88,10 +98,16 @@ display:-webkit-box;
     background-color: #00ADB2;
     color: #fff;
 }
+/*渐变按钮*/
+.linearRight{
+	background: linear-gradient(90deg,#5CE5C1,#66CDCA);
+}
+.button-radius{border-radius: 8px;}
 /*字与图标对齐*/
 .vm *{vertical-align:middle;}
 .vm>img{vertical-align:middle;margin-right:3px;}
 .vm>i{vertical-align:middle;margin-right:5px;}
+.vm>span{vertical-align:middle;margin-right:3px;}
 /*间隔*/
 .line{width: 100%;height: 14px;background: #EFEFEF;}
 .border {border: 1px solid #eaeaea;}
@@ -594,7 +610,7 @@ ion-slide img{
 }
 .home_moreBtn{
 	margin: 0 auto;
-	background-color: #93dfd7;
+	background: linear-gradient(to right,#5CE5C1,#66CDCA);
 	color: #ffffff;
 	display: block;
 }
@@ -603,8 +619,10 @@ ion-slide img{
 	font-size: 13px;
 }
 .newsItem .news_time{
-	color: #999999;
-	margin-top: 30px;
+    color: #999999;
+    position: absolute;
+    left: 15px;
+    bottom: 6px;
 }
 .textCenterImg{
 	position:absolute;
@@ -619,18 +637,16 @@ ion-slide img{
 	text-align: center;
 }
 .home_about .phoneBox{
-    background: RGB(100,209,200);
-    padding: 10px 28px;
+    padding: 10px 45px;
     margin-top: 10px;
     border-radius: 20px;
     color: #ffffff;
 }
 .home_about .yewu_round{
-    background: RGB(100,209,200);
-    width: 60px;
-    height: 60px;
-    padding: 20px;
-    border-radius: 50%;
+    /*background: RGB(100,209,200);*/
+   text-align: center;
+    /*padding: 20px;
+    border-radius: 50%;*/
 }
 .home_about .yewu_round img{
 	width: 20px;
@@ -654,4 +670,7 @@ ion-slide img{
 .my_item{
 	background: #ffffff;
 	padding:10px 15px;
+}
+.my_item .my_itemName{
+	line-height: 21px;
 }
