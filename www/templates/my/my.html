@@ -1,4 +1,4 @@
-<ion-view view-title="我的" hide-tabs="false" hide-nav-bar="true">
+<ion-view view-title="我的" hide-tabs="false" hide-nav-bar="false">
 	<ion-content class="bg-grey">
 		<div class="my_header ub ub-ac ub-ver">
 			<img width="70" height="70" src="./img/my/portrait.png" />
@@ -16,62 +16,94 @@
 				<div class="white margin5-top">765432.00</div>
 			</div>
 		</div>
-    <div class="my_item margin15-top ub">
-    	<div class="my_itemName">我的预约记录</div>
-    	<div class="ub ub-f1 ub-pe">
-    	    <i class="icon ion-ios-arrow-right fs20"></i>    		
-    	</div>
-    </div>	
-    
-    <div class="my_itemGroup margin-top">
-	    <div class="my_item ub">
-	    	<div class="my_itemName">我的客户</div>
-	    	<div class="ub ub-f1 ub-pe">
-	    	    <i class="icon ion-ios-arrow-right fs20"></i>    		
-	    	</div>
-	    </div>	
-	    <div class="padding15-horizontal">
-	    	<div class="horizontal_line"></div>
-	    </div>
-	    <div class="my_item ub">
-	    	<div class="my_itemName">我的理财师团队</div>
-	    	<div class="ub ub-f1 ub-pe">
-	    	    <i class="icon ion-ios-arrow-right fs20"></i>    		
-	    	</div>
-	    </div>	
-	    <div class="padding15-horizontal">
-	    	<div class="horizontal_line"></div>
-	    </div>
-	    <div class="my_item ub">
-	    	<div class="my_itemName">邀请客户</div>
-	    	<div class="ub ub-f1 ub-pe">
-	    	    <i class="icon ion-ios-arrow-right fs20"></i>    		
-	    	</div>
-	    </div>	
-	    <div class="padding15-horizontal">
-	    	<div class="horizontal_line"></div>
-	    </div>
-	    <div class="my_item ub">
-	    	<div class="my_itemName">邀请理财师</div>
-	    	<div class="ub ub-f1 ub-pe">
-	    	    <i class="icon ion-ios-arrow-right fs20"></i>    		
-	    	</div>
-	    </div>	
-    </div>
+		<div class="my_itemGroup margin-top">
+			
+			<!--<div class="my_item ub margin15-top">
+				<div class="my_itemName">我的理财师</div>
+				<div class="ub ub-f1 ub-pe">
+					<i class="icon ion-ios-arrow-right fs20"></i>
+				</div>
+			</div>
+			<div class="padding15-horizontal">
+				<div class="horizontal_line"></div>
+			</div>	-->
+			
+			<!--<div class="my_item ub margin15-top">
+				<div class="my_itemName">我的销售记录</div>
+				<div class="ub ub-f1 ub-pe">
+					<i class="icon ion-ios-arrow-right fs20"></i>
+				</div>
+			</div>
+			<div class="padding15-horizontal">
+				<div class="horizontal_line"></div>
+			</div>			-->
+			
+			<a href="#/app/orderRecord" class="my_item ub">
+				<div class="my_itemName">我的预约记录</div>
+				<div class="ub ub-f1 ub-pe">
+					<i class="icon ion-ios-arrow-right fs20"></i>
+				</div>
+			</a>
+		</div>
+        <!--客户角色-->
+		<!--<div class="my_itemGroup margin-top">
+			<div class="my_item ub">
+				<div class="my_itemName">申请理财师认证</div>
+				<div class="ub ub-f1 ub-pe">
+					<i class="icon ion-ios-arrow-right fs20"></i>
+				</div>
+			</div>
+		</div>-->
+        <!--理财师和渠道角色-->
+		<div class="my_itemGroup margin-top">
+			<a href="#/app/myCustomer" class="my_item ub">
+				<div class="my_itemName">我的客户</div>
+				<div class="ub ub-f1 ub-pe">
+					<i class="icon ion-ios-arrow-right fs20"></i>
+				</div>
+			</a>
+			<div class="padding15-horizontal">
+				<div class="horizontal_line"></div>
+			</div>
+			<a href="#/app/myTeam" class="my_item ub">
+				<div class="my_itemName">我的理财师团队</div>
+				<div class="ub ub-f1 ub-pe">
+					<i class="icon ion-ios-arrow-right fs20"></i>
+				</div>
+			</a>
+			<div class="padding15-horizontal">
+				<div class="horizontal_line"></div>
+			</div>
+			<a href="#/app/inviteCustomer" class="my_item ub">
+				<div class="my_itemName">邀请客户</div>
+				<div class="ub ub-f1 ub-pe">
+					<i class="icon ion-ios-arrow-right fs20"></i>
+				</div>
+			</a>
+			<div class="padding15-horizontal">
+				<div class="horizontal_line"></div>
+			</div>
+			<a href="#/app/invitePlanner" class="my_item ub">
+				<div class="my_itemName">邀请理财师</div>
+				<div class="ub ub-f1 ub-pe">
+					<i class="icon ion-ios-arrow-right fs20"></i>
+				</div>
+			</a>
+		</div>
 
-    <div class="my_item margin15-top ub">
-    	<div class="my_itemName">帮助中心</div>
-    	<div class="ub ub-f1 ub-pe">
-    	    <i class="icon ion-ios-arrow-right fs20"></i>    		
-    	</div>
-    </div>	
+		<a href="#/app/helpCenter" class="my_item margin15-top ub">
+			<div class="my_itemName">帮助中心</div>
+			<div class="ub ub-f1 ub-pe">
+				<i class="icon ion-ios-arrow-right fs20"></i>
+			</div>
+		</a>
 
-    <div class="my_item margin15-vertical ub">
-    	<div class="my_itemName">关于我们</div>
-    	<div class="ub ub-f1 ub-pe">
-    	    <i class="icon ion-ios-arrow-right fs20"></i>    		
-    	</div>
-    </div>	
-    
+		<a href="#/app/about" class="my_item margin15-vertical ub">
+			<div class="my_itemName">关于我们</div>
+			<div class="ub ub-f1 ub-pe">
+				<i class="icon ion-ios-arrow-right fs20"></i>
+			</div>
+		</a>
+
 	</ion-content>
 </ion-view>
