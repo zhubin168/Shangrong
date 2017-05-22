@@ -158,6 +158,32 @@ define([
                 ]
             }
         }))
+        
+        .state('app.bannerDetails', angularAMD.route({ //banner详情页
+            url: '/bannerDetails',
+            views: {
+                'app-home': {
+                    templateUrl: 'templates/home/bannerDetails.html',
+                    controller: 'HomeCtrl',
+                }
+            },
+            //cache:false,
+            resolve: {
+                loadController: ['$q', '$stateParams',
+                    function($q, $stateParams) {
+                        var homeCtrl = "app/controllers/home/homeCtrl.js";
+                        var homeService = "app/services/home/homeService.js";
+
+                        var deferred = $q.defer();
+
+                        require([homeCtrl,homeService], function() {
+                            deferred.resolve();
+                        });
+                        return deferred.promise;
+                    }
+                ]
+            }
+        }))
  
         .state('app.productList', angularAMD.route({ //产品列表
             url: '/productList',
@@ -210,13 +236,65 @@ define([
                 ]
             }
         }))       
-
-        .state('app.financiaList', angularAMD.route({ //理财知识
-            url: '/financiaList',
+        
+        .state('app.newsDetails', angularAMD.route({ //资讯详情
+            url: '/newsDetails',
             views: {
                 'app-home': {
-                    templateUrl: 'templates/home/financial/financiaList.html',
+                    templateUrl: 'templates/home/news/newsDetails.html',
                     controller: 'HomeCtrl',
+                }
+            },
+            //cache:false,
+            resolve: {
+                loadController: ['$q', '$stateParams',
+                    function($q, $stateParams) {
+                        var homeCtrl = "app/controllers/home/homeCtrl.js";
+                        var homeService = "app/services/home/homeService.js";
+
+                        var deferred = $q.defer();
+
+                        require([homeCtrl,homeService], function() {
+                            deferred.resolve();
+                        });
+                        return deferred.promise;
+                    }
+                ]
+            }
+        }))       
+
+        .state('app.fncList', angularAMD.route({ //理财知识
+            url: '/fncList',
+            views: {
+                'app-home': {
+                    templateUrl: 'templates/home/financial/fncList.html',
+                    controller: 'fncListCtrl',
+                }
+            },
+            //cache:false,
+            resolve: {
+                loadController: ['$q', '$stateParams',
+                    function($q, $stateParams) {
+                        var homeCtrl = "app/controllers/home/homeCtrl.js";
+                        var homeService = "app/services/home/homeService.js";
+
+                        var deferred = $q.defer();
+
+                        require([homeCtrl,homeService], function() {
+                            deferred.resolve();
+                        });
+                        return deferred.promise;
+                    }
+                ]
+            }
+        })) 
+        
+        .state('app.fncDetails', angularAMD.route({ //理财知识详情
+            url: '/fncDetails',
+            views: {
+                'app-home': {
+                    templateUrl: 'templates/home/financial/fncDetails.html',
+                    controller: 'fncDetailsCtrl',
                 }
             },
             //cache:false,
@@ -392,6 +470,32 @@ define([
             }
         }))
         
+        .state('app.saleRecord', angularAMD.route({ //销售记录
+            url: '/saleRecord',
+            views: {
+                'app-my': {
+                    templateUrl: 'templates/my/saleRecord.html',
+                    controller: 'saleRecordCtrl',
+                }
+            },
+            //cache:false,
+            resolve: {
+                loadController: ['$q', '$stateParams',
+                    function($q, $stateParams) {
+                        var myCtrl = "app/controllers/my/myCtrl.js";
+                        var homeService = "app/services/home/homeService.js";
+
+                        var deferred = $q.defer();
+
+                        require([myCtrl,homeService], function() {
+                            deferred.resolve();
+                        });
+                        return deferred.promise;
+                    }
+                ]
+            }
+        }))
+        
         .state('app.orderRecord', angularAMD.route({ //预约记录
             url: '/orderRecord',
             views: {
@@ -522,7 +626,7 @@ define([
             }
         }))
         
-        .state('app.helpCenter', angularAMD.route({ //邀请理财师
+        .state('app.helpCenter', angularAMD.route({ //帮助中心
             url: '/helpCenter',
             views: {
                 'app-my': {

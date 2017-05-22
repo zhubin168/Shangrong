@@ -113,7 +113,7 @@ display:-webkit-box;
 .border {border: 1px solid #eaeaea;}
 .border-vertical{border-bottom:1px solid #eaeaea;border-top:1px solid #eaeaea;}
 .border-top{border-top:1px solid #eaeaea;}
-.borderTop-none{border-top:none;}
+.borderTop-none{border-top:none!important;}
 .border-bottom{border-bottom:1px solid #eaeaea;}
 .border-color{border-color:#00ADB2!important}
 .border-line{border-bottom:8px solid #EFEFEF!important;}
@@ -696,6 +696,7 @@ ion-slide img{
 }
 .collaspeItem{
 	padding:0px 25px;
+	box-shadow: 2px 2px 2px -1px rgba(150,139,139,0.26);
 }
 .collaspeItem .collaspeHeader{
 	padding: 10px 0;
@@ -740,3 +741,20 @@ ion-slide img{
 	margin-left:22px
 }
 .help_header img{margin-top: 3px;}
+/*销售记录*/
+.sale_header{
+    background: linear-gradient(#5CE6C1,#66CBC9);
+    padding: 30px 25px 37px;
+}
+.sale_header .riliImg{
+	position: absolute;
+	right: 25px;
+	top:22px;
+}
+.sale_header .saleTotal{
+	margin-top: 20px;
+}
+.noSaleWarp{
+	margin: 100px auto 0;
+	text-align: center;
+}
