@@ -114,6 +114,7 @@ display:-webkit-box;
 .border-vertical{border-bottom:1px solid #eaeaea;border-top:1px solid #eaeaea;}
 .border-top{border-top:1px solid #eaeaea;}
 .borderTop-none{border-top:none!important;}
+.border-none{border-width:inherit;}
 .border-bottom{border-bottom:1px solid #eaeaea;}
 .border-color{border-color:#00ADB2!important}
 .border-line{border-bottom:8px solid #EFEFEF!important;}
@@ -121,6 +122,11 @@ display:-webkit-box;
 /*分割线*/
 .horizontal_line{
 	border-top:1px solid #e6e6e6;
+	width: 100%;
+}
+/*分割虚线*/
+.dash_line{
+	border-top:1px dashed #e6e6e6;
 	width: 100%;
 }
 /*字体*/
@@ -581,6 +587,10 @@ display:-webkit-box;
 .jc-sb{
 	-webkit-justify-content:space-between;
 	justify-content:space-between;
+}
+.jc-center{
+	-webkit-justify-content:center;
+	justify-content:center;
 }
 /*控制slide高度为150px*/
 .slider-slides{

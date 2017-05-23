@@ -1,20 +1,24 @@
-<ion-view view-title="我的" hide-tabs="false" hide-nav-bar="false">
+<ion-view view-title="我的" hide-tabs="false" hide-nav-bar="true">
 	<ion-content class="bg-grey">
 		<div class="my_header ub ub-ac ub-ver">
-			<img width="70" height="70" src="./img/my/portrait.png" />
+			<a href="#/app/personalCenter">
+			    <img width="70" height="70" src="./img/my/portrait.png" />
+			</a>
 			<div class="my_name fs16">Nico</div>
 			<div class="my_position">理财经理</div>
 		</div>
+		
 		<div class="my_count ub row">
-			<div class="ub ub-ac ub-pc ub-f1 col col-50 ub-ver padding-vertical border2-right">
+			<a href="#app/saleRecord" class="ub ub-ac ub-pc ub-f1 col col-50 ub-ver padding-vertical border2-right Dark">
 				<div class="my_itemName">累积销售金额（元）</div>
 				<div class="white margin5-top">765432.00</div>
-			</div>
-			<div class="ub ub-ac ub-pc ub-f1 col col-50  ub-ver padding-vertical">
+			</a>
+			<a href="#app/incomeDetails" class="ub ub-ac ub-pc ub-f1 col col-50  ub-ver padding-vertical Dark">
 				<div class="my_itemName">累积收益（元）</div>
 				<div class="white margin5-top">765432.00</div>
-			</div>
+			</a>
 		</div>
+		
 		<div class="my_itemGroup margin-top">
 			
 			<!--<div class="my_item ub margin15-top">

@@ -470,12 +470,89 @@ define([
             }
         }))
         
+        .state('app.personalCenter', angularAMD.route({ //个人中心
+            url: '/personalCenter',
+            views: {
+                'app-my': {
+                    templateUrl: 'templates/my/personalCenter.html',
+                    controller: 'HomeCtrl',
+                }
+            },
+            //cache:false,
+            resolve: {
+                loadController: ['$q', '$stateParams',
+                    function($q, $stateParams) {
+                        var homeCtrl = "app/controllers/home/homeCtrl.js";
+                        var homeService = "app/services/home/homeService.js";
+
+                        var deferred = $q.defer();
+
+                        require([homeCtrl,homeService], function() {
+                            deferred.resolve();
+                        });
+                        return deferred.promise;
+                    }
+                ]
+            }
+        }))
+        .state('app.bindCard', angularAMD.route({ //绑定银行卡
+            url: '/bindCard',
+            views: {
+                'app-my': {
+                    templateUrl: 'templates/my/bindCard.html',
+                    controller: 'bindCardCtrl',
+                }
+            },
+            //cache:false,
+            resolve: {
+                loadController: ['$q', '$stateParams',
+                    function($q, $stateParams) {
+                        var myCtrl = "app/controllers/my/myCtrl.js";
+                        var homeService = "app/services/home/homeService.js";
+
+                        var deferred = $q.defer();
+
+                        require([myCtrl,homeService], function() {
+                            deferred.resolve();
+                        });
+                        return deferred.promise;
+                    }
+                ]
+            }
+        }))
+        
         .state('app.saleRecord', angularAMD.route({ //销售记录
             url: '/saleRecord',
             views: {
                 'app-my': {
                     templateUrl: 'templates/my/saleRecord.html',
                     controller: 'saleRecordCtrl',
+                }
+            },
+            //cache:false,
+            resolve: {
+                loadController: ['$q', '$stateParams',
+                    function($q, $stateParams) {
+                        var myCtrl = "app/controllers/my/myCtrl.js";
+                        var homeService = "app/services/home/homeService.js";
+
+                        var deferred = $q.defer();
+
+                        require([myCtrl,homeService], function() {
+                            deferred.resolve();
+                        });
+                        return deferred.promise;
+                    }
+                ]
+            }
+        }))
+        
+        .state('app.incomeDetails', angularAMD.route({ //收益明细
+            url: '/incomeDetails',
+            views: {
+                'app-my': {
+                    templateUrl: 'templates/my/incomeDetails.html',
+                    controller: 'incomeDetailsCtrl',
                 }
             },
             //cache:false,
