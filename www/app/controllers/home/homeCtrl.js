@@ -6,6 +6,9 @@ define(['app'], function(app) {
          $scope.getProductList =function(){
          	$state.go("app.productList");
          }
+         $scope.getProductDels =function(){
+         	$state.go("app.productDetails");
+         }
          $scope.getNewsList =function(){
          	$state.go("app.newsList");
          }

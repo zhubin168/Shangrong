@@ -102,6 +102,10 @@ display:-webkit-box;
 .linearRight{
 	background: linear-gradient(90deg,#5CE5C1,#66CDCA);
 }
+/*盒阴影*/
+.card-shadow{
+	box-shadow: 0 1px 3px rgba(0,0,0,.3);
+}
 .button-radius{border-radius: 8px;}
 /*字与图标对齐*/
 .vm *{vertical-align:middle;}
@@ -110,15 +114,15 @@ display:-webkit-box;
 .vm>span{vertical-align:middle;margin-right:3px;}
 /*间隔*/
 .line{width: 100%;height: 14px;background: #EFEFEF;}
-.border {border: 1px solid #eaeaea;}
-.border-vertical{border-bottom:1px solid #eaeaea;border-top:1px solid #eaeaea;}
-.border-top{border-top:1px solid #eaeaea;}
+.border {border: 1px solid #cccccc;}
+.border-vertical{border-bottom:1px solid #cccccc;border-top:1px solid #cccccc;}
+.border-top{border-top:1px solid #cccccc;}
 .borderTop-none{border-top:none!important;}
 .border-none{border-width:inherit;}
-.border-bottom{border-bottom:1px solid #eaeaea;}
+.border-bottom{border-bottom:1px solid #cccccc;}
 .border-color{border-color:#00ADB2!important}
 .border-line{border-bottom:8px solid #EFEFEF!important;}
-.border2-right{border-right:2px solid #eaeaea}
+.border2-right{border-right:2px solid #cccccc}
 /*分割线*/
 .horizontal_line{
 	border-top:1px solid #e6e6e6;
@@ -676,6 +680,11 @@ ion-slide img{
 	width: 20px;
 	height: 20px;
 }
+/*产品详情*/
+.prodInfoBox{
+	padding: 5px 23px 8px;
+	box-shadow: 2px 2px 2px -1px rgba(150,139,139,0.26);
+}
 /*我的*/
 .my_header{
 	background: linear-gradient(#5CE6C1,#66CBC9);
@@ -715,7 +724,7 @@ ion-slide img{
 	margin-left: 43px;
 }
 .collaspeItem .orderItem{
-	border-top: 1px dashed #eaeaea;
+	border-top: 1px dashed #cccccc;
 	padding:15px 0 10px;
 }
 /*我的客户*/		
@@ -738,10 +747,22 @@ ion-slide img{
 	margin-top: 2px;
 	margin-right: 10px;
 }
+/*客户详情*/
+.cusDel_header{
+	padding:6px 25px;
+	background: #ffffff;
+	box-shadow: 0 1px 3px rgba(0,0,0,.3);
+}
+.cusDel_header .nameAndId{
+	margin-left: 37px;
+}
 /*我的理财师团队*/
 .myTeam_totalBox{
 	background: linear-gradient(#5CE6C1,#66CBC9);
 }
+/*理财师认证*/
+.plannerCertifBox .input-label{width: 25%;}
+
 /*帮助中心*/
 .help_header{
     background: linear-gradient(#5CE6C1,#66CBC9);

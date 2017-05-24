@@ -209,6 +209,32 @@ define([
                     }
                 ]
             }
+        }))     
+        
+        .state('app.productDetails', angularAMD.route({ //产品详情
+            url: '/productDetails',
+            views: {
+                'app-home': {
+                    templateUrl: 'templates/home/product/productDetails.html',
+                    controller: 'HomeCtrl',
+                }
+            },
+            //cache:false,
+            resolve: {
+                loadController: ['$q', '$stateParams',
+                    function($q, $stateParams) {
+                        var homeCtrl = "app/controllers/home/homeCtrl.js";
+                        var homeService = "app/services/home/homeService.js";
+
+                        var deferred = $q.defer();
+
+                        require([homeCtrl,homeService], function() {
+                            deferred.resolve();
+                        });
+                        return deferred.promise;
+                    }
+                ]
+            }
         }))       
 
         .state('app.newsList', angularAMD.route({ //行业资讯
@@ -625,11 +651,63 @@ define([
             }
         }))
         
+        .state('app.customerDetails', angularAMD.route({ //客户详情
+            url: '/customerDetails',
+            views: {
+                'app-my': {
+                    templateUrl: 'templates/my/customerDetails.html',
+                    controller: 'HomeCtrl',
+                }
+            },
+            //cache:false,
+            resolve: {
+                loadController: ['$q', '$stateParams',
+                    function($q, $stateParams) {
+                        var homeCtrl = "app/controllers/home/homeCtrl.js";
+                        var homeService = "app/services/home/homeService.js";
+
+                        var deferred = $q.defer();
+
+                        require([homeCtrl,homeService], function() {
+                            deferred.resolve();
+                        });
+                        return deferred.promise;
+                    }
+                ]
+            }
+        }))
+        
         .state('app.myTeam', angularAMD.route({ //我的理财师团队
             url: '/myTeam',
             views: {
                 'app-my': {
                     templateUrl: 'templates/my/myTeam.html',
+                    controller: 'HomeCtrl',
+                }
+            },
+            //cache:false,
+            resolve: {
+                loadController: ['$q', '$stateParams',
+                    function($q, $stateParams) {
+                        var homeCtrl = "app/controllers/home/homeCtrl.js";
+                        var homeService = "app/services/home/homeService.js";
+
+                        var deferred = $q.defer();
+
+                        require([homeCtrl,homeService], function() {
+                            deferred.resolve();
+                        });
+                        return deferred.promise;
+                    }
+                ]
+            }
+        }))
+        
+        .state('app.plannerCertif', angularAMD.route({ //申请理财师认证
+            url: '/plannerCertif',
+            views: {
+                'app-my': {
+                    templateUrl: 'templates/my/plannerCertif.html',
                     controller: 'HomeCtrl',
                 }
             },
