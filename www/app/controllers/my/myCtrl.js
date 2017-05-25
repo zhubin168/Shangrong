@@ -1,4 +1,24 @@
 define(['app'], function(app) {
+    app.controller('myCtrl', ['$rootScope','$scope','$state','$ionicHistory','$ionicLoading','$timeout','CommonService','HomeService','UtilService','$ionicPopup',function($rootScope, $scope,$state,$ionicHistory,$ionicLoading,$timeout,CommonService,HomeService,UtilService,$ionicPopup) {
+           // 确认拨打电话
+		   $scope.showMyPlanner = function() {
+		     var alertPlanner = $ionicPopup.alert({
+		       title: '我的理财师',
+		       templateUrl: 'myPlanner.html',
+		       cssClass: 'myPlannerPopup',
+		       scope: $scope,
+		       okText:"电话咨询",
+		       okType:"linearRight"
+		     });
+		     alertPlanner.then(function(res) {
+		       if(res) {
+		         console.log('You are sure');
+		       } else {
+		         console.log('You are not sure');
+		       }
+		     });
+		   };
+    }]);
     app.controller('orderRecordCtrl', ['$rootScope','$scope','$state','$ionicHistory','$ionicLoading','$timeout','CommonService','HomeService','UtilService',function($rootScope, $scope,$state,$ionicHistory,$ionicLoading,$timeout,CommonService,HomeService,UtilService) {
             
     }]);

@@ -190,7 +190,7 @@ define([
             views: {
                 'app-home': {
                     templateUrl: 'templates/home/product/productList.html',
-                    controller: 'HomeCtrl',
+                    controller: 'productListCtrl',
                 }
             },
             //cache:false,
@@ -216,7 +216,7 @@ define([
             views: {
                 'app-home': {
                     templateUrl: 'templates/home/product/productDetails.html',
-                    controller: 'HomeCtrl',
+                    controller: 'productDetailsCtrl',
                 }
             },
             //cache:false,
@@ -475,19 +475,19 @@ define([
             views: {
                 'app-my': {
                     templateUrl: 'templates/my/my.html',
-                    controller: 'HomeCtrl',
+                    controller: 'myCtrl',
                 }
             },
             //cache:false,
             resolve: {
                 loadController: ['$q', '$stateParams',
                     function($q, $stateParams) {
-                        var homeCtrl = "app/controllers/home/homeCtrl.js";
+                        var myCtrl = "app/controllers/my/myCtrl.js";
                         var homeService = "app/services/home/homeService.js";
 
                         var deferred = $q.defer();
 
-                        require([homeCtrl,homeService], function() {
+                        require([myCtrl,homeService], function() {
                             deferred.resolve();
                         });
                         return deferred.promise;

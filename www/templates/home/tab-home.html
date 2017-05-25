@@ -35,7 +35,7 @@
             </div>
         </div>
         <div class="row row-no-padding">
-        	<div class="col col-50">
+        	<div class="col col-50" ng-click="getProductDels()">
 		        <div class="srCard padding5 margin5-top">
 		            <img src="./img/home/hot_left.png" width="100%"/>
 		            <div>
@@ -48,7 +48,7 @@
 		            </div>
 		        </div>        		
         	</div>
-        	<div class="col col-50">
+        	<div class="col col-50" ng-click="getProductDels()">
 		        <div class="srCard padding5 margin5-top">
 		            <img src="./img/home/hot_right.png" width="100%"/>
 		            <div>
@@ -117,7 +117,7 @@
          </div>	
          <div class="srCard padding ub ub-ac ub-pc ub-ver home_about">
          	<img class="block" width="30" src="./img/home/kefu.png"/>
-         	<div class="phoneBox linearRight">
+         	<div class="phoneBox linearRight" ng-click="showCall()">
          		400-888-6897
          	</div>
          	<div class="ub full-image margin15-top">
@@ -146,3 +146,9 @@
          </div>
     </ion-content>
 </ion-view>
+<script type="text/ng-template" id="call.html">
+	<div class="text-center">
+		<p style="margin: 25px 0;">确定拨打电话:400-888-6987?</p>
+		<div class="sub-ft fs12" style="margin-bottom: 25px;">服务时间：工作日 9:00-12:00 13:30-18:00</div>
+	</div>
+</script>

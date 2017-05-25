@@ -21,7 +21,7 @@
 		
 		<div class="my_itemGroup margin-top">
 			
-			<div class="my_item ub margin15-top">
+			<div ng-click="showMyPlanner()" class="my_item ub margin15-top">
 				<div class="my_itemName">我的理财师</div>
 				<div class="ub ub-f1 ub-pe">
 					<i class="icon ion-ios-arrow-right fs20 Dark"></i>
@@ -109,3 +109,15 @@
 
 	</ion-content>
 </ion-view>
+<script type="text/ng-template" id="myPlanner.html">
+		<div class="item item-avatar" style="background: transparent;border:none">
+			<img src="./img/find/charge_right.png">
+			<div class="ub">
+				<div class="ub ub-ver">
+					<h2 class="fs14 margin-bottom"><span>刘茜</span></h2>
+					<p class="fs12 sub-ft">高级理财规划师</p>
+				</div>
+			</div>
+		</div>    
+		<p class="padding">四川大学管理学硕士，行愿咨询工作室合伙人，累计管理资产2亿。</p>
+</script>

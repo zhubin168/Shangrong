@@ -19,6 +19,10 @@ ion-tabs.tabs-color-active-positive .tab-item.activated{color:#65cfc9!important;
 }
 .tabs-striped .tab-item.tab-item-active, .tabs-striped .tab-item.active, .tabs-striped .tab-item.activated{border-color:#00ADB2!important;}
 .button.button-positive.activated{background-color: #00ADB2!important;}
+/*定制尚融的Popup样式*/
+.srPopup .popup-buttons{padding: 0px;}
+.srPopup.popup-container .popup{width: 92%;}
+
 .checkbox input:checked:before, .checkbox input:checked + .checkbox-icon:before {
     background: #00ADB2;
     border-color: #00ADB2;
@@ -685,6 +689,12 @@ ion-slide img{
 	padding: 5px 23px 8px;
 	box-shadow: 2px 2px 2px -1px rgba(150,139,139,0.26);
 }
+.buy-input {
+    background-color: transparent;
+}
+.buy_linear{
+	background: linear-gradient(90deg,#FFA633,#FD772E);
+}
 /*我的*/
 .my_header{
 	background: linear-gradient(#5CE6C1,#66CBC9);
@@ -708,6 +718,14 @@ ion-slide img{
 .my_item .my_itemName{
 	line-height: 21px;
 	color:#333333
+}
+.myPlannerPopup.popup-container .popup{
+	width: 92%;
+} 
+.myPlannerPopup .popup-buttons .button{
+	max-width: 60%;
+	margin-left: 20%;
+	border-radius: 5px;
 }
 /*我的预约记录*/
 .record_total{
