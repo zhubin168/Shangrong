@@ -16,6 +16,10 @@ ion-tabs.tabs-color-active-positive .tab-item.activated{color:#65cfc9!important;
     color: #ffffff;
     border-radius: 4px;	
 	background: linear-gradient(90deg,#5CE5C1,#66CDCA);
+	background: -moz-linear-gradient(90deg,#5CE5C1,#66CDCA);
+	background: -webkit-linear-gradient(90deg,#5CE5C1,#66CDCA);
+	background: -o-linear-gradient(90deg,#5CE5C1,#66CDCA);
+	background: -ms-linear-gradient(90deg,#5CE5C1,#66CDCA);	
 }
 .tabs-striped .tab-item.tab-item-active, .tabs-striped .tab-item.active, .tabs-striped .tab-item.activated{border-color:#00ADB2!important;}
 .button.button-positive.activated{background-color: #00ADB2!important;}
@@ -104,7 +108,11 @@ display:-webkit-box;
 }
 /*渐变按钮*/
 .linearRight{
-	background: linear-gradient(90deg,#5CE5C1,#66CDCA);
+	background: linear-gradient(90deg,#5CE5C1,#66CDCA);	
+	background: -webkit-linear-gradient(90deg,#5CE5C1,#66CDCA);	
+	background: -moz-linear-gradient(90deg,#5CE5C1,#66CDCA);	
+	background: -o-linear-gradient(90deg,#5CE5C1,#66CDCA);	
+	background: -ms-linear-gradient(90deg,#5CE5C1,#66CDCA);	
 }
 /*盒阴影*/
 .card-shadow{
@@ -610,6 +618,15 @@ ion-slide img{
 	width:100%;
 	height: 1.5rem;
 }
+ion-slide .bannerTitle{
+	position: absolute;
+	bottom: 22px;
+	left: 22px;
+	height: 40px;
+	width: 300px;
+	color: #ffffff;
+	line-height: 40px;
+}
 .home_hotPro{
 	margin: 24px 10px 0;
 }
@@ -634,6 +651,10 @@ ion-slide img{
 .home_moreBtn{
 	margin: 0 auto;
 	background: linear-gradient(to right,#5CE5C1,#66CDCA);
+	background: -webkit-linear-gradient(to right,#5CE5C1,#66CDCA);
+	background: -moz-linear-gradient(to right,#5CE5C1,#66CDCA);
+	background: -o-linear-gradient(to right,#5CE5C1,#66CDCA);
+	background: -ms-linear-gradient(to right,#5CE5C1,#66CDCA);
 	color: #ffffff;
 	display: block;
 }
@@ -694,10 +715,18 @@ ion-slide img{
 }
 .buy_linear{
 	background: linear-gradient(90deg,#FFA633,#FD772E);
+	background: -webkit-linear-gradient(90deg,#FFA633,#FD772E);
+	background: -moz-linear-gradient(90deg,#FFA633,#FD772E);
+	background: -ms-linear-gradient(90deg,#FFA633,#FD772E);
+	background: -0-linear-gradient(90deg,#FFA633,#FD772E);
 }
 /*我的*/
 .my_header{
 	background: linear-gradient(#5CE6C1,#66CBC9);
+	background: -webkit-linear-gradient(#5CE6C1,#66CBC9);
+	background: -moz-linear-gradient(#5CE6C1,#66CBC9);
+	background: -ms-linear-gradient(#5CE6C1,#66CBC9);
+	background: -o-linear-gradient(#5CE6C1,#66CBC9);
 	height: 170px;
 	padding-top:18px;
 }
@@ -777,6 +806,10 @@ ion-slide img{
 /*我的理财师团队*/
 .myTeam_totalBox{
 	background: linear-gradient(#5CE6C1,#66CBC9);
+	background: -moz-linear-gradient(#5CE6C1,#66CBC9);
+	background: -webkit-linear-gradient(#5CE6C1,#66CBC9);
+	background: -o-linear-gradient(#5CE6C1,#66CBC9);
+	background: -ms-linear-gradient(#5CE6C1,#66CBC9);
 }
 /*理财师认证*/
 .plannerCertifBox .input-label{width: 25%;}
@@ -784,6 +817,10 @@ ion-slide img{
 /*帮助中心*/
 .help_header{
     background: linear-gradient(#5CE6C1,#66CBC9);
+	background: -moz-linear-gradient(#5CE6C1,#66CBC9);
+	background: -webkit-linear-gradient(#5CE6C1,#66CBC9);
+	background: -o-linear-gradient(#5CE6C1,#66CBC9);
+	background: -ms-linear-gradient(#5CE6C1,#66CBC9);    
     padding: 35.5px 25px;
 }
 .help_header .help_time{
@@ -793,6 +830,10 @@ ion-slide img{
 /*销售记录*/
 .sale_header{
     background: linear-gradient(#5CE6C1,#66CBC9);
+	background: -moz-linear-gradient(#5CE6C1,#66CBC9);
+	background: -webkit-linear-gradient(#5CE6C1,#66CBC9);
+	background: -o-linear-gradient(#5CE6C1,#66CBC9);
+	background: -ms-linear-gradient(#5CE6C1,#66CBC9);    
     padding: 30px 25px 37px;
 }
 .sale_header .riliImg{
@@ -807,3 +848,5 @@ ion-slide img{
 	margin: 100px auto 0;
 	text-align: center;
 }
+/*详情页控制图片宽度的样式*/
+#content img{width:100%}

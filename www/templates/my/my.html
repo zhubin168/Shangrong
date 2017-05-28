@@ -2,9 +2,9 @@
 	<ion-content class="bg-grey">
 		<div class="my_header ub ub-ac ub-ver">
 			<a href="#/app/personalCenter">
-			    <img width="70" height="70" src="./img/my/portrait.png" />
+			    <img width="70" height="70" ng-src="{{headImg}}" />
 			</a>
-			<div class="my_name fs16">Nico</div>
+			<div class="my_name fs16">{{userName}}</div>
 			<div class="my_position">理财经理</div>
 		</div>
 		
@@ -100,7 +100,7 @@
 			</div>
 		</a>
 
-		<a href="#/app/about" class="my_item margin15-vertical ub">
+		<a href="#/app/myAbout" class="my_item margin15-vertical ub">
 			<div class="my_itemName">关于我们</div>
 			<div class="ub ub-f1 ub-pe">
 				<i class="icon ion-ios-arrow-right fs20 Dark"></i>

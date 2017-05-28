@@ -1,4 +1,4 @@
-<ion-view view-title="获客助手" hide-tabs="true" hide-nav-bar="false">
+<ion-view view-title="获客助手" hide-tabs="true" hide-nav-bar="true">
     <ion-content>
         <ion-slide-box auto-play="false" does-continue="false" show-pager="false">
             <ion-slide>
@@ -8,22 +8,22 @@
         <!--发东西-->
         <div class="srCard">
         	<div class="row row-no-padding padding15-top">
-        		<div class="col ub ub-ver ub-ac">
+        		<a href="#/app/sendImage" class="col ub ub-ver ub-ac">
         			<img width="43" height="43" src="./img/find/jisuanqi.png"/>
         			<h5>发图片</h5>
-        		</div>
-        		<div class="col ub ub-ver ub-ac">
+        		</a>
+        		<a href="#/app/sendNews" class="col ub ub-ver ub-ac">
         			<img width="43" height="43" src="./img/find/fangdai.png"/>
         			<h5>发资讯</h5>
-        		</div>
-        		<div class="col ub ub-ver ub-ac">
+        		</a>
+        		<a href="#/app/sendKnowledge" class="col ub ub-ver ub-ac">
         			<img width="43" height="43" src="./img/find/huilvxinxi.png"/>
         			<h5>发小知识</h5>
-        		</div>
-        		<div class="col ub ub-ver ub-ac">
+        		</a>
+        		<a href="#/app/sendJiTang" class="col ub ub-ver ub-ac">
         			<img width="43" height="43" src="./img/find/mingpian.png"/>
         			<h5>发鸡汤</h5>
-        		</div>
+        		</a>
         	</div>
         </div>
         
@@ -33,7 +33,7 @@
         	<span class="hotPro_title">热门推荐</span>
         </div>
         <div class="srCard padding">
-        	<div class="row newsItem row-no-padding">
+        	<div class="row newsItem row-no-padding" ng-click="goHotDetails()">
         		<div>
         			<img width="92" height="92" src="./img/home/newsItem.png"/>
         		</div>

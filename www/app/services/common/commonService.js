@@ -209,15 +209,15 @@ define(['angular'], function(angular) {
                         data: par,
                         timeout:30000
                     }).success(function(data) {
-                        if ((JSON.stringify(data).indexOf('login'))>0 || data.hasOwnProperty('result')!==true || (data.message!=null&&data.message.indexOf('请求授权')>0)) {
-                            $localStorageUsage.clear();
-                            $state.go('login');
-                        }
-                        else {
+//                      if ((JSON.stringify(data).indexOf('login'))>0 || data.hasOwnProperty('result')!==true || (data.message!=null&&data.message.indexOf('请求授权')>0)) {
+//                          $localStorageUsage.clear();
+//                          $state.go('login');
+//                      }
+//                      else {
                             deferred.resolve(data);
-                        }
+//                      }
                     }).error(function(error, status) {
-
+                        
                         msg = '请求异常或者超时，请稍后重试！';
                         if(status==undefined){
                             //showToast('系统错误,请重新登录!', 1000);
@@ -507,6 +507,14 @@ define(['angular'], function(angular) {
                     //     return !/^\d{15}$/.test(val);
                     // else
                     //     return !/^\d{6}(18|19|20)?\d{2}(0[1-9]|1[012])(0[1-9]|[12]\d|3[01])\d{3}(\d|X)$/.test(val);
+                },
+                getUrlParam:function(val) {
+                    var par = new RegExp("(^|&)" + val + "=([^&]*)(&|$)");
+                    var parValue = window.location.search.substr(1).match(par);
+                    if (parValue != null) {
+                        return unescape(parValue[2]);
+                    }
+                    return null;
                 },
                 isSexByIdent:function(val){//根据身份证判断性别
                     if(val.length==15){

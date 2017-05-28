@@ -1,5 +1,25 @@
 define(['app'], function(app) {
-    app.controller('myCtrl', ['$rootScope','$scope','$state','$ionicHistory','$ionicLoading','$timeout','CommonService','HomeService','UtilService','$ionicPopup',function($rootScope, $scope,$state,$ionicHistory,$ionicLoading,$timeout,CommonService,HomeService,UtilService,$ionicPopup) {
+    app.controller('myCtrl', ['$rootScope','$scope','$state','$ionicHistory','$ionicLoading','$timeout','CommonService','MyService','UtilService','$ionicPopup',function($rootScope, $scope,$state,$ionicHistory,$ionicLoading,$timeout,CommonService,MyService,UtilService,$ionicPopup) {
+
+         var code =UtilService.getUrlParam("code");
+         var state =UtilService.getUrlParam("state");
+         $scope.oAuthPar={'code':code,'state':state};
+
+         $scope.initOAuth=function(){
+            MyService.GetOAuth($scope.oAuthPar,function(data){
+                if(data != null && data.state ==1) {
+                  CommonService.setStorageItem('authorizationData',JSON.stringify(data.data));
+                   //alert(CommonService.getStorageItem('authorizationData'));
+                 } else {
+                   CommonService.showToast(data.message, 2000);
+                 }
+             },function(error){
+
+             });
+         };
+         $scope.initOAuth();
+			
+
            // 确认拨打电话
 		   $scope.showMyPlanner = function() {
 		     var alertPlanner = $ionicPopup.alert({

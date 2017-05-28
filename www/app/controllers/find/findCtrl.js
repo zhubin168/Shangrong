@@ -23,4 +23,32 @@ define(['app'], function(app) {
     app.controller('chargeDetailsCtrl', ['$rootScope','$scope','$state','$ionicHistory','$ionicLoading','$timeout','CommonService','HomeService','UtilService',function($rootScope, $scope,$state,$ionicHistory,$ionicLoading,$timeout,CommonService,HomeService,UtilService) {
 
     }]);
+    //获客助手
+    app.controller('helperCtrl', ['$rootScope','$scope','$state','$ionicHistory','$ionicLoading','$timeout','CommonService','HomeService','UtilService',function($rootScope, $scope,$state,$ionicHistory,$ionicLoading,$timeout,CommonService,HomeService,UtilService) {
+             $scope.goHotDetails =function(){
+             	$state.go("app.helpHotDetails");
+             }          
+    }]);
+    //发资讯
+    app.controller('sendNewsCtrl', ['$rootScope','$scope','$state','$ionicHistory','$ionicLoading','$timeout','CommonService','HomeService','UtilService',function($rootScope, $scope,$state,$ionicHistory,$ionicLoading,$timeout,CommonService,HomeService,UtilService) {
+             $scope.goNewsDetails =function(){
+             	$state.go("app.helperNewsDetails");
+             }
+    }]);
+    //发图片
+    app.controller('sendImageCtrl', ['$rootScope','$scope','$state','$ionicHistory','$ionicLoading','$timeout','CommonService','HomeService','UtilService',function($rootScope, $scope,$state,$ionicHistory,$ionicLoading,$timeout,CommonService,HomeService,UtilService) {
+
+    }]);
+    //发鸡汤
+    app.controller('sendJiTangCtrl', ['$rootScope','$scope','$state','$ionicHistory','$ionicLoading','$timeout','CommonService','HomeService','UtilService',function($rootScope, $scope,$state,$ionicHistory,$ionicLoading,$timeout,CommonService,HomeService,UtilService) {
+             $scope.goNewsDetails =function(){
+             	$state.go("app.jiTangDetails");
+             }
+    }]);
+    //发小知识
+    app.controller('sendKnowledgeCtrl', ['$rootScope','$scope','$state','$ionicHistory','$ionicLoading','$timeout','CommonService','HomeService','UtilService',function($rootScope, $scope,$state,$ionicHistory,$ionicLoading,$timeout,CommonService,HomeService,UtilService) {
+             $scope.goKnowledegDetails =function(){
+             	$state.go("app.knowledgeDetails");
+             }
+    }]);
 });

@@ -1,9 +1,12 @@
-<ion-view view-title="行业资讯" hide-tabs="true" hide-nav-bar="false">
+<ion-view view-title="{{newsDetails.title}}" hide-tabs="true" hide-nav-bar="true">
     <ion-content style="padding: 25px;">
-    	<p>受益业务调整，银行代销保险手续费激增</p>
-    	<p class="sub-ft">2017-5-20 20:00</p>
-    	<img class="full-image" height="134" src="./img/home/newsDetails.png"/>
+    	<p ng-bind="newsDetails.title"></p>
+    	<p class="sub-ft" ng-bind="newsDetails.publishTime |date:'yyyy:MM:dd HH:mm'"></p>
+    	<!--<img class="full-image" height="134" src="./img/home/newsDetails.png"/>
     	<div class="horizontal_line margin-top"></div>
-    	<p class="margin-top fs12">内容内容内内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容</p>
+    	<p class="margin-top fs12">内容内容内内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容</p>-->
+    	<p id="content">
+    		
+    	</p>
     </ion-content>
 </ion-view>
