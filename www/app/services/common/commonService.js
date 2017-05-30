@@ -68,6 +68,13 @@ define(['angular'], function(angular) {
             }
 
             return {
+				htmlDecode: function(c) {
+				    var b = document.createElement("div");
+				    b.innerHTML = c;
+				    var a = b.innerText || b.textContent;
+				    b = null;
+				    return a;
+				},            	
                 getDatePicker: function(type) {
                     var deferred = $q.defer();
                     var options = {
@@ -188,12 +195,12 @@ define(['angular'], function(angular) {
                 getJsonData: function(url, par) { //获取JSON数据
 
                     if ($rootScope.token == '' ||$rootScope.token==undefined) {
-                        var dataV={'data':{'token':''},'message':'','result':false};
+                        var dataV={'accessToken':'','headImg':'','name':'','uId':0};
                         
                         var authData = $localStorageUsage.getItem('authorizationData') == null ? JSON.stringify(dataV) : $localStorageUsage.getItem('authorizationData');
                         
                         authData = eval('(' + authData + ')');
-                        $rootScope.token = authData.data.token != "" ? authData.data.token : '';
+                        $rootScope.token = authData.accessToken != "" ? authData.accessToken : '';
                     }
                     
                     var deferred = $q.defer();

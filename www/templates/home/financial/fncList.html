@@ -1,16 +1,10 @@
 <ion-view view-title="理财知识" hide-tabs="true" hide-nav-bar="true" >
     <ion-content scroll="true" lazy-scroll>
-         <div class="srCard padding relative" ng-click="goFncList()">
-         	<img class="full-image" src="./img/home/licaizhishi.png"/>
-         	<div class="textCenterImg">买保险你需要知道的那些儿事</div>
+    	<ion-refresher on-refresh="doRefresh()" pulling-text="下拉刷新" refreshing-text="加载中..." spinner="dots"></ion-refresher>
+         <div class="srCard padding relative" ng-click="goFncList(item)" ng-repeat="item in knowList">
+         	<img class="full-image" ng-src="{{'http://'+item.listUrl}}"/>
+         	<div class="textCenterImg" ng-bind="item.title"></div>
          </div>
-         <div class="srCard padding relative">
-         	<img class="full-image" src="./img/home/licaizhishi.png"/>
-         	<div class="textCenterImg">买保险你需要知道的那些儿事</div>
-         </div>
-         <div class="srCard padding relative">
-         	<img class="full-image" src="./img/home/licaizhishi.png"/>
-         	<div class="textCenterImg">买保险你需要知道的那些儿事</div>
-         </div>
+        <ion-infinite-scroll ng-if="more" on-infinite="loadMore()" distance="5%" icon="ion-loading-d" immediate-check="false"></ion-infinite-scroll>  
     </ion-content>
 </ion-view>

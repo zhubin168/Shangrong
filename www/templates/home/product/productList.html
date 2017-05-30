@@ -1,17 +1,17 @@
 <ion-view view-title="全部产品" hide-tabs="true" hide-nav-bar="true">
 	<div class="tabs-top tabs-default bg-grey">
-		<div class="tabs">
-			<a class="tab-item {{audit}} active" ng-click="seachByStatus('audit')"  >
+		<div class="tabs" style="top:0px">
+			<a class="tab-item active" ng-click="seachByStatus('1')"  >
 				<div class="tab-pill">
 				         保险类					
 				</div>
 			</a>
-			<a class="tab-item {{adopt}}" ng-click="seachByStatus('adopt')" >
+			<a class="tab-item" ng-click="seachByStatus('2')" >
 				<div class="tab-pill">
 				         投融类					
 				</div>
 			</a>
-			<a class="tab-item {{refuse}}"  ng-click="seachByStatus('refuse')" >
+			<a class="tab-item"  ng-click="seachByStatus('3')" >
 				<div class="tab-pill">
 				         其他类					
 				</div>
@@ -19,38 +19,15 @@
 		</div>
 	</div>	
     <ion-content class="has-tabs-top" scroll="true" lazy-scroll>
-        <div class="srCard padding" ng-click="getProductDels()">
-            <img class="hotPro_bannerImg" src="./img/home/loveChildren.png" width="100%"/>
+    	<ion-refresher on-refresh="doRefresh()" pulling-text="下拉刷新" refreshing-text="加载中..." spinner="dots"></ion-refresher>
+        <div class="srCard padding" ng-click="getProductDels(item.pid)" ng-repeat="item in productList">
+            <img class="hotPro_bannerImg" ng-src="{{'http://'+item.detailTopUrl}}" width="100%"/>
             <div>
-                <div class="hotPro_itemTitle">少儿学生医疗保障计划</div>
-                <p class="hotPro_discrible ellipsis">
-                                   专为满3-18岁儿童提供身故、交通意外、重疾、住院医疗等保障外，
-                                    更有儿童绑架津贴和儿童公共场所个人责任，人性化设计、保障全面，
-                                    让你的小孩成长无忧！
+                <div class="hotPro_itemTitle" ng-bind="item.productName"></div>
+                <p class="hotPro_discrible ellipsis" ng-bind="item.description">
                 </p>
             </div>
         </div>
-        <div class="srCard padding" ng-click="getProductDels()">
-            <img class="hotPro_bannerImg" src="./img/home/loveChildren.png" width="100%"/>
-            <div>
-                <div class="hotPro_itemTitle">少儿学生医疗保障计划</div>
-                <p class="hotPro_discrible ellipsis">
-                                   专为满3-18岁儿童提供身故、交通意外、重疾、住院医疗等保障外，
-                                    更有儿童绑架津贴和儿童公共场所个人责任，人性化设计、保障全面，
-                                    让你的小孩成长无忧！
-                </p>
-            </div>
-        </div>
-        <div class="srCard padding" ng-click="getProductDels()">
-            <img class="hotPro_bannerImg" src="./img/home/loveChildren.png" width="100%"/>
-            <div>
-                <div class="hotPro_itemTitle">少儿学生医疗保障计划</div>
-                <p class="hotPro_discrible ellipsis">
-                                   专为满3-18岁儿童提供身故、交通意外、重疾、住院医疗等保障外，
-                                    更有儿童绑架津贴和儿童公共场所个人责任，人性化设计、保障全面，
-                                    让你的小孩成长无忧！
-                </p>
-            </div>
-        </div>
+        <ion-infinite-scroll ng-if="more" on-infinite="loadMore()" distance="5%" icon="ion-loading-d" immediate-check="false"></ion-infinite-scroll>  
     </ion-content>
 </ion-view>

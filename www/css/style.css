@@ -756,6 +756,18 @@ ion-slide .bannerTitle{
 	margin-left: 20%;
 	border-radius: 5px;
 }
+/*产品详情的popup*/
+.proDelsPopup.popup-container .popup{
+	width: 100%;
+}
+.proDelsPopup.popup-container{
+	top: auto;
+}
+.proDelsPopup .popup-buttons .button{
+	max-width: 60%;
+	margin-left: 20%;
+	border-radius: 5px;
+}
 /*我的预约记录*/
 .record_total{
 	padding: 12px 25px;
@@ -849,4 +861,12 @@ ion-slide .bannerTitle{
 	text-align: center;
 }
 /*详情页控制图片宽度的样式*/
-#content img{width:100%}
+.editorContent img{max-width:100%}
+.max_h72{max-height: 72px;}
+/*旋转*/
+.rotate180 {
+    -moz-transform: rotate(180deg);
+    -o-transform: rotate(180deg);
+    -ms-transform: rotate(180deg);        /* for IE */    
+    -webkit-transform: rotate(180deg);
+  }

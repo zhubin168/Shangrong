@@ -1,40 +1,18 @@
 <ion-view view-title="理财师充电站" hide-tabs="true" hide-nav-bar="true" hide-back-button="false">
     <ion-content scroll="true" lazy-scroll>
-        <div class="padding srCard" ng-click="goChargeDetails()">
+    	<ion-refresher on-refresh="doRefresh()" pulling-text="下拉刷新" refreshing-text="加载中..." spinner="dots"></ion-refresher>
+        <div class="padding srCard" ng-click="goChargeDetails(item)" ng-repeat="item in chargeList">
         	<div class="row newsItem row-no-padding">
         		<div>
-        			<img width="92" height="92" src="./img/find/pexels-photo-213338@2x.png"/>
+        			<img width="92" height="92" ng-src="{{'http://'+item.listUrl}}" />
         		</div>
         		<div class="col padding15-left relative">
-        			<div class="news_title">术语翻译机</div>
-        			<div class="news_subTitle">翻一翻你没听过的保险名词</div>
-        			<div class="news_time">2017-5-20 14:00</div>
+        			<div class="news_title" ng-bind="item.title"></div>
+        			<div class="news_subTitle" ng-bind="item.subTitle"></div>
+        			<div class="news_time" ng-bind="item.publishTime |date:'yyyy:MM:dd HH:mm'"></div>
         		</div>
         	</div>
         </div>   
-        <div class="padding srCard" ng-click="goChargeDetails()">
-        	<div class="row newsItem row-no-padding">
-        		<div>
-        			<img width="92" height="92" src="./img/find/pexels-photo-247616@2x.png"/>
-        		</div>
-        		<div class="col padding15-left relative">
-        			<div class="news_title">术语翻译机</div>
-        			<div class="news_subTitle">翻一翻你没听过的保险名词</div>
-        			<div class="news_time">2017-5-20 14:00</div>
-        		</div>
-        	</div>
-        </div>   
-        <div class="padding srCard" ng-click="goChargeDetails()">
-        	<div class="row newsItem row-no-padding">
-        		<div>
-        			<img width="92" height="92" src="./img/find/pexels-photo-395196@2x.png"/>
-        		</div>
-        		<div class="col padding15-left relative">
-        			<div class="news_title">术语翻译机</div>
-        			<div class="news_subTitle">翻一翻你没听过的保险名词</div>
-        			<div class="news_time">2017-5-20 14:00</div>
-        		</div>
-        	</div>
-        </div>    	
+		<ion-infinite-scroll ng-if="more" on-infinite="loadMore()" distance="5%" icon="ion-loading-d" immediate-check="false"></ion-infinite-scroll>        
     </ion-content>
 </ion-view>

@@ -10,13 +10,11 @@ define([
     'jquery',
     'lazy-image',
     'bindonce',
-    'tooltips',
     'identCheck',
     'localStorageUsage',
     'directive/directives',
     'filters/filters',
     'services/common/commonService',
-    'selcity',
 ], function(angular, angularAMD) {
     'use strict';
 
@@ -26,7 +24,7 @@ define([
     var imgUrl = 'http://photo.dafysz.cn:8081/';
 
     var app = angular.module('app', [
-        'ionic','ngCordova', 'ngLocale', 'door3.css', 'afkl.lazyImage','720kb.tooltips','check.identCheck','pasvaz.bindonce', 'localStorageUsage', 'app.directives', 'app.filters', 'app.commonService','ionic-selcity'
+        'ionic','ngCordova', 'ngLocale', 'door3.css', 'afkl.lazyImage','check.identCheck','pasvaz.bindonce', 'localStorageUsage', 'app.directives', 'app.filters', 'app.commonService',
     ]);
 
     app.config(['$httpProvider', '$ionicConfigProvider', function($httpProvider, $ionicConfigProvider) {
@@ -212,14 +210,14 @@ define([
         }))     
         
         .state('app.productDetails', angularAMD.route({ //产品详情
-            url: '/productDetails',
+            url: '/productDetails/:pid',
             views: {
                 'app-home': {
                     templateUrl: 'templates/home/product/productDetails.html',
                     controller: 'productDetailsCtrl',
                 }
             },
-            //cache:false,
+            cache:false,
             resolve: {
                 loadController: ['$q', '$stateParams',
                     function($q, $stateParams) {
@@ -316,14 +314,14 @@ define([
         })) 
         
         .state('app.fncDetails', angularAMD.route({ //理财知识详情
-            url: '/fncDetails',
+            url: '/fncDetails/:isSx',
             views: {
                 'app-home': {
                     templateUrl: 'templates/home/financial/fncDetails.html',
                     controller: 'fncDetailsCtrl',
                 }
             },
-            //cache:false,
+             cache:false,
             resolve: {
                 loadController: ['$q', '$stateParams',
                     function($q, $stateParams) {
@@ -341,8 +339,8 @@ define([
             }
         })) 
         
-        .state('app.home.about', angularAMD.route({ //home页关于尚融
-            url: '/home/about',
+        .state('app.about', angularAMD.route({ //home页关于尚融
+            url: '/about',
             views: {
                 'app-home': {
                     templateUrl: 'templates/home/about.html',
@@ -405,11 +403,11 @@ define([
                 loadController: ['$q', '$stateParams',
                     function($q, $stateParams) {
                         var findCtrl = "app/controllers/find/findCtrl.js";
-                        var homeService = "app/services/home/homeService.js";
+                        var findService = "app/services/find/findService.js";
 
                         var deferred = $q.defer();
 
-                        require([findCtrl,homeService], function() {
+                        require([findCtrl,findService], function() {
                             deferred.resolve();
                         });
                         return deferred.promise;
@@ -665,11 +663,10 @@ define([
                 loadController: ['$q', '$stateParams',
                     function($q, $stateParams) {
                         var findCtrl = "app/controllers/find/findCtrl.js";
-                        var homeService = "app/services/home/homeService.js";
-
+                        var findService = "app/services/find/findService.js";
                         var deferred = $q.defer();
 
-                        require([findCtrl,homeService], function() {
+                        require([findCtrl,findService], function() {
                             deferred.resolve();
                         });
                         return deferred.promise;
@@ -678,23 +675,22 @@ define([
             }
         }))
         .state('app.chargeDetails', angularAMD.route({ //理财师充电站详情
-            url: '/chargeDetails',
+            url: '/chargeDetails/:isSx',
             views: {
                 'app-find': {
                     templateUrl: 'templates/find/chargeDetails.html',
-                    controller: 'findCtrl',
+                    controller: 'chargeDetailsCtrl',
                 }
             },
-            //cache:false,
+            cache:false,
             resolve: {
                 loadController: ['$q', '$stateParams',
                     function($q, $stateParams) {
                         var findCtrl = "app/controllers/find/findCtrl.js";
-                        var homeService = "app/services/home/homeService.js";
-
+                        var findService = "app/services/find/findService.js";                        
                         var deferred = $q.defer();
 
-                        require([findCtrl,homeService], function() {
+                        require([findCtrl,findService], function() {
                             deferred.resolve();
                         });
                         return deferred.promise;

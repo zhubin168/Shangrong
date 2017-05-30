@@ -39,32 +39,27 @@
         	<span class="hotPro_title">理财师充电站</span>
         </div>
 
-        <div class="srCard padding" ng-click="goChargeDetails()">
-            <img class="hotPro_bannerImg" src="./img/find/chongdian_banner.png" width="100%"/>
+        <div class="srCard padding relative" ng-click="goChargeDetails(hotChargelist[0])">
+            <img class="hotPro_bannerImg" ng-src="{{'http://'+hotChargelist[0].listUrl}}" width="100%"/>
+            <div class="textCenterImg" ng-bind="hotChargelist[0].title"></div>
         </div>
         <div class="row row-no-padding">
-        	<div class="col col-50" ng-click="goChargeDetails()">
+        	<div class="col col-50" ng-click="goChargeDetails(hotChargelist[1])">
 		        <div class="srCard padding5 margin5-top">
-		            <img src="./img/find/charge_left.png" width="100%"/>
+		            <img ng-src="{{'http://'+hotChargelist[1].listUrl}}" width="100%"/>
 		            <div>
-		                <div class="hotPro_itemTitle">港险相比内地保险的优势</div>
-		                <p class="hotPro_discrible ellipsis2">
-                                                   专为满3-18岁儿童提供身故、交通意外、重疾、住院医疗等保障外，
-		                                    更有儿童绑架津贴和儿童公共场所个人责任，人性化设计、保障全面，
-		                                    让你的小孩成长无忧！
+		                <div class="hotPro_itemTitle" ng-bind="hotChargelist[1].title"></div>
+		                <p class="hotPro_discrible ellipsis2" style="height: 40px;" ng-bind="hotChargelist[1].subTitle">
 		                </p>
 		            </div>
 		        </div>        		
         	</div>
-        	<div class="col col-50" ng-click="goChargeDetails()">
+        	<div class="col col-50" ng-click="goChargeDetails(hotChargelist[2])">
 		        <div class="srCard padding5 margin5-top">
-		            <img src="./img/find/charge_right.png" width="100%"/>
+		            <img ng-src="{{'http://'+hotChargelist[2].listUrl}}" width="100%"/>
 		            <div>
-		                <div class="hotPro_itemTitle">港险相比内地保险的优势</div>
-		                <p class="hotPro_discrible ellipsis2">
-		                               专为满3-18岁儿童提供身故、交通意外、重疾、住院医疗等保障外，
-		                                更有儿童绑架津贴和儿童公共场所个人责任，人性化设计、保障全面，
-		                                让你的小孩成长无忧！
+		                <div class="hotPro_itemTitle" ng-bind="hotChargelist[2].title"></div>
+		                <p class="hotPro_discrible ellipsis2" style="height: 40px;" ng-bind="hotChargelist[2].subTitle">
 		                </p>
 		            </div>
 		        </div>        		

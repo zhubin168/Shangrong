@@ -5,11 +5,6 @@ define(['app'], function(app) {
 	app.controller('AccountCtrl', ['$scope', '$rootScope', '$state','$ionicHistory','$window', '$ionicPopup','$css','CommonService', 'Settings', function($scope, $rootScope, $state, $ionicHistory,$window,$ionicPopup,$css,CommonService, Settings) {
 			// $css.add('./css/account/account.css');
 
-			var info=CommonService.getStorageItem('authorizationData');
-			$scope.userInfo=JSON.parse(info);
-			$scope.headImg=$scope.userInfo.headImg;
-			$rootScope.userName=$scope.userInfo.name;
-			
 			$scope.version = 'V' + Settings.version;
 
 			//清除所有缓存

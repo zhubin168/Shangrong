@@ -1,9 +1,8 @@
-<ion-view view-title="术语翻译机" hide-tabs="true" hide-nav-bar="true">
+<ion-view view-title="{{chargeDetails.title}}" hide-tabs="true" hide-nav-bar="true">
     <ion-content style="padding: 25px;">
-    	<p>标题标题标题标题标题标题标题标题标题</p>
-    	<p class="sub-ft">2017-5-20 20:00</p>
-    	<img class="full-image" height="134" src="./img/find/chargeDetails.png"/>
-    	<div class="horizontal_line margin-top"></div>
-    	<p class="margin-top fs12">内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容</p>
-    </ion-content>
+    	<p ng-bind="chargeDetails.title"></p>
+    	<p class="sub-ft" ng-bind="chargeDetails.publishTime |date:'yyyy:MM:dd HH:mm'"></p>
+    	<p id="content" class="editorContent">
+    		
+    	</p>
 </ion-view>
