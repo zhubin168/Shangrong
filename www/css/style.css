@@ -861,7 +861,7 @@ ion-slide .bannerTitle{
 	text-align: center;
 }
 /*详情页控制图片宽度的样式*/
-.editorContent img{max-width:100%}
+.editorContent img{width:100%}
 .max_h72{max-height: 72px;}
 /*旋转*/
 .rotate180 {

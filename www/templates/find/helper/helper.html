@@ -65,3 +65,44 @@
         </div>
     </ion-content>
 </ion-view>
+<script type="text/ng-template" id="setInfo.html">
+	<div class="text-center padding">
+		在使用获客助手分享图片或文章前请先设置个人信息，这样才方便潜在客户找到您
+	</div>
+</script>
+<script id="modal.html" type="text/ng-template">
+  <div class="modal">
+	<ion-header-bar align-title="center">
+	  <h1 class="title">设置个人信息</h1>
+	  <div class="buttons">
+	    <button class="button bg-white" ng-click="closeModal()"><i class="icon ion-chevron-down"></i></button>
+	  </div>	  
+	</ion-header-bar>
+    <ion-content padding=true>
+       	<div class="fs12 sub-ft padding-horizontal padding-top">请认真填写以下信息，以便潜在客户顺利找到您</div>
+		<div class="list card padding plannerCertifBox">
+		  <label class="item item-input">
+		    <span class="input-label fs14">姓名</span>
+		    <input type="text" placeholder="请输入您的姓名">
+		  </label>
+		  <label class="item item-input">
+		    <span class="input-label fs14">手机号</span>
+		    <input type="text" placeholder="请输入您的手机号码">
+		  </label>	
+		  <label class="item item-input">
+		    <span class="input-label fs14">职级</span>
+		    <input type="text" placeholder="请输入您的职业等级">
+		  </label>	
+		  <label class="item item-input" style="-webkit-align-items:baseline;align-items: baseline;">
+		    <span class="input-label fs14">签名</span>
+		    <textarea type="text" cols="3" rows="5" class="padding-right" placeholder="请您所擅长的领域或辉煌历史"></textarea>
+		  </label>	
+		  
+		</div>
+    	<div class="text-center" style="padding:30px;">
+          <div class="button linearRight full-image fs14">保存</div>     	
+    	</div>		
+    </ion-content>
+  </div>
+</ion-view>  
+</script>

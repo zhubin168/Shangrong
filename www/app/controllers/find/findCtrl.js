@@ -99,7 +99,41 @@ define(['app'], function(app) {
 		angular.element(content).html($scope.chargeDetails.content);           
     }]);
     //获客助手
-    app.controller('helperCtrl', ['$rootScope','$scope','$state','$ionicHistory','$ionicLoading','$timeout','CommonService','HomeService','UtilService',function($rootScope, $scope,$state,$ionicHistory,$ionicLoading,$timeout,CommonService,HomeService,UtilService) {
+    app.controller('helperCtrl', ['$rootScope','$scope','$state','$ionicHistory','$ionicLoading','$timeout','CommonService','HomeService','UtilService','$ionicPopup','$ionicModal',function($rootScope, $scope,$state,$ionicHistory,$ionicLoading,$timeout,CommonService,HomeService,UtilService,$ionicPopup,$ionicModal) {
+		// 确认设置个人信息
+		$scope.confirmSetInfo = function() {
+			var confirmSetInfo = $ionicPopup.confirm({
+				title: '设置个人信息',
+				templateUrl: 'setInfo.html',
+				cssClass: 'srPopup',
+				scope: $scope,
+				cancelText: "稍后设置",
+				cancelType: "bg-grey sub-ft",
+				okText: "立即设置",
+				okType: "linearRight"
+			});
+			confirmSetInfo.then(function(res) {
+				if (res) {
+					$scope.modal.show();
+				}
+			});
+		};   
+		//设置个人信息模态框
+		$ionicModal.fromTemplateUrl('modal.html', {
+		    scope: $scope,
+		    animation: 'slide-in-up'
+		  }).then(function(modal) {
+		    $scope.modal = modal;
+		  });	
+		//关闭模态框
+		  $scope.closeModal = function() {
+		    $scope.modal.hide();
+		  };
+		  //当我们用到模型时，清除它！
+		  $scope.$on('$destroy', function() {
+		    $scope.modal.remove();
+		  });
+		$scope.confirmSetInfo();
              $scope.goHotDetails =function(){
              	$state.go("app.helpHotDetails");
              }          
