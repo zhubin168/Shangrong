@@ -1,4 +1,4 @@
-<ion-view view-title="发资讯" hide-tabs="true" hide-nav-bar="true" hide-back-button="false">
+<ion-view view-title="{{sendNews_title}}" hide-tabs="true" hide-nav-bar="true" hide-back-button="false">
     <ion-content scroll="true" lazy-scroll>
     	<ion-refresher on-refresh="doRefresh()" pulling-text="下拉刷新" refreshing-text="加载中..." spinner="dots"></ion-refresher>
         <div class="padding srCard" ng-click="goNewsDetails(item)" ng-repeat="item in newsList">

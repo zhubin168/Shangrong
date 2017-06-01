@@ -194,6 +194,19 @@ define(['app'], function(app) {
     //发资讯
     app.controller('sendNewsCtrl', ['$rootScope','$scope','$state','$stateParams','$ionicHistory','$ionicLoading','$timeout','CommonService','FindService','UtilService',function($rootScope, $scope,$state,$stateParams,$ionicHistory,$ionicLoading,$timeout,CommonService,FindService,UtilService) {
             //获取资讯列表
+        switch ($stateParams.type){
+        	case 1:
+        	   $scope.sendNews_title ="发资讯";
+        		break;
+        	case 2:
+        	   $scope.sendNews_title ="发小知识";
+        		break;
+        	case 3:
+        	   $scope.sendNews_title ="发鸡汤";
+        		break;
+        	default:
+        		break;
+        }
 		$scope.parameter = {
 			pageIndex: 1,
 			pageSize: 8,
