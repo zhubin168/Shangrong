@@ -1,31 +1,19 @@
 <ion-view view-title="发资讯" hide-tabs="true" hide-nav-bar="true" hide-back-button="false">
     <ion-content scroll="true" lazy-scroll>
-        	<div class="ub newsItem srCard padding" ng-click="goNewsDetails()">
+    	<ion-refresher on-refresh="doRefresh()" pulling-text="下拉刷新" refreshing-text="加载中..." spinner="dots"></ion-refresher>
+        <div class="padding srCard" ng-click="goNewsDetails(item)" ng-repeat="item in newsList">
+        	<div class="row newsItem row-no-padding">
         		<div>
-        			<img width="92" height="92" src="./img/home/newsItem.png"/>
+        			<img width="92" height="92" ng-src="{{'http://'+item.listUrl}}" />
         		</div>
-        		<div class="ub-f1 padding15-left relative">
-        			<p class="news_title">受益业务调整，银行代销保险手续费激增</p>
-        			<div class="fs12 news_time">2017-5-20 14:00</div>
+        		<div class="col padding15-left relative">
+        			<div class="news_title" ng-bind="item.title"></div>
+        			<div class="news_subTitle" ng-bind="item.subTitle"></div>
+        			<div class="news_time" ng-bind="item.publishTime |date:'yyyy:MM:dd HH:mm'"></div>
         		</div>
         	</div>
-        	<div class="ub newsItem srCard padding" ng-click="goNewsDetails()">
-        		<div>
-        			<img width="92" height="92" src="./img/home/newsItem.png"/>
-        		</div>
-        		<div class="ub-f1 padding15-left relative">
-        			<p class="news_title">受益业务调整，银行代销保险手续费激增</p>
-        			<div class="fs12 news_time">2017-5-20 14:00</div>
-        		</div>
-        	</div>
-        	<div class="ub newsItem srCard padding" ng-click="goNewsDetails()">
-        		<div>
-        			<img width="92" height="92" src="./img/home/newsItem.png"/>
-        		</div>
-        		<div class="ub-f1 padding15-left relative">
-        			<p class="news_title">受益业务调整，银行代销保险手续费激增</p>
-        			<div class="fs12 news_time">2017-5-20 14:00</div>
-        		</div>
-        	</div>
+        </div>   
+        <no-data ng-show="newsList.length==0?true:false"></no-data>
+		<ion-infinite-scroll ng-if="more" on-infinite="loadMore()" distance="5%" icon="ion-loading-d" immediate-check="false"></ion-infinite-scroll>        
     </ion-content>
 </ion-view>

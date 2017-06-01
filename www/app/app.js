@@ -344,7 +344,7 @@ define([
             views: {
                 'app-home': {
                     templateUrl: 'templates/home/about.html',
-                    controller: 'HomeCtrl',
+                    controller: 'aboutCtrl',
                 }
             },
             //cache:false,
@@ -369,19 +369,19 @@ define([
             views: {
                 'app-my': {
                     templateUrl: 'templates/home/about.html',
-                    controller: 'HomeCtrl',
+                    controller: 'myAboutCtrl',
                 }
             },
             //cache:false,
             resolve: {
                 loadController: ['$q', '$stateParams',
                     function($q, $stateParams) {
-                        var homeCtrl = "app/controllers/home/homeCtrl.js";
-                        var homeService = "app/services/home/homeService.js";
+                        var myCtrl = "app/controllers/my/myCtrl.js";
+                        var myService = "app/services/my/myService.js";
 
                         var deferred = $q.defer();
 
-                        require([homeCtrl,homeService], function() {
+                        require([myCtrl,myService], function() {
                             deferred.resolve();
                         });
                         return deferred.promise;
@@ -429,11 +429,11 @@ define([
                 loadController: ['$q', '$stateParams',
                     function($q, $stateParams) {
                         var findCtrl = "app/controllers/find/findCtrl.js";
-                        var homeService = "app/services/home/homeService.js";
+                        var findService = "app/services/find/findService.js";
 
                         var deferred = $q.defer();
 
-                        require([findCtrl,homeService], function() {
+                        require([findCtrl,findService], function() {
                             deferred.resolve();
                         });
                         return deferred.promise;
@@ -469,7 +469,7 @@ define([
         }))
         
         .state('app.sendNews', angularAMD.route({ //发资讯
-            url: '/sendNews',
+            url: '/sendNews/:type',
             views: {
                 'app-find': {
                     templateUrl: 'templates/find/helper/sendNews.html',
@@ -481,11 +481,11 @@ define([
                 loadController: ['$q', '$stateParams',
                     function($q, $stateParams) {
                         var findCtrl = "app/controllers/find/findCtrl.js";
-                        var homeService = "app/services/home/homeService.js";
+                        var findService = "app/services/find/findService.js";
 
                         var deferred = $q.defer();
 
-                        require([findCtrl,homeService], function() {
+                        require([findCtrl,findService], function() {
                             deferred.resolve();
                         });
                         return deferred.promise;
@@ -494,101 +494,101 @@ define([
             }
         }))
         
-        .state('app.sendKnowledge', angularAMD.route({ //发小知识
-            url: '/sendKnowledge',
-            views: {
-                'app-find': {
-                    templateUrl: 'templates/find/helper/sendKnowledge.html',
-                    controller: 'sendKnowledgeCtrl',
-                }
-            },
-            //cache:false,
-            resolve: {
-                loadController: ['$q', '$stateParams',
-                    function($q, $stateParams) {
-                        var findCtrl = "app/controllers/find/findCtrl.js";
-                        var homeService = "app/services/home/homeService.js";
-
-                        var deferred = $q.defer();
-
-                        require([findCtrl,homeService], function() {
-                            deferred.resolve();
-                        });
-                        return deferred.promise;
-                    }
-                ]
-            }
-        }))
-        .state('app.sendJiTang', angularAMD.route({ //发鸡汤
-            url: '/sendJiTang',
-            views: {
-                'app-find': {
-                    templateUrl: 'templates/find/helper/sendJiTang.html',
-                    controller: 'sendJiTangCtrl',
-                }
-            },
-            //cache:false,
-            resolve: {
-                loadController: ['$q', '$stateParams',
-                    function($q, $stateParams) {
-                        var findCtrl = "app/controllers/find/findCtrl.js";
-                        var homeService = "app/services/home/homeService.js";
-
-                        var deferred = $q.defer();
-
-                        require([findCtrl,homeService], function() {
-                            deferred.resolve();
-                        });
-                        return deferred.promise;
-                    }
-                ]
-            }
-        }))
+//      .state('app.sendKnowledge', angularAMD.route({ //发小知识
+//          url: '/sendKnowledge',
+//          views: {
+//              'app-find': {
+//                  templateUrl: 'templates/find/helper/sendKnowledge.html',
+//                  controller: 'sendKnowledgeCtrl',
+//              }
+//          },
+//          //cache:false,
+//          resolve: {
+//              loadController: ['$q', '$stateParams',
+//                  function($q, $stateParams) {
+//                      var findCtrl = "app/controllers/find/findCtrl.js";
+//                      var homeService = "app/services/home/homeService.js";
+//
+//                      var deferred = $q.defer();
+//
+//                      require([findCtrl,homeService], function() {
+//                          deferred.resolve();
+//                      });
+//                      return deferred.promise;
+//                  }
+//              ]
+//          }
+//      }))
+//      .state('app.sendJiTang', angularAMD.route({ //发鸡汤
+//          url: '/sendJiTang',
+//          views: {
+//              'app-find': {
+//                  templateUrl: 'templates/find/helper/sendJiTang.html',
+//                  controller: 'sendJiTangCtrl',
+//              }
+//          },
+//          //cache:false,
+//          resolve: {
+//              loadController: ['$q', '$stateParams',
+//                  function($q, $stateParams) {
+//                      var findCtrl = "app/controllers/find/findCtrl.js";
+//                      var homeService = "app/services/home/homeService.js";
+//
+//                      var deferred = $q.defer();
+//
+//                      require([findCtrl,homeService], function() {
+//                          deferred.resolve();
+//                      });
+//                      return deferred.promise;
+//                  }
+//              ]
+//          }
+//      }))
         
-        .state('app.knowledgeDetails', angularAMD.route({ //发小知识详情
-            url: '/knowledgeDetails',
-            views: {
-                'app-find': {
-                    templateUrl: 'templates/find/helper/knowledgeDetails.html',
-                    controller: 'sendKnowledgeCtrl',
-                }
-            },
-            //cache:false,
-            resolve: {
-                loadController: ['$q', '$stateParams',
-                    function($q, $stateParams) {
-                        var findCtrl = "app/controllers/find/findCtrl.js";
-                        var homeService = "app/services/home/homeService.js";
-
-                        var deferred = $q.defer();
-
-                        require([findCtrl,homeService], function() {
-                            deferred.resolve();
-                        });
-                        return deferred.promise;
-                    }
-                ]
-            }
-        }))
+//      .state('app.knowledgeDetails', angularAMD.route({ //发小知识详情
+//          url: '/knowledgeDetails',
+//          views: {
+//              'app-find': {
+//                  templateUrl: 'templates/find/helper/knowledgeDetails.html',
+//                  controller: 'sendKnowledgeCtrl',
+//              }
+//          },
+//          //cache:false,
+//          resolve: {
+//              loadController: ['$q', '$stateParams',
+//                  function($q, $stateParams) {
+//                      var findCtrl = "app/controllers/find/findCtrl.js";
+//                      var homeService = "app/services/home/homeService.js";
+//
+//                      var deferred = $q.defer();
+//
+//                      require([findCtrl,homeService], function() {
+//                          deferred.resolve();
+//                      });
+//                      return deferred.promise;
+//                  }
+//              ]
+//          }
+//      }))
         
         .state('app.helperNewsDetails', angularAMD.route({ //资讯详情
-            url: '/helperNewsDetails',
+            url: '/helperNewsDetails/:isSx',
             views: {
                 'app-find': {
                     templateUrl: 'templates/find/helper/newsDetails.html',
-                    controller: 'findCtrl',
+                    controller: 'helperNewsDlsCtrl',
                 }
             },
-            //cache:false,
+            cache:false,
             resolve: {
                 loadController: ['$q', '$stateParams',
                     function($q, $stateParams) {
                         var findCtrl = "app/controllers/find/findCtrl.js";
-                        var homeService = "app/services/home/homeService.js";
+                        var findService = "app/services/find/findService.js";
 
                         var deferred = $q.defer();
 
-                        require([findCtrl,homeService], function() {
+                        require([findCtrl,findService], function() {
                             deferred.resolve();
                         });
                         return deferred.promise;
@@ -597,31 +597,31 @@ define([
             }
         }))
         
-        .state('app.jiTangDetails', angularAMD.route({ //鸡汤详情
-            url: '/jiTangDetails',
-            views: {
-                'app-find': {
-                    templateUrl: 'templates/find/helper/jiTangDetails.html',
-                    controller: 'findCtrl',
-                }
-            },
-            //cache:false,
-            resolve: {
-                loadController: ['$q', '$stateParams',
-                    function($q, $stateParams) {
-                        var findCtrl = "app/controllers/find/findCtrl.js";
-                        var homeService = "app/services/home/homeService.js";
-
-                        var deferred = $q.defer();
-
-                        require([findCtrl,homeService], function() {
-                            deferred.resolve();
-                        });
-                        return deferred.promise;
-                    }
-                ]
-            }
-        }))
+//      .state('app.jiTangDetails', angularAMD.route({ //鸡汤详情
+//          url: '/jiTangDetails',
+//          views: {
+//              'app-find': {
+//                  templateUrl: 'templates/find/helper/jiTangDetails.html',
+//                  controller: 'findCtrl',
+//              }
+//          },
+//          //cache:false,
+//          resolve: {
+//              loadController: ['$q', '$stateParams',
+//                  function($q, $stateParams) {
+//                      var findCtrl = "app/controllers/find/findCtrl.js";
+//                      var homeService = "app/services/home/homeService.js";
+//
+//                      var deferred = $q.defer();
+//
+//                      require([findCtrl,homeService], function() {
+//                          deferred.resolve();
+//                      });
+//                      return deferred.promise;
+//                  }
+//              ]
+//          }
+//      }))
         
         .state('app.helpHotDetails', angularAMD.route({ //热文详情
             url: '/helpHotDetails',
@@ -937,19 +937,19 @@ define([
             views: {
                 'app-my': {
                     templateUrl: 'templates/my/plannerCertif.html',
-                    controller: 'HomeCtrl',
+                    controller: 'plannerCertifCtrl',
                 }
             },
             //cache:false,
             resolve: {
                 loadController: ['$q', '$stateParams',
                     function($q, $stateParams) {
-                        var homeCtrl = "app/controllers/home/homeCtrl.js";
-                        var homeService = "app/services/home/homeService.js";
+                        var myCtrl = "app/controllers/my/myCtrl.js";
+                        var myService = "app/services/my/myService.js";
 
                         var deferred = $q.defer();
 
-                        require([homeCtrl,homeService], function() {
+                        require([myCtrl,myService], function() {
                             deferred.resolve();
                         });
                         return deferred.promise;
@@ -1015,19 +1015,19 @@ define([
             views: {
                 'app-my': {
                     templateUrl: 'templates/my/helpCenter.html',
-                    controller: 'HomeCtrl',
+                    controller: 'myCtrl',
                 }
             },
             //cache:false,
             resolve: {
                 loadController: ['$q', '$stateParams',
                     function($q, $stateParams) {
-                        var homeCtrl = "app/controllers/home/homeCtrl.js";
-                        var homeService = "app/services/home/homeService.js";
+                        var myCtrl = "app/controllers/my/myCtrl.js";
+                        var myService = "app/services/my/myService.js";
 
                         var deferred = $q.defer();
 
-                        require([homeCtrl,homeService], function() {
+                        require([myCtrl,myService], function() {
                             deferred.resolve();
                         });
                         return deferred.promise;

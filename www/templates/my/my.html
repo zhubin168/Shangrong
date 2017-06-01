@@ -2,13 +2,13 @@
 	<ion-content class="bg-grey">
 		<div class="my_header ub ub-ac ub-ver">
 			<a href="#/app/personalCenter">
-			    <img width="70" height="70" ng-src="{{headImg}}" />
+			    <img style="border-radius: 35px;" width="70" height="70" ng-src="{{personInfo.headimgurl}}" />
 			</a>
-			<div class="my_name fs16">{{userName}}</div>
-			<div class="my_position">理财经理</div>
+			<div class="my_name fs16" ng-bind="userName"></div>
+			<div class="my_position" ng-bind="personInfo.position"></div>
 		</div>
 		
-		<div class="my_count ub row">
+		<div class="my_count ub row" ng-if="roleId==1">
 			<a href="#app/saleRecord" class="ub ub-ac ub-pc ub-f1 col col-50 ub-ver padding-vertical border2-right Dark">
 				<div class="my_itemName">累积销售金额（元）</div>
 				<div class="white margin5-top">765432.00</div>
@@ -21,7 +21,7 @@
 		
 		<div class="my_itemGroup margin-top">
 			
-			<div ng-click="showMyPlanner()" class="my_item ub margin15-top">
+			<div ng-click="getplannerInfo()" class="my_item ub margin15-top" ng-if="roleId==0">
 				<div class="my_itemName">我的理财师</div>
 				<div class="ub ub-f1 ub-pe">
 					<i class="icon ion-ios-arrow-right fs20 Dark"></i>
@@ -30,7 +30,7 @@
 			<div class="padding15-horizontal">
 				<div class="horizontal_line"></div>
 			</div>	
-			<a href="#/app/saleRecord" class="my_item ub">
+			<a href="#/app/saleRecord" class="my_item ub" ng-if="roleId==2">
 				<div class="my_itemName">我的销售记录</div>
 				<div class="ub ub-f1 ub-pe">
 					<i class="icon ion-ios-arrow-right fs20 Dark"></i>
@@ -48,7 +48,7 @@
 			</a>
 		</div>
         <!--客户角色-->
-		<a href="#app/plannerCertif" class="my_itemGroup margin-top block">
+		<a href="#app/plannerCertif" class="my_itemGroup margin-top block" ng-if="roleId==0">
 			<div class="my_item ub">
 				<div class="my_itemName">申请理财师认证</div>
 				<div class="ub ub-f1 ub-pe">
@@ -57,7 +57,7 @@
 			</div>
 		</a>
         <!--理财师和渠道角色-->
-		<div class="my_itemGroup margin-top">
+		<div class="my_itemGroup margin-top" ng-if="roleId!==0">
 			<a href="#/app/myCustomer" class="my_item ub">
 				<div class="my_itemName">我的客户</div>
 				<div class="ub ub-f1 ub-pe">
@@ -111,13 +111,13 @@
 </ion-view>
 <script type="text/ng-template" id="myPlanner.html">
 		<div class="item item-avatar" style="background: transparent;border:none">
-			<img src="./img/find/charge_right.png">
+			<img ng-src="{{myPlannerItem.headimgurl}}" />
 			<div class="ub">
 				<div class="ub ub-ver">
-					<h2 class="fs14 margin-bottom"><span>刘茜</span></h2>
-					<p class="fs12 sub-ft">高级理财规划师</p>
+					<h2 class="fs14 margin-bottom"><span ng-bind="myPlannerItem.nickname"></span></h2>
+					<p class="fs12 sub-ft" ng-bind="myPlannerItem.rank"></p>
 				</div>
 			</div>
 		</div>    
-		<p class="padding">四川大学管理学硕士，行愿咨询工作室合伙人，累计管理资产2亿。</p>
+		<p class="padding" ng-bind="myPlannerItem.remark"></p>
 </script>

@@ -130,7 +130,7 @@ define(['angular'], function(angular) {
         .directive('noData', function() {
             return {
                 restrict: 'E',
-                template: '<div class="padding text-center ub ub-ver" style="margin-top:38%;"><img width="120" src="./img/account/noData.png"/><h4 class="sub-ft" style="color:#abaaaa;">即有分期,让爱不在等待!</h4></div>',
+                template: '<div class="padding text-center ub ub-ver" style="margin-top:38%;"><h4 class="sub-ft" style="color:#abaaaa;">暂无数据..</h4></div>',
                 replace: true
             };
         })

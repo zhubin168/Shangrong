@@ -360,6 +360,7 @@ define(['app'], function(app) {
 			});
 		}
 	}]);
+	
 	//  产品详情
 	app.controller('productDetailsCtrl', ['$rootScope', '$scope', '$state', '$stateParams', '$ionicHistory', '$ionicLoading', '$timeout', 'CommonService', 'HomeService', 'UtilService', '$ionicPopup', function($rootScope, $scope, $state, $stateParams, $ionicHistory, $ionicLoading, $timeout, CommonService, HomeService, UtilService, $ionicPopup) {
 		//  	获取产品详情
@@ -531,4 +532,7 @@ define(['app'], function(app) {
 		})
 
 	}]);
+       app.controller('aboutCtrl', ['$rootScope', '$scope', '$state', '$stateParams', '$ionicHistory', '$ionicLoading', '$timeout', 'CommonService', 'HomeService', 'UtilService', '$ionicPopup', function($rootScope, $scope, $state, $stateParams, $ionicHistory, $ionicLoading, $timeout, CommonService, HomeService, UtilService, $ionicPopup) {	
+	
+		}]);
 });

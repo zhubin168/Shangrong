@@ -12,15 +12,15 @@
         			<img width="43" height="43" src="./img/find/jisuanqi.png"/>
         			<h5>发图片</h5>
         		</a>
-        		<a href="#/app/sendNews" class="col ub ub-ver ub-ac">
+        		<a ng-click="sendNews(1)" class="col ub ub-ver ub-ac">
         			<img width="43" height="43" src="./img/find/fangdai.png"/>
         			<h5>发资讯</h5>
         		</a>
-        		<a href="#/app/sendKnowledge" class="col ub ub-ver ub-ac">
+        		<a ng-click="sendNews(2)" class="col ub ub-ver ub-ac">
         			<img width="43" height="43" src="./img/find/huilvxinxi.png"/>
         			<h5>发小知识</h5>
         		</a>
-        		<a href="#/app/sendJiTang" class="col ub ub-ver ub-ac">
+        		<a ng-click="sendNews(3)" class="col ub ub-ver ub-ac">
         			<img width="43" height="43" src="./img/find/mingpian.png"/>
         			<h5>发鸡汤</h5>
         		</a>
@@ -83,24 +83,24 @@
 		<div class="list card padding plannerCertifBox">
 		  <label class="item item-input">
 		    <span class="input-label fs14">姓名</span>
-		    <input type="text" placeholder="请输入您的姓名">
+		    <input type="text" placeholder="请输入您的姓名" ng-model="userInfo.userName">
 		  </label>
 		  <label class="item item-input">
 		    <span class="input-label fs14">手机号</span>
-		    <input type="text" placeholder="请输入您的手机号码">
+		    <input type="tel" placeholder="请输入您的手机号码" ng-model="userInfo.phone">
 		  </label>	
 		  <label class="item item-input">
 		    <span class="input-label fs14">职级</span>
-		    <input type="text" placeholder="请输入您的职业等级">
+		    <input type="text" placeholder="请输入您的职业等级" ng-model="userInfo.rank">
 		  </label>	
 		  <label class="item item-input" style="-webkit-align-items:baseline;align-items: baseline;">
 		    <span class="input-label fs14">签名</span>
-		    <textarea type="text" cols="3" rows="5" class="padding-right" placeholder="请您所擅长的领域或辉煌历史"></textarea>
+		    <textarea ng-model="userInfo.remark" type="text" cols="3" rows="5" class="padding-right" placeholder="请您所擅长的领域或辉煌历史"></textarea>
 		  </label>	
 		  
 		</div>
     	<div class="text-center" style="padding:30px;">
-          <div class="button linearRight full-image fs14">保存</div>     	
+          <div class="button linearRight full-image fs14" ng-click="SaveUserInfo()">保存</div>     	
     	</div>		
     </ion-content>
   </div>

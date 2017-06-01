@@ -21,6 +21,34 @@ define([
         	    },function(error){
                     callbackError(error);
                 });
+        	}, 
+        	GetUserInfo: function(par,callback,callbackError) { //获取用户信息
+        	    CommonService.getJsonData('api/AppFind/GetUserInfo', par).then(function(data) {
+        	        callback(data);
+        	    },function(error){
+                    callbackError(error);
+                });
+        	},   
+        	SaveUserInfo: function(par,callback,callbackError) { //保存用户信息
+        	    CommonService.getJsonData('api/AppFind/SaveUserInfo', par).then(function(data) {
+        	        callback(data);
+        	    },function(error){
+                    callbackError(error);
+                });
+        	},        
+        	GetArticles: function(par,callback,callbackError) { //发文章
+        	    CommonService.getJsonData('api/AppFind/GetArticles', par).then(function(data) {
+        	        callback(data);
+        	    },function(error){
+                    callbackError(error);
+                });
+        	},   
+        	GetArticleDetail: function(par,callback,callbackError) { //发文章详情
+        	    CommonService.getJsonData('api/AppFind/GetArticleDetail', par).then(function(data) {
+        	        callback(data);
+        	    },function(error){
+                    callbackError(error);
+                });
         	}        	
         }
     }]);
